@@ -8,13 +8,13 @@
   <title>NeuroPouch — Nootropic Focus Pouches | Nicotine-Free Cognitive Enhancement</title>
   <meta name="description" content="NeuroPouch delivers Alpha-GPC, L-Theanine & Rhodiola Rosea through fast oral absorption. Zero nicotine. Discreet. 16 pouches per tin. Join the waitlist for 15% off launch." />
   <meta name="keywords" content="nootropic pouch, nicotine-free focus supplement, cognitive enhancement, Alpha-GPC, Rhodiola Rosea, biohacker supplement, focus pouch, oral nootropic" />
-  <link rel="canonical" href="https://neuropouch.com/" />
+  <link rel="canonical" href="https://getneuropouch.com/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="NeuroPouch — Your Focus, In Your Pocket" />
   <meta property="og:description" content="The discreet, nicotine-free nootropic pouch. Alpha-GPC, L-Theanine & Rhodiola Rosea. No jitters. No chewing. Built for peak performance." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://neuropouch.com/" />
+  <meta property="og:url" content="https://getneuropouch.com/" />
 
   <!-- Schema: Organization -->
   <script type="application/ld+json">
@@ -22,7 +22,7 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "NeuroPouch",
-    "url": "https://neuropouch.com",
+    "url": "https://getneuropouch.com",
     "description": "Premium nicotine-free nootropic oral pouches for cognitive enhancement",
     "foundingDate": "2024"
   }
@@ -308,7 +308,7 @@
 
         <!-- Email form -->
         <div class="fade-up" id="waitlist">
-          <form id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md" onsubmit="handleFormSubmit(event, 'hero-form')">
+          <form id="hero-form" name="waitlist" data-netlify="true" class="flex flex-col sm:flex-row gap-3 max-w-md" onsubmit="handleFormSubmit(event, 'hero-form')">
             <input
               type="email"
               placeholder="Enter your email"
@@ -941,7 +941,7 @@
         and updates from the NeuroPouch lab.
       </p>
 
-      <form id="footer-form" class="fade-up flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleFormSubmit(event, 'footer-form')">
+      <form id="footer-form" name="waitlist-footer" data-netlify="true" class="fade-up flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleFormSubmit(event, 'footer-form')">
         <input
           type="email"
           placeholder="Enter your email"
