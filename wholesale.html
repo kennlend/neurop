@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NeuroPouch Wholesale — Stock the Nootropic Pouch Your Customers Are Looking For</title>
+  <meta name="description" content="Wholesale NeuroPouch for gyms, co-working spaces, pharmacies, and premium retailers. Tower format pricing. EU shipping. Apply for a wholesale account." />
+  <link rel="canonical" href="https://neuropouch.com/wholesale" />
+  <meta property="og:title" content="NeuroPouch Wholesale — Premium Nootropic Pouches for Retailers" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1C2B4A', 'navy-light': '#243559',
+            'rose-gold': '#C4956A', blush: '#E8C5B8',
+            cream: '#F8F4EF', 'warm-white': '#FDFAF7',
+            charcoal: '#2D3142', muted: '#6B7280',
+          },
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #FDFAF7; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+    #site-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(253,250,247,0.92);
+      border-bottom: 1px solid rgba(196,149,106,0.15);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1C2B4A 0%, #243559 100%);
+      color: #FDFAF7;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(28,43,74,0.25); }
+
+    /* Pricing tier card */
+    .tier-card {
+      border: 2px solid #E8C5B8;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      position: relative;
+    }
+    .tier-card:hover {
+      border-color: #C4956A;
+      box-shadow: 0 8px 32px rgba(196,149,106,0.15);
+      transform: translateY(-4px);
+    }
+    .tier-card.featured {
+      border-color: #1C2B4A;
+      box-shadow: 0 8px 32px rgba(28,43,74,0.12);
+    }
+    .tier-badge {
+      position: absolute;
+      top: -13px; left: 50%;
+      transform: translateX(-50%);
+      background: #1C2B4A;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 14px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* Channel card */
+    .channel-card {
+      border: 1.5px solid #E8C5B8;
+      transition: all 0.25s;
+    }
+    .channel-card:hover {
+      border-color: #C4956A;
+      box-shadow: 0 4px 20px rgba(196,149,106,0.12);
+      transform: translateY(-3px);
+    }
+
+    /* Form input */
+    .form-input {
+      border: 1.5px solid #E8C5B8;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: #2D3142;
+      background: white;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #1C2B4A;
+    }
+    .form-input::placeholder { color: #9CA3AF; }
+
+    .reveal { opacity: 0; transform: translateY(28px); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+
+<body class="text-charcoal">
+
+  <!-- NAV -->
+  <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="font-serif text-xl text-navy tracking-wide">NeuroPouch</a>
+      <div class="flex items-center gap-6 text-sm font-medium text-charcoal">
+        <a href="science.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Science</a>
+        <a href="about.html" class="hover:text-rose-gold transition-colors hidden sm:inline">About</a>
+        <a href="product.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Shop</a>
+        <a href="wholesale.html" class="text-rose-gold font-semibold hidden sm:inline">Wholesale</a>
+        <a href="contact.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Contact</a>
+        <a href="#apply" class="btn-primary px-5 py-2 rounded-full text-sm font-semibold">Apply Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="pt-32 pb-20 px-6 bg-navy relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10 -translate-y-1/3 translate-x-1/4" style="background: radial-gradient(circle, #C4956A, transparent 70%)"></div>
+    <div class="absolute bottom-0 left-1/4 w-64 h-64 rounded-full opacity-5" style="background: radial-gradient(circle, #E8C5B8, transparent 70%)"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+      <div class="flex flex-wrap gap-3 mb-6">
+        <span class="bg-rose-gold/20 border border-rose-gold/30 text-rose-gold text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-widest">Wholesale</span>
+        <span class="bg-white/5 border border-white/15 text-warm-white/60 text-xs px-3 py-1.5 rounded-full">EU Shipping</span>
+        <span class="bg-white/5 border border-white/15 text-warm-white/60 text-xs px-3 py-1.5 rounded-full">Tower Format</span>
+        <span class="bg-white/5 border border-white/15 text-warm-white/60 text-xs px-3 py-1.5 rounded-full">Minimum 1 Tower</span>
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-5xl text-warm-white leading-tight mb-6">
+        Give your customers the<br/>
+        <em class="text-rose-gold">cognitive edge they're already looking for.</em>
+      </h1>
+      <p class="text-warm-white/70 text-base leading-relaxed max-w-2xl mb-8">
+        NeuroPouch is the premium, nicotine-free nootropic pouch built for the performance market. Compact tower display. Strong repeat purchase rate. A category with minimal competition and high consumer curiosity.
+      </p>
+
+      <!-- Quick stats -->
+      <div class="flex flex-wrap gap-6">
+        <div class="text-center">
+          <p class="font-serif text-2xl text-rose-gold">€9.99</p>
+          <p class="text-warm-white/50 text-xs mt-0.5">RRP per tin</p>
+        </div>
+        <div class="w-px h-10 bg-white/10 self-center hidden sm:block"></div>
+        <div class="text-center">
+          <p class="font-serif text-2xl text-rose-gold">10 tins</p>
+          <p class="text-warm-white/50 text-xs mt-0.5">Per tower (MOQ)</p>
+        </div>
+        <div class="w-px h-10 bg-white/10 self-center hidden sm:block"></div>
+        <div class="text-center">
+          <p class="font-serif text-2xl text-rose-gold">2 flavours</p>
+          <p class="text-warm-white/50 text-xs mt-0.5">At launch</p>
+        </div>
+        <div class="w-px h-10 bg-white/10 self-center hidden sm:block"></div>
+        <div class="text-center">
+          <p class="font-serif text-2xl text-rose-gold">EU-wide</p>
+          <p class="text-warm-white/50 text-xs mt-0.5">Shipping coverage</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ WHO SHOULD STOCK THIS ═══════════════════ -->
+  <section class="py-20 px-6 bg-warm-white reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-3">Ideal Stockists</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-navy">Where NeuroPouch belongs.</h2>
+        <p class="text-muted text-sm mt-3 max-w-lg mx-auto">The product is designed for high-performance environments — places where your customers are already thinking about cognitive output and personal optimisation.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <div class="channel-card bg-white rounded-2xl p-6">
+          <div class="text-3xl mb-3">🏋️</div>
+          <h3 class="font-semibold text-navy mb-2">Gyms & Fitness Centres</h3>
+          <p class="text-muted text-sm leading-relaxed">Pre-workout cognitive focus without stimulant overload. Rhodiola Rosea's anti-fatigue properties appeal to endurance athletes and high-frequency trainers. Place at reception or in vending.</p>
+          <div class="mt-4 text-xs text-rose-gold font-medium">High repeat purchase likelihood</div>
+        </div>
+
+        <div class="channel-card bg-white rounded-2xl p-6">
+          <div class="text-3xl mb-3">💻</div>
+          <h3 class="font-semibold text-navy mb-2">Co-working Spaces</h3>
+          <p class="text-muted text-sm leading-relaxed">The exact environment NeuroPouch was designed for — people working long focus sessions who need a discreet, non-disruptive cognitive tool. Tower on the desk or coffee bar converts passively.</p>
+          <div class="mt-4 text-xs text-rose-gold font-medium">Direct fit with audience</div>
+        </div>
+
+        <div class="channel-card bg-white rounded-2xl p-6">
+          <div class="text-3xl mb-3">💊</div>
+          <h3 class="font-semibold text-navy mb-2">Pharmacies & Health Stores</h3>
+          <p class="text-muted text-sm leading-relaxed">Growing consumer appetite for non-nicotine oral supplements. NeuroPouch fills a category gap — positioned between dietary supplements and functional foods. Suitable for EU pharmacies as a food supplement.</p>
+          <div class="mt-4 text-xs text-rose-gold font-medium">Emerging category leadership</div>
+        </div>
+
+        <div class="channel-card bg-white rounded-2xl p-6">
+          <div class="text-3xl mb-3">✈️</div>
+          <h3 class="font-semibold text-navy mb-2">Travel Retail & Airports</h3>
+          <p class="text-muted text-sm leading-relaxed">Compact format, no liquids, passes security. Business travellers are the target customer. Premium price point fits travel retail positioning. High impulse purchase potential.</p>
+          <div class="mt-4 text-xs text-rose-gold font-medium">Premium impulse category</div>
+        </div>
+
+        <div class="channel-card bg-white rounded-2xl p-6">
+          <div class="text-3xl mb-3">🎓</div>
+          <h3 class="font-semibold text-navy mb-2">University Campus Stores</h3>
+          <p class="text-muted text-sm leading-relaxed">Students are NeuroPouch's primary demographic (16–28). Campus convenience stores, study cafés, and campus health centres are natural distribution points during exam periods.</p>
+          <div class="mt-4 text-xs text-rose-gold font-medium">Seasonal demand peaks</div>
+        </div>
+
+        <div class="channel-card bg-white rounded-2xl p-6">
+          <div class="text-3xl mb-3">🛒</div>
+          <h3 class="font-semibold text-navy mb-2">Premium Specialty Retail</h3>
+          <p class="text-muted text-sm leading-relaxed">Biohacker shops, sports nutrition retailers, premium wellness boutiques. Customers in these channels are already aware of nootropics and looking for a better delivery format than capsules.</p>
+          <div class="mt-4 text-xs text-rose-gold font-medium">Pre-educated customer base</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PRICING TIERS ═══════════════════ -->
+  <section class="py-20 px-6 bg-cream reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-3">Wholesale Pricing</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-navy">Tower-format pricing.</h2>
+        <p class="text-muted text-sm mt-3 max-w-lg mx-auto">1 tower = 10 tins. RRP is €9.99 per tin. Wholesale pricing scales with volume. All prices exclude VAT and shipping.</p>
+        <p class="text-rose-gold text-xs font-semibold mt-2">Limited time launch pricing — applies to first orders placed before launch.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6">
+
+        <!-- Tier 1 -->
+        <div class="tier-card bg-white rounded-3xl p-7">
+          <p class="text-xs font-semibold uppercase tracking-widest text-muted mb-1">Starter</p>
+          <h3 class="font-serif text-2xl text-navy mb-1">1 Tower</h3>
+          <p class="text-muted text-xs mb-5">10 tins · Try the range</p>
+          <p class="text-3xl font-bold text-navy mb-0.5">€55 <span class="text-muted text-sm font-normal">+ VAT</span></p>
+          <p class="text-xs text-muted mb-1">€5.50 / tin wholesale</p>
+          <p class="text-xs text-rose-gold font-semibold mb-6">RRP €9.99 → ~45% margin</p>
+          <ul class="space-y-2 text-xs text-muted mb-6">
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> 1 flavour of your choice</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Standard delivery</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Digital marketing assets</li>
+          </ul>
+          <a href="#apply" class="block text-center py-3 rounded-xl border-2 border-navy text-navy text-sm font-semibold hover:bg-navy hover:text-warm-white transition-all">Apply for Access</a>
+        </div>
+
+        <!-- Tier 2 — Featured -->
+        <div class="tier-card featured bg-white rounded-3xl p-7">
+          <div class="tier-badge">Most Popular</div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-muted mb-1">Growth</p>
+          <h3 class="font-serif text-2xl text-navy mb-1">3 Towers</h3>
+          <p class="text-muted text-xs mb-5">30 tins · Mixed or same flavour</p>
+          <p class="text-3xl font-bold text-navy mb-0.5">€148 <span class="text-muted text-sm font-normal">+ VAT</span></p>
+          <p class="text-xs text-muted mb-1">€4.93 / tin wholesale</p>
+          <p class="text-xs text-rose-gold font-semibold mb-6">RRP €9.99 → ~51% margin</p>
+          <ul class="space-y-2 text-xs text-muted mb-6">
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Mix both flavours</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Priority delivery</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Digital marketing assets</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Dedicated stockist page listing</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Shelf talker printed card</li>
+          </ul>
+          <a href="#apply" class="btn-primary block text-center py-3 rounded-xl text-sm font-semibold">Apply for Access</a>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="tier-card bg-white rounded-3xl p-7">
+          <p class="text-xs font-semibold uppercase tracking-widest text-muted mb-1">Scale</p>
+          <h3 class="font-serif text-2xl text-navy mb-1">6+ Towers</h3>
+          <p class="text-muted text-xs mb-5">60+ tins · Custom arrangement</p>
+          <p class="text-3xl font-bold text-navy mb-0.5">€270 <span class="text-muted text-sm font-normal">+ VAT</span></p>
+          <p class="text-xs text-muted mb-1">€4.50 / tin wholesale</p>
+          <p class="text-xs text-rose-gold font-semibold mb-6">RRP €9.99 → ~55% margin</p>
+          <ul class="space-y-2 text-xs text-muted mb-6">
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> All flavours, all quantities</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Priority delivery</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Full marketing kit (print + digital)</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Stockist page listing</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Dedicated account manager</li>
+            <li class="flex gap-2"><span class="text-navy font-bold">✓</span> Custom co-branding available</li>
+          </ul>
+          <a href="#apply" class="block text-center py-3 rounded-xl border-2 border-navy text-navy text-sm font-semibold hover:bg-navy hover:text-warm-white transition-all">Apply for Access</a>
+        </div>
+
+      </div>
+
+      <p class="text-center text-muted text-xs mt-6">Prices exclude VAT and shipping. Final pricing confirmed after application review. Minimum order: 1 tower (10 tins).</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ WHY STOCK IT ═══════════════════ -->
+  <section class="py-20 px-6 bg-warm-white reveal">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-3">The Commercial Case</p>
+        <h2 class="font-serif text-3xl text-navy mb-6">Why this product moves.</h2>
+        <div class="space-y-5">
+          <div class="flex gap-4">
+            <div class="w-8 h-8 rounded-lg bg-navy flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <div>
+              <p class="font-semibold text-navy text-sm mb-1">Growing category with low competition</p>
+              <p class="text-muted text-xs leading-relaxed">Nootropic oral supplements are an emerging category. Most competitors are capsule-format. NeuroPouch is one of the only pouch-format products — differentiated on the shelf immediately.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-8 h-8 rounded-lg bg-navy flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            </div>
+            <div>
+              <p class="font-semibold text-navy text-sm mb-1">High repeat purchase rate</p>
+              <p class="text-muted text-xs leading-relaxed">16 pouches per tin at €9.99 means customers return regularly. Users who integrate NeuroPouch into their daily routine reorder every 2–4 weeks. Predictable sell-through for your location.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-8 h-8 rounded-lg bg-navy flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div>
+              <p class="font-semibold text-navy text-sm mb-1">Easy to explain. Easy to sell.</p>
+              <p class="text-muted text-xs leading-relaxed">The pitch is simple: "nicotine-free nootropic pouch, works in 10 minutes, no jitters." Staff can explain it in one sentence. The packaging does the rest. No long training required.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-8 h-8 rounded-lg bg-navy flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            </div>
+            <div>
+              <p class="font-semibold text-navy text-sm mb-1">Tower format = impulse purchase display</p>
+              <p class="text-muted text-xs leading-relaxed">The tower holds 10 tins and takes up less counter space than a coffee cup. Designed for point-of-sale placement — checkout counter, reception desk, or supplement shelf endcap.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tower visual -->
+      <div class="flex flex-col items-center gap-4">
+        <div class="relative">
+          <!-- Tower stack illustration -->
+          <div class="w-32 h-96 relative flex flex-col items-center justify-end gap-1">
+            <!-- Stacked tins -->
+            <div class="absolute bottom-0 w-28 flex flex-col items-center gap-0.5">
+              <div class="w-28 h-10 rounded-full bg-gradient-to-br from-blush to-rose-gold shadow-md flex items-center justify-center">
+                <p class="text-navy text-[10px] font-semibold">Grapefruit</p>
+              </div>
+              <div class="w-28 h-10 rounded-full bg-gradient-to-br from-navy to-navy-light shadow-md flex items-center justify-center">
+                <p class="text-warm-white text-[10px] font-semibold">Peppermint</p>
+              </div>
+              <div class="w-28 h-10 rounded-full bg-gradient-to-br from-blush to-rose-gold shadow-md flex items-center justify-center">
+                <p class="text-navy text-[10px] font-semibold">Grapefruit</p>
+              </div>
+              <div class="w-28 h-10 rounded-full bg-gradient-to-br from-navy to-navy-light shadow-md flex items-center justify-center">
+                <p class="text-warm-white text-[10px] font-semibold">Peppermint</p>
+              </div>
+              <div class="w-28 h-10 rounded-full bg-gradient-to-br from-blush to-rose-gold shadow-md flex items-center justify-center">
+                <p class="text-navy text-[10px] font-semibold">Grapefruit</p>
+              </div>
+              <div class="w-28 h-10 rounded-full bg-gradient-to-br from-navy to-navy-light shadow-md flex items-center justify-center">
+                <p class="text-warm-white text-[10px] font-semibold">Peppermint</p>
+              </div>
+              <div class="w-28 h-10 rounded-full bg-gradient-to-br from-blush to-rose-gold shadow-md flex items-center justify-center">
+                <p class="text-navy text-[10px] font-semibold">Grapefruit</p>
+              </div>
+              <div class="w-28 h-10 rounded-full bg-gradient-to-br from-navy to-navy-light shadow-md flex items-center justify-center">
+                <p class="text-warm-white text-[10px] font-semibold">Peppermint</p>
+              </div>
+              <div class="w-28 h-10 rounded-full bg-gradient-to-br from-blush to-rose-gold shadow-md flex items-center justify-center">
+                <p class="text-navy text-[10px] font-semibold">Grapefruit</p>
+              </div>
+              <div class="w-28 h-10 rounded-full bg-gradient-to-br from-navy to-navy-light shadow-md flex items-center justify-center">
+                <p class="text-warm-white text-[10px] font-semibold">Peppermint</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <p class="font-semibold text-navy text-sm">1 Tower = 10 Tins</p>
+          <p class="text-muted text-xs mt-1">~10cm counter footprint</p>
+          <p class="text-rose-gold text-xs font-semibold mt-0.5">€99.90 RRP per tower</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ APPLY FORM ═══════════════════ -->
+  <section id="apply" class="py-20 px-6 bg-navy reveal">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-3">Get Started</p>
+        <h2 class="font-serif text-3xl text-warm-white mb-3">Apply for wholesale access.</h2>
+        <p class="text-warm-white/60 text-sm leading-relaxed">Fill in the form below. We'll review your application and get back to you within 2 business days with pricing confirmation and onboarding details.</p>
+      </div>
+
+      <form id="wholesale-form" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-warm-white/70 mb-1.5">Business name *</label>
+            <input type="text" class="form-input" placeholder="Your business name" required />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-warm-white/70 mb-1.5">Contact name *</label>
+            <input type="text" class="form-input" placeholder="Your full name" required />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-warm-white/70 mb-1.5">Business email *</label>
+          <input type="email" class="form-input" placeholder="you@business.com" required />
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-warm-white/70 mb-1.5">Country *</label>
+            <select class="form-input" required>
+              <option value="">Select country</option>
+              <option>Estonia</option>
+              <option>Finland</option>
+              <option>Sweden</option>
+              <option>Germany</option>
+              <option>Netherlands</option>
+              <option>Denmark</option>
+              <option>Norway</option>
+              <option>United Kingdom</option>
+              <option>France</option>
+              <option>Belgium</option>
+              <option>Austria</option>
+              <option>Switzerland</option>
+              <option>Other EU/EEA</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-warm-white/70 mb-1.5">Business type *</label>
+            <select class="form-input" required>
+              <option value="">Select type</option>
+              <option>Gym / Fitness Centre</option>
+              <option>Co-working Space</option>
+              <option>Pharmacy / Health Store</option>
+              <option>University / Campus</option>
+              <option>Travel Retail</option>
+              <option>Online Retailer</option>
+              <option>Specialty / Biohacker Store</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-warm-white/70 mb-1.5">Initial order interest</label>
+          <select class="form-input">
+            <option>1 Tower (10 tins)</option>
+            <option selected>3 Towers (30 tins)</option>
+            <option>6 Towers (60 tins)</option>
+            <option>10+ Towers — discuss pricing</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-warm-white/70 mb-1.5">Tell us about your location / customer base</label>
+          <textarea class="form-input" rows="3" placeholder="Brief description of your location and why you think NeuroPouch fits your customers..."></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-2xl font-bold text-sm tracking-wide bg-rose-gold hover:bg-rose-gold/90 text-warm-white transition-all hover:-translate-y-0.5 hover:shadow-xl">
+          Submit Wholesale Application
+        </button>
+        <p class="text-warm-white/40 text-xs text-center">We review all applications within 2 business days. No commitment required at this stage.</p>
+      </form>
+
+      <!-- Success state -->
+      <div id="form-success" class="hidden text-center py-10">
+        <div class="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h3 class="font-serif text-2xl text-warm-white mb-2">Application received.</h3>
+        <p class="text-warm-white/60 text-sm">We'll be in touch within 2 business days. Check your email — including spam, just in case.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FAQ (WHOLESALE) ═══════════════════ -->
+  <section class="py-20 px-6 bg-cream reveal">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="font-serif text-3xl text-navy">Wholesale FAQ</h2>
+      </div>
+      <div class="space-y-3">
+
+        <div class="bg-white rounded-2xl border border-blush/40 p-6">
+          <h3 class="font-semibold text-navy text-sm mb-2">What is the minimum order?</h3>
+          <p class="text-muted text-xs leading-relaxed">One tower (10 tins). You can order a mix of both flavours from the 3-tower tier onwards.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-blush/40 p-6">
+          <h3 class="font-semibold text-navy text-sm mb-2">What's the RRP and suggested retail price?</h3>
+          <p class="text-muted text-xs leading-relaxed">The recommended retail price is €9.99 per tin. You are free to price above this but we recommend against discounting below RRP to protect brand positioning.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-blush/40 p-6">
+          <h3 class="font-semibold text-navy text-sm mb-2">Do you offer sale or return?</h3>
+          <p class="text-muted text-xs leading-relaxed">Not for standard wholesale. However, on first orders we offer a goodwill adjustment if your initial stock doesn't move — talk to us and we'll find a solution. We want long-term stockist relationships, not one-time transactions.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-blush/40 p-6">
+          <h3 class="font-semibold text-navy text-sm mb-2">What marketing materials do you provide?</h3>
+          <p class="text-muted text-xs leading-relaxed">All stockists receive a digital marketing kit (social media assets, product photography, copy templates). Growth and Scale tier stockists also receive printed shelf talker cards and are listed on our website's stockist page.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-blush/40 p-6">
+          <h3 class="font-semibold text-navy text-sm mb-2">How long does delivery take?</h3>
+          <p class="text-muted text-xs leading-relaxed">EU wholesale orders: 3–7 business days from order confirmation. Priority delivery available for Growth and Scale tier orders.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-blush/40 p-6">
+          <h3 class="font-semibold text-navy text-sm mb-2">Is NeuroPouch EU-compliant as a food supplement?</h3>
+          <p class="text-muted text-xs leading-relaxed">Yes. NeuroPouch is formulated, labelled, and manufactured in compliance with EU food supplement regulations (Directive 2002/46/EC). All ingredients are permitted food supplement ingredients under EU law. Documentation available on request.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div>
+        <p class="font-serif text-lg text-warm-white">NeuroPouch</p>
+        <p class="text-warm-white/40 text-xs mt-1">The Edge You Don't Have to Announce</p>
+      </div>
+      <div class="flex flex-wrap gap-5 text-xs text-warm-white/50">
+        <a href="index.html" class="hover:text-warm-white transition-colors">Home</a>
+        <a href="product.html" class="hover:text-warm-white transition-colors">Shop</a>
+        <a href="science.html" class="hover:text-warm-white transition-colors">Science</a>
+        <a href="about.html" class="hover:text-warm-white transition-colors">About</a>
+        <a href="wholesale.html" class="hover:text-warm-white transition-colors">Wholesale</a>
+        <a href="privacy-policy.html" class="hover:text-warm-white transition-colors">Privacy</a>
+        <a href="terms.html" class="hover:text-warm-white transition-colors">Terms</a>
+        <a href="contact.html" class="hover:text-warm-white transition-colors">Contact</a>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto mt-6 pt-6 border-t border-white/10">
+      <p class="text-warm-white/30 text-xs">© 2026 NeuroPouch. All rights reserved. · Food supplement. Not intended to diagnose, treat, cure or prevent any disease.</p>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.reveal').forEach(el => {
+      gsap.fromTo(el, { opacity: 0, y: 32 }, {
+        opacity: 1, y: 0, duration: 0.75, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+      });
+    });
+
+    // Tier cards stagger
+    gsap.utils.toArray('.tier-card').forEach((card, i) => {
+      gsap.fromTo(card, { opacity: 0, y: 24 }, {
+        opacity: 1, y: 0, duration: 0.5, delay: i * 0.1,
+        scrollTrigger: { trigger: card, start: 'top 90%', once: true }
+      });
+    });
+
+    // Wholesale form
+    document.getElementById('wholesale-form').addEventListener('submit', e => {
+      e.preventDefault();
+      // TODO: Replace with actual form submission endpoint (e.g. Formspree, Netlify Forms, or custom API)
+      document.getElementById('wholesale-form').classList.add('hidden');
+      document.getElementById('form-success').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact NeuroPouch — Get in Touch</title>
+  <meta name="description" content="Questions about your order, press enquiries, or wholesale partnership? Reach the NeuroPouch team directly." />
+  <link rel="canonical" href="https://neuropouch.com/contact" />
+  <meta property="og:title" content="Contact NeuroPouch" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1C2B4A', 'navy-light': '#243559',
+            'rose-gold': '#C4956A', blush: '#E8C5B8',
+            cream: '#F8F4EF', 'warm-white': '#FDFAF7',
+            charcoal: '#2D3142', muted: '#6B7280',
+          },
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #FDFAF7; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+    #site-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(253,250,247,0.92);
+      border-bottom: 1px solid rgba(196,149,106,0.15);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1C2B4A 0%, #243559 100%);
+      color: #FDFAF7;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(28,43,74,0.25); }
+
+    /* Tab system */
+    .contact-tab {
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .contact-tab.active {
+      color: #C4956A;
+      border-bottom-color: #C4956A;
+    }
+    .contact-tab:not(.active) { color: #6B7280; }
+    .contact-tab:not(.active):hover { color: #2D3142; }
+
+    /* Form panel */
+    .form-panel { display: none; }
+    .form-panel.active { display: block; }
+
+    /* Input fields */
+    .field-input {
+      width: 100%;
+      border: 1.5px solid #E8C5B8;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      background: #FDFAF7;
+      color: #2D3142;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .field-input:focus {
+      border-color: #C4956A;
+      box-shadow: 0 0 0 3px rgba(196,149,106,0.12);
+    }
+    .field-input::placeholder { color: #9CA3AF; }
+
+    label { display: block; font-size: 0.8125rem; font-weight: 600; color: #2D3142; margin-bottom: 6px; }
+
+    /* Contact card */
+    .contact-card {
+      border: 1.5px solid #E8C5B8;
+      border-radius: 16px;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .contact-card:hover {
+      border-color: #C4956A;
+      box-shadow: 0 6px 24px rgba(196,149,106,0.12);
+      transform: translateY(-2px);
+    }
+
+    /* FAQ accordion */
+    .faq-item { border-bottom: 1px solid #E8C5B8; }
+    .faq-btn { width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; padding: 18px 0; cursor: pointer; }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
+    .faq-body.open { max-height: 300px; padding-bottom: 16px; }
+    .faq-icon { transition: transform 0.3s ease; flex-shrink: 0; }
+    .faq-icon.open { transform: rotate(45deg); }
+
+    /* Success state */
+    .success-state { display: none; }
+    .success-state.visible { display: flex; }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(28px); }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2" aria-label="NeuroPouch home">
+        <span class="font-serif text-xl text-navy tracking-wide">NeuroPouch</span>
+        <span class="text-xs font-sans font-medium text-rose-gold uppercase tracking-widest hidden sm:block">Focus</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-charcoal">
+        <a href="science.html" class="hover:text-rose-gold transition-colors duration-200">Science</a>
+        <a href="about.html" class="hover:text-rose-gold transition-colors duration-200">About</a>
+        <a href="wholesale.html" class="hover:text-rose-gold transition-colors duration-200">Wholesale</a>
+        <a href="contact.html" class="text-rose-gold font-semibold">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="product.html"
+           class="bg-navy text-warm-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-navy-light transition-colors duration-200">
+          Shop
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="pt-32 pb-16 px-6 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-4">Get in Touch</p>
+      <h1 class="font-serif text-4xl md:text-5xl text-navy leading-tight mb-5">
+        We're a small team.<br/>We actually read these.
+      </h1>
+      <p class="text-muted text-base leading-relaxed">
+        Whether it's a question about your order, a press enquiry, or a wholesale conversation — pick the right channel below and we'll get back to you within one business day.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ QUICK CONTACT CARDS ═══════════════ -->
+  <section class="pb-12 px-6">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5 reveal">
+
+      <div class="contact-card bg-cream p-6 rounded-2xl text-center">
+        <div class="w-10 h-10 rounded-full bg-blush flex items-center justify-center mx-auto mb-3">
+          <svg class="w-5 h-5 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <p class="font-semibold text-navy text-sm mb-1">Customer Support</p>
+        <p class="text-muted text-xs leading-relaxed">Orders, shipping, returns.<br/>We reply within 24 hours.</p>
+        <p class="text-rose-gold text-xs font-semibold mt-3">hello@neuropouch.com</p>
+      </div>
+
+      <div class="contact-card bg-cream p-6 rounded-2xl text-center">
+        <div class="w-10 h-10 rounded-full bg-blush flex items-center justify-center mx-auto mb-3">
+          <svg class="w-5 h-5 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l6 6v10a2 2 0 01-2 2z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M14 4v6h6M9 14h6M9 10h2"/>
+          </svg>
+        </div>
+        <p class="font-semibold text-navy text-sm mb-1">Press & Media</p>
+        <p class="text-muted text-xs leading-relaxed">Interviews, product samples,<br/>brand assets & stories.</p>
+        <p class="text-rose-gold text-xs font-semibold mt-3">press@neuropouch.com</p>
+      </div>
+
+      <div class="contact-card bg-cream p-6 rounded-2xl text-center">
+        <div class="w-10 h-10 rounded-full bg-blush flex items-center justify-center mx-auto mb-3">
+          <svg class="w-5 h-5 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+        </div>
+        <p class="font-semibold text-navy text-sm mb-1">Wholesale</p>
+        <p class="text-muted text-xs leading-relaxed">Retail, gyms, pharmacies.<br/>MOQ 1 tower (10 tins).</p>
+        <p class="text-rose-gold text-xs font-semibold mt-3">trade@neuropouch.com</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ TABBED FORM ═══════════════ -->
+  <section class="py-12 px-6 bg-cream">
+    <div class="max-w-2xl mx-auto reveal">
+
+      <h2 class="font-serif text-2xl text-navy text-center mb-8">Send us a message</h2>
+
+      <!-- Tabs -->
+      <div class="flex gap-0 border-b border-blush mb-8">
+        <button class="contact-tab active flex-1 text-center pb-3 text-sm font-semibold" data-tab="general">
+          General
+        </button>
+        <button class="contact-tab flex-1 text-center pb-3 text-sm font-semibold" data-tab="press">
+          Press
+        </button>
+        <button class="contact-tab flex-1 text-center pb-3 text-sm font-semibold" data-tab="wholesale">
+          Wholesale
+        </button>
+      </div>
+
+      <!-- ── General Form ── -->
+      <div class="form-panel active" id="panel-general">
+        <form id="form-general" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="gen-name">Your name</label>
+              <input id="gen-name" type="text" class="field-input" placeholder="Alex Smith" required />
+            </div>
+            <div>
+              <label for="gen-email">Email address</label>
+              <input id="gen-email" type="email" class="field-input" placeholder="alex@example.com" required />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="gen-subject">Subject</label>
+            <select id="gen-subject" class="field-input" required>
+              <option value="" disabled selected>Select a topic…</option>
+              <option value="order">My order / shipping</option>
+              <option value="returns">Returns & refunds</option>
+              <option value="ingredients">Ingredient question</option>
+              <option value="allergies">Allergen / safety query</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+          <div class="mb-6">
+            <label for="gen-message">Message</label>
+            <textarea id="gen-message" rows="5" class="field-input" placeholder="Tell us what's on your mind…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full py-3.5 rounded-full text-sm font-semibold">
+            Send Message
+          </button>
+        </form>
+        <!-- Success -->
+        <div class="success-state flex-col items-center justify-center text-center py-12" id="success-general">
+          <div class="w-14 h-14 rounded-full bg-blush flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="font-serif text-xl text-navy mb-2">Message received.</p>
+          <p class="text-muted text-sm">We'll reply within one business day.</p>
+        </div>
+      </div>
+
+      <!-- ── Press Form ── -->
+      <div class="form-panel" id="panel-press">
+        <form id="form-press" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="press-name">Your name</label>
+              <input id="press-name" type="text" class="field-input" placeholder="Jordan Lee" required />
+            </div>
+            <div>
+              <label for="press-email">Work email</label>
+              <input id="press-email" type="email" class="field-input" placeholder="jordan@publication.com" required />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="press-outlet">Publication / outlet</label>
+            <input id="press-outlet" type="text" class="field-input" placeholder="The Times, Men's Health, etc." required />
+          </div>
+          <div class="mb-4">
+            <label for="press-type">What are you working on?</label>
+            <select id="press-type" class="field-input" required>
+              <option value="" disabled selected>Select…</option>
+              <option value="interview">Founder interview</option>
+              <option value="product-review">Product review</option>
+              <option value="feature">Feature article</option>
+              <option value="samples">Sample request</option>
+              <option value="assets">Brand assets / imagery</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label for="press-deadline">Deadline (if applicable)</label>
+            <input id="press-deadline" type="date" class="field-input" />
+          </div>
+          <div class="mb-6">
+            <label for="press-message">Brief</label>
+            <textarea id="press-message" rows="4" class="field-input" placeholder="Give us a quick overview of what you need…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full py-3.5 rounded-full text-sm font-semibold">
+            Send Press Enquiry
+          </button>
+        </form>
+        <div class="success-state flex-col items-center justify-center text-center py-12" id="success-press">
+          <div class="w-14 h-14 rounded-full bg-blush flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="font-serif text-xl text-navy mb-2">Press enquiry received.</p>
+          <p class="text-muted text-sm">Our comms team will be in touch shortly — usually within 4 hours on weekdays.</p>
+        </div>
+      </div>
+
+      <!-- ── Wholesale Form ── -->
+      <div class="form-panel" id="panel-wholesale">
+        <p class="text-sm text-muted mb-6 bg-blush/40 rounded-xl px-4 py-3 border border-blush">
+          For full wholesale details, pricing tiers and margin breakdowns, visit the
+          <a href="wholesale.html" class="text-rose-gold font-semibold hover:underline">Wholesale page</a>.
+          Or fill out the quick form below to start a conversation.
+        </p>
+        <form id="form-wholesale" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="ws-name">Your name</label>
+              <input id="ws-name" type="text" class="field-input" placeholder="Sam Clarke" required />
+            </div>
+            <div>
+              <label for="ws-business">Business name</label>
+              <input id="ws-business" type="text" class="field-input" placeholder="Clarke Health Ltd" required />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="ws-email">Email</label>
+              <input id="ws-email" type="email" class="field-input" placeholder="sam@clarkehealth.com" required />
+            </div>
+            <div>
+              <label for="ws-phone">Phone (optional)</label>
+              <input id="ws-phone" type="tel" class="field-input" placeholder="+353 87 000 0000" />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="ws-channel">Business type</label>
+            <select id="ws-channel" class="field-input" required>
+              <option value="" disabled selected>Select…</option>
+              <option value="pharmacy">Pharmacy / health store</option>
+              <option value="gym">Gym / fitness studio</option>
+              <option value="ecommerce">E-commerce retailer</option>
+              <option value="corporate">Corporate wellness</option>
+              <option value="cafe">Café / workspace</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label for="ws-volume">Estimated monthly volume</label>
+            <select id="ws-volume" class="field-input" required>
+              <option value="" disabled selected>Select…</option>
+              <option value="1-2">1–2 towers / month</option>
+              <option value="3-5">3–5 towers / month</option>
+              <option value="6-10">6–10 towers / month</option>
+              <option value="10+">10+ towers / month</option>
+            </select>
+          </div>
+          <div class="mb-6">
+            <label for="ws-message">Anything else we should know?</label>
+            <textarea id="ws-message" rows="3" class="field-input" placeholder="Tell us about your customers, your store, or how you discovered us…"></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full py-3.5 rounded-full text-sm font-semibold">
+            Start Wholesale Conversation
+          </button>
+        </form>
+        <div class="success-state flex-col items-center justify-center text-center py-12" id="success-wholesale">
+          <div class="w-14 h-14 rounded-full bg-blush flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="font-serif text-xl text-navy mb-2">Thanks — we'll be in touch.</p>
+          <p class="text-muted text-sm">Expect a reply within one business day with pricing and next steps.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ SELF-SERVE FAQ ═══════════════ -->
+  <section class="py-16 px-6">
+    <div class="max-w-2xl mx-auto reveal">
+      <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest text-center mb-3">Before You Write</p>
+      <h2 class="font-serif text-2xl text-navy text-center mb-8">Common questions answered</h2>
+
+      <div id="contact-faq">
+
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            <span class="text-sm font-semibold text-charcoal pr-4">When will NeuroPouch be available to buy?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p class="text-sm text-muted leading-relaxed">We're in the final stages before launch. Join the waitlist on the <a href="index.html" class="text-rose-gold hover:underline">home page</a> and you'll be the first to know — plus get priority access and a launch discount.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            <span class="text-sm font-semibold text-charcoal pr-4">What are the ingredients? Is it safe?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p class="text-sm text-muted leading-relaxed">Yes. NeuroPouch contains Alpha-GPC, L-Theanine, Rhodiola Rosea, Vitamin B12 (methylcobalamin), and natural mint extract. No nicotine, no taurine, no artificial stimulants. See the full breakdown on the <a href="science.html" class="text-rose-gold hover:underline">Science page</a>.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            <span class="text-sm font-semibold text-charcoal pr-4">What is your returns policy?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p class="text-sm text-muted leading-relaxed">We offer a 14-day right of withdrawal under EU consumer law, plus a 30-day satisfaction guarantee on your first tin. If it doesn't work for you, we'll refund it — no quibble. Full details in our <a href="terms.html" class="text-rose-gold hover:underline">Terms & Conditions</a>.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            <span class="text-sm font-semibold text-charcoal pr-4">Do you ship internationally?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p class="text-sm text-muted leading-relaxed">At launch we'll be shipping across the EU and UK. Further markets will follow. If you're outside these regions, join the waitlist and we'll let you know when your country is live.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            <span class="text-sm font-semibold text-charcoal pr-4">Can I stock NeuroPouch in my store?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p class="text-sm text-muted leading-relaxed">Yes. Minimum order is one tower (10 tins). We offer three tiered wholesale pricing levels with margins from 45–55%. Visit the <a href="wholesale.html" class="text-rose-gold hover:underline">Wholesale page</a> for full details, or use the Wholesale tab in the form above.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="bg-charcoal py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div>
+        <p class="font-serif text-lg text-warm-white">NeuroPouch</p>
+        <p class="text-warm-white/40 text-xs mt-1">The Edge You Don't Have to Announce</p>
+      </div>
+      <div class="flex flex-wrap gap-5 text-xs text-warm-white/50">
+        <a href="index.html" class="hover:text-warm-white transition-colors">Home</a>
+        <a href="product.html" class="hover:text-warm-white transition-colors">Shop</a>
+        <a href="science.html" class="hover:text-warm-white transition-colors">Science</a>
+        <a href="about.html" class="hover:text-warm-white transition-colors">About</a>
+        <a href="wholesale.html" class="hover:text-warm-white transition-colors">Wholesale</a>
+        <a href="privacy-policy.html" class="hover:text-warm-white transition-colors">Privacy</a>
+        <a href="terms.html" class="hover:text-warm-white transition-colors">Terms</a>
+        <a href="contact.html" class="text-warm-white transition-colors">Contact</a>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto mt-6 pt-6 border-t border-white/10">
+      <p class="text-warm-white/30 text-xs">© 2026 NeuroPouch. All rights reserved. · Food supplement. Not intended to diagnose, treat, cure or prevent any disease.</p>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Reveal animations
+    gsap.utils.toArray('.reveal').forEach(el => {
+      gsap.fromTo(el, { opacity: 0, y: 32 }, {
+        opacity: 1, y: 0, duration: 0.75, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+      });
+    });
+
+    // Hero entrance
+    gsap.fromTo('h1', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', delay: 0.2 });
+
+    // ── Tab switching ──
+    const tabs = document.querySelectorAll('.contact-tab');
+    const panels = document.querySelectorAll('.form-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ── Form submissions ──
+    function handleSubmit(formId, successId) {
+      const form = document.getElementById(formId);
+      const success = document.getElementById(successId);
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        // TODO: replace with real endpoint (Formspree, Klaviyo, etc.)
+        const data = new FormData(form);
+        console.log('[NeuroPouch Contact]', formId, Object.fromEntries(data));
+        form.style.display = 'none';
+        success.classList.add('visible');
+      });
+    }
+    handleSubmit('form-general', 'success-general');
+    handleSubmit('form-press', 'success-press');
+    handleSubmit('form-wholesale', 'success-wholesale');
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body = btn.nextElementSibling;
+        const icon = btn.querySelector('.faq-icon');
+        const isOpen = body.classList.contains('open');
+        // close all
+        document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
+        document.querySelectorAll('.faq-icon').forEach(ic => ic.classList.remove('open'));
+        document.querySelectorAll('.faq-btn').forEach(b => b.setAttribute('aria-expanded', 'false'));
+        // open clicked if it was closed
+        if (!isOpen) {
+          body.classList.add('open');
+          icon.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

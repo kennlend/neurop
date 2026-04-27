@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>NeuroPouch — Nootropic Focus Pouches | Nicotine-Free Cognitive Enhancement</title>
+  <meta name="description" content="NeuroPouch delivers Alpha-GPC, L-Theanine & Rhodiola Rosea through fast oral absorption. Zero nicotine. Discreet. 16 pouches per tin. Join the waitlist for 15% off launch." />
+  <meta name="keywords" content="nootropic pouch, nicotine-free focus supplement, cognitive enhancement, Alpha-GPC, Rhodiola Rosea, biohacker supplement, focus pouch, oral nootropic" />
+  <link rel="canonical" href="https://neuropouch.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NeuroPouch — Your Focus, In Your Pocket" />
+  <meta property="og:description" content="The discreet, nicotine-free nootropic pouch. Alpha-GPC, L-Theanine & Rhodiola Rosea. No jitters. No chewing. Built for peak performance." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://neuropouch.com/" />
+
+  <!-- Schema: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NeuroPouch",
+    "url": "https://neuropouch.com",
+    "description": "Premium nicotine-free nootropic oral pouches for cognitive enhancement",
+    "foundingDate": "2024"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1C2B4A',
+            'navy-light': '#243559',
+            'rose-gold': '#C4956A',
+            blush: '#E8C5B8',
+            cream: '#F8F4EF',
+            'warm-white': '#FDFAF7',
+            charcoal: '#2D3142',
+            'soft-gold': '#D4A855',
+            muted: '#6B7280',
+          },
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #FDFAF7; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+    /* Neural network canvas */
+    #neural-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      opacity: 0.25;
+    }
+
+    /* Floating tin animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotateY(0deg); }
+      25% { transform: translateY(-12px) rotateY(8deg); }
+      50% { transform: translateY(-6px) rotateY(0deg); }
+      75% { transform: translateY(-14px) rotateY(-8deg); }
+    }
+
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(3deg); }
+    }
+
+    .tin-float {
+      animation: float 7s ease-in-out infinite;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      filter: drop-shadow(0 30px 60px rgba(28,43,74,0.25));
+      transition: filter 0.3s ease;
+    }
+    .tin-float:hover {
+      filter: drop-shadow(0 40px 80px rgba(196,149,106,0.35));
+      animation-play-state: paused;
+    }
+
+    /* Glow pulse on CTA */
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(196,149,106,0.4), 0 4px 24px rgba(28,43,74,0.15); }
+      50% { box-shadow: 0 0 35px rgba(196,149,106,0.7), 0 8px 32px rgba(28,43,74,0.2); }
+    }
+
+    .cta-glow {
+      animation: glow-pulse 2.5s ease-in-out infinite;
+    }
+
+    /* Fade-up animation base */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+
+    /* Ingredient card hover */
+    .ingredient-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .ingredient-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(28,43,74,0.12);
+    }
+
+    /* Step number glow */
+    .step-number {
+      background: linear-gradient(135deg, #1C2B4A, #C4956A);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Nav glass effect */
+    .nav-glass {
+      background: rgba(253, 250, 247, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,149,106,0.15);
+    }
+
+    /* Divider gradient */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,149,106,0.4), transparent);
+    }
+
+    /* Badge pill */
+    .badge {
+      background: linear-gradient(135deg, rgba(28,43,74,0.08), rgba(196,149,106,0.1));
+      border: 1px solid rgba(196,149,106,0.3);
+    }
+
+    /* Scroll indicator */
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(6px); opacity: 0.4; }
+    }
+    .scroll-indicator { animation: scroll-bounce 1.8s ease-in-out infinite; }
+
+    /* Testimonial card */
+    .testimonial-card {
+      background: linear-gradient(135deg, #fff 0%, rgba(248,244,239,0.8) 100%);
+      border: 1px solid rgba(196,149,106,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(28,43,74,0.08);
+    }
+
+    /* Input focus */
+    .email-input:focus {
+      outline: none;
+      border-color: #C4956A;
+      box-shadow: 0 0 0 3px rgba(196,149,106,0.15);
+    }
+
+    /* Section background variants */
+    .section-cream { background: #F8F4EF; }
+    .section-navy { background: #1C2B4A; }
+
+    /* Stat counter */
+    .stat-card {
+      background: white;
+      border: 1px solid rgba(196,149,106,0.2);
+      transition: transform 0.3s ease;
+    }
+    .stat-card:hover { transform: translateY(-4px); }
+
+    /* Neural node dots */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    /* Comparison table */
+    .check-yes { color: #C4956A; }
+    .check-no { color: #D1D5DB; }
+
+    /* Product variant selector */
+    .flavor-btn {
+      border: 2px solid rgba(196,149,106,0.3);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .flavor-btn:hover, .flavor-btn.active {
+      border-color: #C4956A;
+      background: rgba(196,149,106,0.08);
+    }
+
+    /* Marquee */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track { animation: marquee 25s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+  </style>
+</head>
+<body class="text-charcoal">
+
+  <!-- ═══════════════════════════════════ NAVIGATION ═══════════════════════════════════ -->
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2" aria-label="NeuroPouch home">
+        <span class="font-serif text-xl text-navy tracking-wide">NeuroPouch</span>
+        <span class="text-xs font-sans font-medium text-rose-gold uppercase tracking-widest hidden sm:block">Focus</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-charcoal">
+        <a href="#ingredients" class="hover:text-rose-gold transition-colors duration-200">Ingredients</a>
+        <a href="#how-it-works" class="hover:text-rose-gold transition-colors duration-200">How It Works</a>
+        <a href="science.html" class="hover:text-rose-gold transition-colors duration-200">Science</a>
+        <a href="about.html" class="hover:text-rose-gold transition-colors duration-200">About</a>
+        <a href="wholesale.html" class="hover:text-rose-gold transition-colors duration-200">Wholesale</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="product.html"
+           class="text-sm font-semibold text-rose-gold hover:text-navy transition-colors duration-200 hidden sm:inline">
+          Buy Now
+        </a>
+        <a href="#waitlist"
+           class="bg-navy text-warm-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-navy-light transition-colors duration-200 cursor-pointer">
+          Join Waitlist
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+  <section class="relative min-h-screen flex items-center overflow-hidden bg-warm-white pt-20">
+
+    <!-- Neural network canvas background -->
+    <canvas id="neural-canvas" aria-hidden="true"></canvas>
+
+    <!-- Decorative blob -->
+    <div class="absolute top-20 right-0 w-96 h-96 rounded-full opacity-20 pointer-events-none"
+         style="background: radial-gradient(circle, #C4956A 0%, transparent 70%); transform: translate(30%, -20%);"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-15 pointer-events-none"
+         style="background: radial-gradient(circle, #1C2B4A 0%, transparent 70%); transform: translate(-30%, 30%);"></div>
+
+    <div class="max-w-6xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 lg:gap-6 items-center py-20 lg:py-0">
+
+      <!-- Left: Text -->
+      <div class="order-2 lg:order-1">
+        <!-- Badge -->
+        <div class="fade-up inline-flex items-center gap-2 badge rounded-full px-4 py-1.5 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-gold inline-block"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-navy">Neurological Enhancement Pouches</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="fade-up font-serif text-5xl lg:text-6xl xl:text-7xl leading-tight text-navy mb-6">
+          Your Focus,<br />
+          <em class="not-italic" style="color: #C4956A;">In Your Pocket.</em>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="fade-up font-sans text-lg text-muted leading-relaxed mb-8 max-w-lg">
+          NeuroPouch delivers Alpha-GPC, L-Theanine & Rhodiola Rosea through fast buccal absorption.
+          No chewing. No drinking. No one knows it's there.
+        </p>
+
+        <!-- Trust pills -->
+        <div class="fade-up flex flex-wrap gap-3 mb-10">
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Zero Nicotine
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            No Taurine
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Safe 16+
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Discreet in Meetings
+          </span>
+        </div>
+
+        <!-- Email form -->
+        <div class="fade-up" id="waitlist">
+          <form id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md" onsubmit="handleFormSubmit(event, 'hero-form')">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              required
+              class="email-input flex-1 px-5 py-3.5 bg-white border border-gray-200 rounded-full text-sm font-medium shadow-sm transition-all duration-200"
+              aria-label="Email address"
+            />
+            <button
+              type="submit"
+              class="cta-glow bg-navy text-warm-white font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-navy-light transition-colors duration-200 whitespace-nowrap cursor-pointer"
+            >
+              Get 15% Off Launch
+            </button>
+          </form>
+          <p class="text-xs text-muted mt-3 ml-1">Join 500+ early supporters. No spam. Unsubscribe anytime.</p>
+        </div>
+      </div>
+
+      <!-- Right: Product Tin -->
+      <div class="order-1 lg:order-2 flex items-center justify-center relative">
+        <!-- Decorative rings -->
+        <div class="absolute w-72 h-72 lg:w-96 lg:h-96 rounded-full border border-rose-gold/20 pointer-events-none"></div>
+        <div class="absolute w-56 h-56 lg:w-72 lg:h-72 rounded-full border border-navy/10 pointer-events-none"></div>
+
+        <!-- Product image -->
+        <div class="tin-float relative z-10" id="hero-tin">
+          <img
+            src="../neuropouch images/WhatsApp Image 2026-04-23 at 01.05.27.jpeg"
+            alt="NeuroPouch Focus tin — Navy with rose gold botanical design, 16 nootropic pouches"
+            class="w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 object-cover rounded-full shadow-2xl"
+            width="384" height="384"
+          />
+        </div>
+
+        <!-- Floating badges -->
+        <div class="absolute top-4 right-4 lg:right-8 bg-white rounded-2xl shadow-lg px-4 py-3 fade-up">
+          <div class="text-xs text-muted font-medium uppercase tracking-wide mb-0.5">Ingredients</div>
+          <div class="text-sm font-bold text-navy">5 Nootropics</div>
+        </div>
+        <div class="absolute bottom-8 left-4 lg:left-0 bg-white rounded-2xl shadow-lg px-4 py-3 fade-up">
+          <div class="text-xs text-muted font-medium uppercase tracking-wide mb-0.5">Per Tin</div>
+          <div class="text-sm font-bold text-navy">16 Pouches</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-indicator">
+      <span class="text-xs text-muted uppercase tracking-widest font-medium">Scroll</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ MARQUEE BAR ═══════════════════════════════════ -->
+  <div class="section-cream py-4 overflow-hidden border-y border-gray-100" aria-hidden="true">
+    <div class="marquee-track flex gap-12 whitespace-nowrap" style="width: max-content;">
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Zero Nicotine</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Alpha-GPC</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">L-Theanine</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Rhodiola Rosea</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Vitamin B12</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Discreet in Meetings</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">No Crash. No Jitter.</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Safe from Age 16+</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Zero Nicotine</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Alpha-GPC</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">L-Theanine</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Rhodiola Rosea</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Vitamin B12</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Discreet in Meetings</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">No Crash. No Jitter.</span>
+      <span class="text-rose-gold font-bold">•</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Safe from Age 16+</span>
+      <span class="text-rose-gold font-bold">•</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ PROBLEM SECTION ═══════════════════════════════════ -->
+  <section class="py-24 px-6 bg-warm-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">The Problem</div>
+      <h2 class="fade-up font-serif text-4xl lg:text-5xl text-navy leading-tight mb-8">
+        Your brain is already<br />working overtime.
+      </h2>
+      <p class="fade-up text-lg text-muted leading-relaxed mb-6">
+        You open your laptop at 8am. By 10am, you're already losing the thread.
+      </p>
+      <p class="fade-up text-lg text-muted leading-relaxed mb-6">
+        Not because you're lazy. Because coffee gives you jitters. Energy drinks taste like chemicals.
+        And another cup is the last thing you need.
+      </p>
+      <p class="fade-up text-xl font-semibold text-navy">
+        You need clarity. Not just stimulation.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider mx-6 lg:mx-24"></div>
+
+  <!-- ═══════════════════════════════════ SOLUTION ═══════════════════════════════════ -->
+  <section class="py-24 px-6 bg-warm-white">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Images stack -->
+      <div class="relative flex justify-center">
+        <div class="relative">
+          <img
+            src="../neuropouch images/WhatsApp Image 2026-04-23 at 01.09.38.jpeg"
+            alt="NeuroPouch Focus — blush pink rose gold tin"
+            class="w-72 h-72 object-cover rounded-full shadow-xl fade-up"
+            width="288" height="288"
+          />
+          <img
+            src="../neuropouch images/WhatsApp Image 2026-04-23 at 00.50.47.jpeg"
+            alt="NeuroPouch Focus — navy minimal tin"
+            class="absolute -bottom-8 -right-8 w-44 h-44 object-cover rounded-full shadow-lg border-4 border-warm-white fade-up"
+            width="176" height="176"
+          />
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">The Solution</div>
+        <h2 class="fade-up font-serif text-4xl lg:text-5xl text-navy leading-tight mb-6">
+          Designed for performance.<br />Built for real life.
+        </h2>
+        <p class="fade-up text-lg text-muted leading-relaxed mb-6">
+          NeuroPouch is a small, discreet oral pouch that sits under your lip.
+          No chewing. No smell. No one knows it's there.
+        </p>
+        <p class="fade-up text-lg text-muted leading-relaxed mb-8">
+          Inside every pouch: a precisely dosed nootropic stack that supports memory, focus,
+          and mental stamina — absorbed faster than pills through your mouth's natural membranes.
+        </p>
+
+        <!-- Key stats -->
+        <div class="fade-up grid grid-cols-3 gap-4">
+          <div class="stat-card rounded-2xl p-4 text-center shadow-sm">
+            <div class="font-serif text-3xl text-navy mb-1">5</div>
+            <div class="text-xs text-muted font-medium">Active ingredients</div>
+          </div>
+          <div class="stat-card rounded-2xl p-4 text-center shadow-sm">
+            <div class="font-serif text-3xl text-navy mb-1">16</div>
+            <div class="text-xs text-muted font-medium">Pouches per tin</div>
+          </div>
+          <div class="stat-card rounded-2xl p-4 text-center shadow-sm">
+            <div class="font-serif text-3xl text-navy mb-1">0</div>
+            <div class="text-xs text-muted font-medium">Nicotine, zero</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ INGREDIENTS ═══════════════════════════════════ -->
+  <section id="ingredients" class="py-24 px-6 section-cream">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">What's Inside</div>
+        <h2 class="fade-up font-serif text-4xl lg:text-5xl text-navy leading-tight mb-4">
+          Every ingredient. A reason.
+        </h2>
+        <p class="fade-up text-lg text-muted max-w-xl mx-auto">
+          No fillers. No synthetic stimulants. Just a stack of studied, functional compounds that work together.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Alpha-GPC -->
+        <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
+          <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C2B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+          </div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">Memory & Speed</div>
+          <h3 class="font-serif text-xl text-navy mb-3">Alpha-GPC</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Powers your working memory and cognitive reaction speed. The compound your brain uses to build acetylcholine — the neurotransmitter of focus and learning.
+          </p>
+        </div>
+
+        <!-- L-Theanine -->
+        <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
+          <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C2B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">Calm Focus</div>
+          <h3 class="font-serif text-xl text-navy mb-3">L-Theanine</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            The amino acid found in green tea. Produces a state of alert relaxation — sharp and focused, without the jitter. Works synergistically with your entire stack.
+          </p>
+        </div>
+
+        <!-- Rhodiola Rosea -->
+        <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
+          <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C2B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 12l3-3"/><circle cx="19" cy="5" r="3"/></svg>
+          </div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">Anti-Fatigue</div>
+          <h3 class="font-serif text-xl text-navy mb-3">Rhodiola Rosea</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            A well-researched adaptogen used for centuries. Multiple clinical studies support its role in reducing mental and physical fatigue — especially under stress.
+          </p>
+        </div>
+
+        <!-- Vitamin B12 -->
+        <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
+          <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C2B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">Nervous System Fuel</div>
+          <h3 class="font-serif text-xl text-navy mb-3">Vitamin B12</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Vital for converting food into usable brain energy. Supports neurotransmitter production and helps your nervous system stay sharp during long sessions.
+          </p>
+        </div>
+
+        <!-- Mint Extract -->
+        <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
+          <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C2B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V12"/><path d="M5 3h14"/><path d="M5 8h14"/><path d="M5 13h4"/><path d="M15 13h4"/></svg>
+          </div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">Refreshment & Absorption</div>
+          <h3 class="font-serif text-xl text-navy mb-3">Mint Extract</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Provides the immediate sensory freshness that signals your brain to wake up. Also enhances buccal absorption — helping active ingredients reach your system faster.
+          </p>
+        </div>
+
+        <!-- No-nicotine card -->
+        <div class="ingredient-card rounded-3xl p-8 fade-up" style="background: linear-gradient(135deg, #1C2B4A, #243559);">
+          <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          </div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">What's NOT in it</div>
+          <h3 class="font-serif text-xl text-white mb-3">Zero Nicotine. Zero Taurine.</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            No nicotine. No taurine. No synthetic stimulants. NeuroPouch is a nootropic supplement — not a nicotine product. Safe and suitable from age 16+.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ HOW IT WORKS ═══════════════════════════════════ -->
+  <section id="how-it-works" class="py-24 px-6 bg-warm-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">Simple as 1–2–3</div>
+        <h2 class="fade-up font-serif text-4xl lg:text-5xl text-navy leading-tight">
+          How NeuroPouch works.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div class="text-center fade-up">
+          <div class="step-number font-serif text-7xl mb-4 leading-none">01</div>
+          <h3 class="font-serif text-xl text-navy mb-3">Place It</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Tuck one pouch under your upper lip. It sits comfortably and stays invisible — even during a video call or presentation.
+          </p>
+        </div>
+        <div class="text-center fade-up">
+          <div class="step-number font-serif text-7xl mb-4 leading-none">02</div>
+          <h3 class="font-serif text-xl text-navy mb-3">Feel It</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Natural mint activates immediately. Within minutes, active ingredients begin absorbing through buccal tissue — no stomach required.
+          </p>
+        </div>
+        <div class="text-center fade-up">
+          <div class="step-number font-serif text-7xl mb-4 leading-none">03</div>
+          <h3 class="font-serif text-xl text-navy mb-3">Perform</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Focus, clarity, and sustained energy — for your next task, meeting, exam, or creative session. No crash. No visible gum to spit.
+          </p>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider my-16"></div>
+
+      <!-- Absorption advantage callout -->
+      <div class="fade-up bg-navy rounded-3xl p-8 lg:p-12 text-center">
+        <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">The Science of Delivery</div>
+        <h3 class="font-serif text-3xl lg:text-4xl text-white mb-4">Faster than pills. Hands-free unlike gum.</h3>
+        <p class="text-white/70 text-base leading-relaxed max-w-xl mx-auto">
+          Buccal absorption — through the soft tissue of your mouth — bypasses digestion.
+          That means the nootropic compounds in NeuroPouch reach your bloodstream faster
+          than swallowing a capsule. And unlike gum, there's nothing to chew or discard.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ COMPARISON ═══════════════════════════════════ -->
+  <section class="py-24 px-6 section-cream">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">Compare</div>
+        <h2 class="fade-up font-serif text-4xl lg:text-5xl text-navy leading-tight">
+          The better choice.
+        </h2>
+      </div>
+
+      <div class="fade-up bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-100">
+        <table class="w-full text-sm" role="table">
+          <thead>
+            <tr class="border-b border-gray-100">
+              <th class="py-4 px-6 text-left font-semibold text-muted text-xs uppercase tracking-wide" scope="col">Feature</th>
+              <th class="py-4 px-6 text-center font-bold text-navy text-xs uppercase tracking-wide" scope="col">NeuroPouch</th>
+              <th class="py-4 px-6 text-center font-medium text-muted text-xs uppercase tracking-wide" scope="col">Coffee</th>
+              <th class="py-4 px-6 text-center font-medium text-muted text-xs uppercase tracking-wide" scope="col">Energy Drink</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-50">
+              <td class="py-4 px-6 text-charcoal font-medium">No jitters</td>
+              <td class="py-4 px-6 text-center check-yes">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </td>
+              <td class="py-4 px-6 text-center check-no">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </td>
+              <td class="py-4 px-6 text-center check-no">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </td>
+            </tr>
+            <tr class="border-b border-gray-50">
+              <td class="py-4 px-6 text-charcoal font-medium">Discreet — usable in meetings</td>
+              <td class="py-4 px-6 text-center check-yes">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </td>
+              <td class="py-4 px-6 text-center check-no">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </td>
+              <td class="py-4 px-6 text-center check-no">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </td>
+            </tr>
+            <tr class="border-b border-gray-50">
+              <td class="py-4 px-6 text-charcoal font-medium">Zero nicotine</td>
+              <td class="py-4 px-6 text-center check-yes">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </td>
+              <td class="py-4 px-6 text-center check-yes">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </td>
+              <td class="py-4 px-6 text-center check-yes">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </td>
+            </tr>
+            <tr class="border-b border-gray-50">
+              <td class="py-4 px-6 text-charcoal font-medium">Nootropic adaptogen stack</td>
+              <td class="py-4 px-6 text-center check-yes">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </td>
+              <td class="py-4 px-6 text-center check-no">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </td>
+              <td class="py-4 px-6 text-center check-no">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 text-charcoal font-medium">No liquid or prep needed</td>
+              <td class="py-4 px-6 text-center check-yes">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </td>
+              <td class="py-4 px-6 text-center check-no">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </td>
+              <td class="py-4 px-6 text-center check-no">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ TESTIMONIALS ═══════════════════════════════════ -->
+  <section class="py-24 px-6 bg-warm-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">Early Supporters</div>
+        <h2 class="fade-up font-serif text-4xl lg:text-5xl text-navy leading-tight">
+          What people are saying.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Testimonial placeholders — replace with real ones -->
+        <div class="testimonial-card rounded-3xl p-8 fade-up">
+          <div class="flex gap-1 mb-4" aria-label="5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="text-charcoal text-sm leading-relaxed mb-5 italic">
+            "I used it during a 3-hour investor meeting. Nobody knew. I was the sharpest person in the room."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold text-sm">M</div>
+            <div>
+              <div class="text-sm font-semibold text-navy">Markus T.</div>
+              <div class="text-xs text-muted">Startup Founder</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card rounded-3xl p-8 fade-up">
+          <div class="flex gap-1 mb-4" aria-label="5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="text-charcoal text-sm leading-relaxed mb-5 italic">
+            "Finally something that actually helps me study without the anxiety coffee gives me. The mint flavor is clean."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold text-sm">L</div>
+            <div>
+              <div class="text-sm font-semibold text-navy">Laura K.</div>
+              <div class="text-xs text-muted">Medical Student</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card rounded-3xl p-8 fade-up">
+          <div class="flex gap-1 mb-4" aria-label="5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="text-charcoal text-sm leading-relaxed mb-5 italic">
+            "I track everything — HRV, sleep, cognitive scores. NeuroPouch is the most effective no-stimulant focus tool I've tested."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold text-sm">A</div>
+            <div>
+              <div class="text-sm font-semibold text-navy">Andrei V.</div>
+              <div class="text-xs text-muted">Biohacker & Engineer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FAQ ═══════════════════════════════════ -->
+  <section id="faq" class="py-24 px-6 section-cream">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">Questions</div>
+        <h2 class="fade-up font-serif text-4xl lg:text-5xl text-navy leading-tight">
+          Honest answers.
+        </h2>
+      </div>
+
+      <div class="space-y-4" id="faq-list">
+
+        <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
+          <button
+            class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
+            onclick="toggleFaq(this)"
+            aria-expanded="false"
+          >
+            <span class="font-semibold text-navy text-sm">Is NeuroPouch safe?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-muted text-sm leading-relaxed">
+              Yes. NeuroPouch contains zero nicotine and no synthetic stimulants like taurine. Our ingredients — Alpha-GPC, L-Theanine, Rhodiola Rosea, and B12 — are well-researched and used in licensed supplements globally. Because there is no nicotine, NeuroPouch is suitable for individuals aged 16 and above.
+            </p>
+          </div>
+        </div>
+
+        <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
+          <button
+            class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
+            onclick="toggleFaq(this)"
+            aria-expanded="false"
+          >
+            <span class="font-semibold text-navy text-sm">How is this different from nicotine pouches like ZYN?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-muted text-sm leading-relaxed">
+              Completely different category. NeuroPouch contains no nicotine whatsoever. We use nootropic compounds that support cognitive performance — not addictive stimulants. The pouch format is similar, but that's where the comparison ends.
+            </p>
+          </div>
+        </div>
+
+        <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
+          <button
+            class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
+            onclick="toggleFaq(this)"
+            aria-expanded="false"
+          >
+            <span class="font-semibold text-navy text-sm">How quickly does it work?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-muted text-sm leading-relaxed">
+              Most users report a fresher, more alert feeling within 10–15 minutes. Buccal absorption (through oral tissue) is faster than swallowing capsules, and the mint provides immediate sensory activation.
+            </p>
+          </div>
+        </div>
+
+        <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
+          <button
+            class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
+            onclick="toggleFaq(this)"
+            aria-expanded="false"
+          >
+            <span class="font-semibold text-navy text-sm">Can I use it during a meeting?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-muted text-sm leading-relaxed">
+              Yes — that's exactly what it's designed for. The pouch sits discreetly under your upper lip. No chewing sound. No visible gum. Nobody notices. It's the edge you don't have to announce.
+            </p>
+          </div>
+        </div>
+
+        <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
+          <button
+            class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
+            onclick="toggleFaq(this)"
+            aria-expanded="false"
+          >
+            <span class="font-semibold text-navy text-sm">What flavors are available?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-muted text-sm leading-relaxed">
+              NeuroPouch Focus comes in two flavors: Natural Peppermint & Lemongrass, and Grapefruit & Juniper Berry. Both are natural flavors designed to complement the mint extract's absorption-enhancing effect.
+            </p>
+          </div>
+        </div>
+
+        <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
+          <button
+            class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
+            onclick="toggleFaq(this)"
+            aria-expanded="false"
+          >
+            <span class="font-semibold text-navy text-sm">What is RelaxPouch?</span>
+            <svg class="faq-icon w-5 h-5 text-rose-gold flex-shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-5">
+            <p class="text-muted text-sm leading-relaxed">
+              RelaxPouch is our upcoming evening formula — designed for recovery, calm, and wind-down. It's a separate product from NeuroPouch Focus. Join the waitlist to be the first to hear when it launches.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Schema: FAQ -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is NeuroPouch safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. NeuroPouch contains zero nicotine and no synthetic stimulants. Our ingredients are well-researched and used in licensed supplements globally. Suitable from age 16+."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is NeuroPouch different from nicotine pouches?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NeuroPouch contains zero nicotine. It uses nootropic compounds that support cognitive performance, not addictive stimulants."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use NeuroPouch during a meeting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The pouch sits under your upper lip invisibly. No chewing, no noise, no visible gum. Completely discreet."
+            }
+          }
+        ]
+      }
+      </script>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FINAL CTA ═══════════════════════════════════ -->
+  <section class="py-24 px-6" style="background: linear-gradient(135deg, #1C2B4A 0%, #243559 100%);">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">Limited Early Access</div>
+      <h2 class="fade-up font-serif text-4xl lg:text-5xl text-white leading-tight mb-6">
+        Be first.<br />
+        <em class="not-italic" style="color: #C4956A;">Get the edge.</em>
+      </h2>
+      <p class="fade-up text-white/70 text-lg leading-relaxed mb-10">
+        Join the waitlist for 15% off your first order, early access to new flavors,
+        and updates from the NeuroPouch lab.
+      </p>
+
+      <form id="footer-form" class="fade-up flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleFormSubmit(event, 'footer-form')">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          required
+          class="email-input flex-1 px-5 py-3.5 bg-white/10 border border-white/20 rounded-full text-sm font-medium text-white placeholder-white/50 transition-all duration-200 focus:bg-white/15"
+          aria-label="Email address"
+        />
+        <button
+          type="submit"
+          class="cta-glow bg-rose-gold text-white font-semibold text-sm px-7 py-3.5 rounded-full hover:opacity-90 transition-opacity duration-200 whitespace-nowrap cursor-pointer"
+          style="background-color: #C4956A;"
+        >
+          Join the Waitlist
+        </button>
+      </form>
+
+      <p class="fade-up text-white/40 text-xs mt-4">No spam. Unsubscribe anytime. Your data stays private.</p>
+
+      <!-- Product images row -->
+      <div class="fade-up flex justify-center gap-6 mt-14">
+        <img src="../neuropouch images/WhatsApp Image 2026-04-23 at 00.50.47.jpeg"
+             alt="NeuroPouch Focus — Navy edition"
+             class="w-20 h-20 object-cover rounded-full border-2 border-white/20 hover:border-rose-gold/60 transition-all duration-300 hover:scale-110"
+             width="80" height="80" />
+        <img src="../neuropouch images/WhatsApp Image 2026-04-23 at 01.05.27.jpeg"
+             alt="NeuroPouch Focus — Navy botanical edition"
+             class="w-24 h-24 object-cover rounded-full border-2 border-rose-gold/60 hover:scale-110 transition-all duration-300 -mt-2"
+             width="96" height="96" />
+        <img src="../neuropouch images/WhatsApp Image 2026-04-23 at 01.09.38.jpeg"
+             alt="NeuroPouch Focus — Blush edition"
+             class="w-20 h-20 object-cover rounded-full border-2 border-white/20 hover:border-rose-gold/60 transition-all duration-300 hover:scale-110"
+             width="80" height="80" />
+      </div>
+
+      <p class="fade-up text-white/30 text-xs mt-8">EST. 2024 · Premium Energy · 16 Pouches Per Tin</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+  <footer class="bg-navy py-8 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-lg text-white">NeuroPouch</span>
+        <span class="text-xs text-white/40">™</span>
+      </div>
+      <p class="text-white/40 text-xs text-center">
+        *These statements have not been evaluated by the Food and Drug Administration.
+        This product is not intended to diagnose, treat, cure, or prevent any disease.
+      </p>
+      <div class="flex items-center gap-6 text-xs text-white/40">
+        <a href="#" class="hover:text-white/70 transition-colors">Privacy</a>
+        <a href="#" class="hover:text-white/70 transition-colors">Terms</a>
+        <a href="product.html" class="hover:text-white/70 transition-colors">Shop</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════ SUCCESS MODAL ═══════════════════════════════════ -->
+  <div id="success-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center px-6" style="background: rgba(28,43,74,0.7); backdrop-filter: blur(4px);">
+    <div class="bg-warm-white rounded-3xl p-10 max-w-sm w-full text-center shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="w-14 h-14 rounded-full bg-rose-gold/10 flex items-center justify-center mx-auto mb-4">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3 id="modal-title" class="font-serif text-2xl text-navy mb-2">You're on the list.</h3>
+      <p class="text-muted text-sm leading-relaxed mb-6">We'll send your 15% off code when we launch. Keep an eye on your inbox.</p>
+      <button onclick="closeModal()" class="bg-navy text-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-navy-light transition-colors cursor-pointer w-full">
+        Got it
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ SCRIPTS ═══════════════════════════════════ -->
+  <script>
+    // ─── Neural Network Canvas ───────────────────────────────────────────────────
+    (function() {
+      const canvas = document.getElementById('neural-canvas');
+      const ctx = canvas.getContext('2d');
+      let nodes = [];
+      let animationId;
+
+      function resize() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+        initNodes();
+      }
+
+      function initNodes() {
+        nodes = [];
+        const count = Math.floor((canvas.width * canvas.height) / 18000);
+        for (let i = 0; i < count; i++) {
+          nodes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            r: Math.random() * 2.5 + 1,
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Move nodes
+        nodes.forEach(n => {
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+          if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+        });
+
+        // Draw connections
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 130) {
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.strokeStyle = `rgba(196,149,106,${0.6 * (1 - dist / 130)})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw nodes
+        nodes.forEach(n => {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(28,43,74,0.6)';
+          ctx.fill();
+        });
+
+        animationId = requestAnimationFrame(draw);
+      }
+
+      // Respect reduced motion preference
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.addEventListener('resize', resize);
+        resize();
+        draw();
+      }
+    })();
+
+    // ─── GSAP Scroll Animations ───────────────────────────────────────────────
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Staggered fade-up for all .fade-up elements
+    gsap.utils.toArray('.fade-up').forEach((el, i) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 32 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          delay: (i % 3) * 0.08,
+        }
+      );
+    });
+
+    // ─── FAQ Accordion ────────────────────────────────────────────────────────
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = !answer.classList.contains('hidden');
+
+      // Close all
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-icon').forEach(ic => ic.style.transform = 'rotate(0deg)');
+      document.querySelectorAll('.faq-item button').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+      if (!isOpen) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // ─── Form Submit ──────────────────────────────────────────────────────────
+    function handleFormSubmit(e, formId) {
+      e.preventDefault();
+      const form = document.getElementById(formId);
+      const email = form.querySelector('input[type="email"]').value;
+
+      // Here you'd POST to Mailchimp/Klaviyo endpoint
+      // For now: show success modal
+      console.log('Email captured:', email);
+      document.getElementById('success-modal').classList.remove('hidden');
+      document.getElementById('success-modal').classList.add('flex');
+      form.reset();
+    }
+
+    function closeModal() {
+      document.getElementById('success-modal').classList.add('hidden');
+      document.getElementById('success-modal').classList.remove('flex');
+    }
+
+    // Close modal on backdrop click
+    document.getElementById('success-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // ─── Smooth anchor scroll ─────────────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

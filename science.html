@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The Science Behind NeuroPouch — Ingredients, Absorption & Research</title>
+  <meta name="description" content="Every ingredient in NeuroPouch is backed by published research. Learn about Alpha-GPC, L-Theanine, Rhodiola Rosea, B12, and why buccal absorption outperforms pills." />
+  <link rel="canonical" href="https://neuropouch.com/science" />
+  <meta property="og:title" content="The Science Behind NeuroPouch" />
+  <meta property="og:description" content="Not a mystery blend. Five ingredients, all with published research. Here's exactly why each one is in every pouch." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1C2B4A', 'navy-light': '#243559',
+            'rose-gold': '#C4956A', blush: '#E8C5B8',
+            cream: '#F8F4EF', 'warm-white': '#FDFAF7',
+            charcoal: '#2D3142', muted: '#6B7280',
+          },
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #FDFAF7; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+    #site-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(253,250,247,0.92);
+      border-bottom: 1px solid rgba(196,149,106,0.15);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1C2B4A 0%, #243559 100%);
+      color: #FDFAF7;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(28,43,74,0.25); }
+
+    /* Hero neural canvas */
+    #sci-canvas {
+      position: absolute; inset: 0;
+      pointer-events: none; opacity: 0.18;
+    }
+
+    /* Ingredient anchor nav */
+    .ing-nav-pill {
+      border: 1.5px solid #E8C5B8;
+      color: #1C2B4A;
+      font-weight: 500;
+      font-size: 13px;
+      padding: 6px 16px;
+      border-radius: 99px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .ing-nav-pill:hover, .ing-nav-pill.active {
+      background: #1C2B4A; color: #FDFAF7; border-color: #1C2B4A;
+    }
+
+    /* Ingredient section */
+    .ing-section { scroll-margin-top: 90px; }
+
+    /* Evidence bar */
+    .evidence-bar {
+      height: 6px;
+      border-radius: 99px;
+      background: #E8C5B8;
+      overflow: hidden;
+    }
+    .evidence-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #C4956A, #1C2B4A);
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Citation chip */
+    .citation {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: #F8F4EF; border: 1px solid #E8C5B8;
+      border-radius: 8px; padding: 4px 10px;
+      font-size: 11px; font-weight: 600; color: #6B7280;
+      letter-spacing: 0.02em;
+    }
+
+    /* Absorption diagram */
+    .absorption-step {
+      position: relative;
+    }
+    .absorption-step::after {
+      content: '→';
+      position: absolute; right: -20px; top: 50%;
+      transform: translateY(-50%);
+      color: #C4956A; font-size: 18px; font-weight: bold;
+    }
+    .absorption-step:last-child::after { display: none; }
+
+    /* Timeline dot */
+    .timeline-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: #C4956A;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .reveal { opacity: 0; transform: translateY(28px); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+
+<body class="text-charcoal">
+
+  <!-- NAV -->
+  <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="font-serif text-xl text-navy tracking-wide">NeuroPouch</a>
+      <div class="flex items-center gap-6 text-sm font-medium text-charcoal">
+        <a href="science.html" class="text-rose-gold font-semibold hidden sm:inline">Science</a>
+        <a href="about.html" class="hover:text-rose-gold transition-colors hidden sm:inline">About</a>
+        <a href="product.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Shop</a>
+        <a href="wholesale.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Wholesale</a>
+        <a href="contact.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Contact</a>
+        <a href="product.html" class="btn-primary px-5 py-2 rounded-full text-sm font-semibold">Join Waitlist</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="relative pt-32 pb-20 px-6 bg-navy overflow-hidden">
+    <canvas id="sci-canvas"></canvas>
+
+    <!-- Ambient orbs -->
+    <div class="absolute top-20 right-20 w-72 h-72 rounded-full opacity-10" style="background: radial-gradient(circle, #C4956A, transparent 70%)"></div>
+    <div class="absolute bottom-10 left-10 w-48 h-48 rounded-full opacity-8" style="background: radial-gradient(circle, #E8C5B8, transparent 70%)"></div>
+
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-4">Transparent by Design</p>
+      <h1 class="font-serif text-4xl sm:text-5xl text-warm-white leading-tight mb-6">
+        Every ingredient has a reason.<br/>
+        <em class="text-rose-gold">Here's the research.</em>
+      </h1>
+      <p class="text-warm-white/70 text-base leading-relaxed max-w-xl mx-auto mb-10">
+        NeuroPouch is not a mystery blend. Five ingredients. Each one studied, peer-reviewed, and chosen for a specific job. No fillers. No proprietary blend smoke-and-mirrors.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="#alpha-gpc" class="ing-nav-pill" style="background:rgba(255,255,255,0.08); color:#FDFAF7; border-color:rgba(255,255,255,0.2)">Alpha-GPC</a>
+        <a href="#l-theanine" class="ing-nav-pill" style="background:rgba(255,255,255,0.08); color:#FDFAF7; border-color:rgba(255,255,255,0.2)">L-Theanine</a>
+        <a href="#rhodiola" class="ing-nav-pill" style="background:rgba(255,255,255,0.08); color:#FDFAF7; border-color:rgba(255,255,255,0.2)">Rhodiola Rosea</a>
+        <a href="#b12" class="ing-nav-pill" style="background:rgba(255,255,255,0.08); color:#FDFAF7; border-color:rgba(255,255,255,0.2)">Vitamin B12</a>
+        <a href="#mint" class="ing-nav-pill" style="background:rgba(255,255,255,0.08); color:#FDFAF7; border-color:rgba(255,255,255,0.2)">Mint Extract</a>
+        <a href="#absorption" class="ing-nav-pill" style="background:rgba(255,255,255,0.08); color:#FDFAF7; border-color:rgba(255,255,255,0.2)">Buccal Absorption</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ STICKY INGREDIENT NAV (scrolls with page) ═══════════════════ -->
+  <div class="sticky top-[65px] z-40 bg-warm-white/95 backdrop-blur border-b border-blush/50 px-6 py-3 overflow-x-auto">
+    <div class="max-w-6xl mx-auto flex gap-2">
+      <a href="#alpha-gpc" class="ing-nav-pill">Alpha-GPC</a>
+      <a href="#l-theanine" class="ing-nav-pill">L-Theanine</a>
+      <a href="#rhodiola" class="ing-nav-pill">Rhodiola Rosea</a>
+      <a href="#b12" class="ing-nav-pill">Vitamin B12</a>
+      <a href="#mint" class="ing-nav-pill">Mint Extract</a>
+      <a href="#absorption" class="ing-nav-pill">Absorption</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ INTRO STATEMENT ═══════════════════ -->
+  <section class="py-16 px-6 bg-warm-white reveal">
+    <div class="max-w-3xl mx-auto">
+      <div class="grid sm:grid-cols-3 gap-6 text-center">
+        <div class="bg-cream rounded-2xl p-6 border border-blush/40">
+          <p class="font-serif text-3xl text-navy mb-1">5</p>
+          <p class="text-muted text-sm">Active ingredients</p>
+        </div>
+        <div class="bg-cream rounded-2xl p-6 border border-blush/40">
+          <p class="font-serif text-3xl text-navy mb-1">0</p>
+          <p class="text-muted text-sm">Proprietary blends</p>
+        </div>
+        <div class="bg-cream rounded-2xl p-6 border border-blush/40">
+          <p class="font-serif text-3xl text-navy mb-1">100%</p>
+          <p class="text-muted text-sm">Ingredient transparency</p>
+        </div>
+      </div>
+      <p class="mt-10 text-charcoal text-base leading-relaxed text-center max-w-2xl mx-auto">
+        The supplement industry has a transparency problem. Proprietary blends hide underdosed ingredients behind impressive-sounding labels. NeuroPouch publishes every ingredient, every function, and the research behind each one. If we can't explain it plainly, it doesn't go in the pouch.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ ALPHA-GPC ═══════════════════ -->
+  <section id="alpha-gpc" class="ing-section py-20 px-6 bg-cream reveal">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-xl bg-navy flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest">Ingredient 01</p>
+        </div>
+        <h2 class="font-serif text-3xl text-navy mb-1">Alpha-GPC</h2>
+        <p class="text-muted text-sm mb-5">L-Alpha glycerylphosphorylcholine</p>
+
+        <p class="text-charcoal text-sm leading-relaxed mb-4">
+          Alpha-GPC is a choline compound that crosses the blood-brain barrier and increases acetylcholine levels in the brain. Acetylcholine is your brain's primary neurotransmitter for learning, memory formation, and motor control.
+        </p>
+        <p class="text-charcoal text-sm leading-relaxed mb-6">
+          Unlike cheaper choline sources (choline bitartrate), Alpha-GPC has significantly higher bioavailability and direct CNS activity. It's used clinically in Europe for cognitive support and studied extensively for its role in memory, attention, and reaction time.
+        </p>
+
+        <!-- Evidence level -->
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-semibold text-charcoal">Research Evidence Level</span>
+            <span class="text-xs text-rose-gold font-semibold">Strong</span>
+          </div>
+          <div class="evidence-bar"><div class="evidence-fill" data-width="82%"></div></div>
+        </div>
+
+        <!-- Key effects -->
+        <div class="space-y-3">
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Working memory</p>
+              <p class="text-xs text-muted leading-relaxed">Supports the ability to hold and manipulate information in the short term — critical for complex tasks, studying, and decision-making.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Reaction time</p>
+              <p class="text-xs text-muted leading-relaxed">Increased acetylcholine levels are associated with faster neural transmission — measurable improvements in reaction speed under testing conditions.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Neuroprotection</p>
+              <p class="text-xs text-muted leading-relaxed">Studied for protective effects against age-related cognitive decline. Used as a licensed pharmaceutical in Italy and other EU countries.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research panel -->
+      <div class="bg-white rounded-2xl p-6 border border-blush/40 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-widest text-muted mb-4">Published Research</p>
+        <div class="space-y-4">
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Effect on memory and attention in Alzheimer's patients</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">A multi-centre trial found Alpha-GPC significantly improved cognitive function scores across attention, memory, and behavioural measures.</p>
+            <span class="citation mt-2 inline-flex">Moreno 2003 · Clin Ther</span>
+          </div>
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Growth hormone secretion and power output in athletes</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Alpha-GPC supplementation shown to increase growth hormone secretion and improve peak bench press force in young men.</p>
+            <span class="citation mt-2 inline-flex">Ziegenfuss et al. 2008 · J Int Soc Sports Nutr</span>
+          </div>
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Cholinergic enhancement and cognitive speed</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Review confirms Alpha-GPC as the most bioavailable oral choline source with direct CNS penetration, supporting attention and reaction time.</p>
+            <span class="citation mt-2 inline-flex">Parnetti et al. 2001 · Mech Ageing Dev</span>
+          </div>
+        </div>
+        <div class="mt-6 bg-cream rounded-xl p-4">
+          <p class="text-xs font-semibold text-navy mb-1">Why not just choline bitartrate?</p>
+          <p class="text-xs text-muted leading-relaxed">Choline bitartrate is cheaper but has poor CNS penetration. Alpha-GPC is roughly 40% choline by weight with demonstrated blood-brain barrier crossing. It's what the research actually uses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ L-THEANINE ═══════════════════ -->
+  <section id="l-theanine" class="ing-section py-20 px-6 bg-warm-white reveal">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-xl bg-navy flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest">Ingredient 02</p>
+        </div>
+        <h2 class="font-serif text-3xl text-navy mb-1">L-Theanine</h2>
+        <p class="text-muted text-sm mb-5">Found naturally in green tea (Camellia sinensis)</p>
+
+        <p class="text-charcoal text-sm leading-relaxed mb-4">
+          L-Theanine is an amino acid that promotes alpha brainwave activity — the same relaxed-alert mental state associated with meditation, deep focus, and creative flow. It doesn't sedate you. It calms background noise so the signal gets through.
+        </p>
+        <p class="text-charcoal text-sm leading-relaxed mb-6">
+          It's one of the most well-studied non-sedating anxiolytics available without a prescription. When paired with Alpha-GPC, the two compounds work synergistically — Alpha-GPC raises the ceiling of cognitive performance while L-Theanine smooths the ride.
+        </p>
+
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-semibold text-charcoal">Research Evidence Level</span>
+            <span class="text-xs text-rose-gold font-semibold">Very Strong</span>
+          </div>
+          <div class="evidence-bar"><div class="evidence-fill" data-width="91%"></div></div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Alpha wave induction</p>
+              <p class="text-xs text-muted leading-relaxed">EEG studies confirm L-Theanine increases alpha brainwave frequency — associated with wakeful relaxation and sustained attention.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Anxiety reduction without sedation</p>
+              <p class="text-xs text-muted leading-relaxed">Reduces physiological and psychological stress responses — cortisol, heart rate, perceived anxiety — without impairing alertness.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Synergy with stimulants</p>
+              <p class="text-xs text-muted leading-relaxed">Most studied in combination with caffeine. NeuroPouch uses it independently to deliver the focus benefit without any stimulant dependency.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-blush/40 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-widest text-muted mb-4">Published Research</p>
+        <div class="space-y-4">
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Alpha wave generation and relaxed attention</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">EEG recordings showed significant increase in alpha activity within 40 minutes of L-Theanine ingestion, correlated with subjective reports of calm alertness.</p>
+            <span class="citation mt-2 inline-flex">Nobre et al. 2008 · Asia Pac J Clin Nutr</span>
+          </div>
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Stress reduction in high-demand cognitive tasks</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Participants taking L-Theanine showed significantly lower heart rate and salivary immunoglobulin A responses to stressful mental arithmetic tasks.</p>
+            <span class="citation mt-2 inline-flex">Kimura et al. 2007 · Biol Psychol</span>
+          </div>
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Attention and cognitive performance</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Randomised crossover trial showed L-Theanine improved speed and accuracy on an attention-switching task and reduced susceptibility to distracting information.</p>
+            <span class="citation mt-2 inline-flex">Foxe et al. 2012 · Nutr Neurosci</span>
+          </div>
+        </div>
+        <div class="mt-6 bg-cream rounded-xl p-4">
+          <p class="text-xs font-semibold text-navy mb-1">The "yin to caffeine's yang" without the caffeine</p>
+          <p class="text-xs text-muted leading-relaxed">L-Theanine is famous as a caffeine modulator. But it works on its own — promoting focused calm through GABA activity and alpha waves independently of any stimulant co-administration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ RHODIOLA ═══════════════════ -->
+  <section id="rhodiola" class="ing-section py-20 px-6 bg-cream reveal">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-xl bg-navy flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest">Ingredient 03</p>
+        </div>
+        <h2 class="font-serif text-3xl text-navy mb-1">Rhodiola Rosea</h2>
+        <p class="text-muted text-sm mb-5">Adaptogenic root · Standardised to 3% rosavins, 1% salidroside</p>
+
+        <p class="text-charcoal text-sm leading-relaxed mb-4">
+          Rhodiola is an adaptogen — a compound that helps the body and mind resist and recover from physical and psychological stress. Unlike stimulants that force your system into a high state, adaptogens regulate. They raise performance when it's low and buffer the crash when it's high.
+        </p>
+        <p class="text-charcoal text-sm leading-relaxed mb-6">
+          Rhodiola Rosea has one of the most robust bodies of evidence of any adaptogen, with multiple randomised controlled trials (RCTs) published in peer-reviewed journals. It is approved by the European Medicines Agency (EMA) as a traditional herbal medicine for reducing symptoms of stress and fatigue.
+        </p>
+
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-semibold text-charcoal">Research Evidence Level</span>
+            <span class="text-xs text-rose-gold font-semibold">Strong (EMA-approved)</span>
+          </div>
+          <div class="evidence-bar"><div class="evidence-fill" data-width="85%"></div></div>
+        </div>
+
+        <!-- EMA badge -->
+        <div class="inline-flex items-center gap-2 bg-navy/5 border border-navy/20 rounded-xl px-4 py-2 mb-5">
+          <svg class="w-4 h-4 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span class="text-xs font-semibold text-navy">EMA-approved traditional herbal medicine</span>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Mental fatigue reduction</p>
+              <p class="text-xs text-muted leading-relaxed">Significantly reduces mental fatigue in conditions of stress-induced overload — documented in physicians, students, and military cadets under pressure.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Cortisol regulation</p>
+              <p class="text-xs text-muted leading-relaxed">Salidroside and rosavins modulate the HPA axis, reducing cortisol secretion during acute stress events without suppressing baseline hormone function.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Sustained performance under pressure</p>
+              <p class="text-xs text-muted leading-relaxed">Studies show maintained cognitive performance on complex tasks during periods of sleep deprivation and prolonged mental stress.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-blush/40 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-widest text-muted mb-4">Published Research</p>
+        <div class="space-y-4">
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Fatigue reduction in physicians during night shifts</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Double-blind RCT: Rhodiola significantly improved cognitive performance and reduced fatigue in physicians working night shifts compared to placebo.</p>
+            <span class="citation mt-2 inline-flex">Darbinyan et al. 2000 · Phytomedicine</span>
+          </div>
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Anti-fatigue effect in students during exam stress</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Students taking Rhodiola showed improved physical fitness, mental fatigue scores, neuromotor test performance, and general wellbeing vs placebo.</p>
+            <span class="citation mt-2 inline-flex">Spasov et al. 2000 · Phytomedicine</span>
+          </div>
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Repeated bout stress resilience in military cadets</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Military cadets under intense stress showed significant improvements in capacity for mental work and reduction in fatigue with Rhodiola vs control.</p>
+            <span class="citation mt-2 inline-flex">Shevtsov et al. 2003 · Phytomedicine</span>
+          </div>
+        </div>
+        <div class="mt-6 bg-cream rounded-xl p-4">
+          <p class="text-xs font-semibold text-navy mb-1">Adaptogen ≠ stimulant</p>
+          <p class="text-xs text-muted leading-relaxed">Adaptogens do not force your nervous system into a stimulated state. They are modulators — most effective at reducing the performance drop caused by stress, fatigue, and overload. This is why Rhodiola is safe for daily use without tolerance buildup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ B12 ═══════════════════ -->
+  <section id="b12" class="ing-section py-20 px-6 bg-warm-white reveal">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-xl bg-navy flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+          </div>
+          <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest">Ingredient 04</p>
+        </div>
+        <h2 class="font-serif text-3xl text-navy mb-1">Vitamin B12</h2>
+        <p class="text-muted text-sm mb-5">Methylcobalamin form · Active and immediately bioavailable</p>
+
+        <p class="text-charcoal text-sm leading-relaxed mb-4">
+          B12 is essential to the functioning of the nervous system. It is required for the synthesis of myelin — the protective sheath around nerve fibres that determines how fast signals travel. Without adequate B12, neural transmission slows. Cognitive fatigue, poor concentration, and brain fog can all be symptoms of sub-optimal B12 status.
+        </p>
+        <p class="text-charcoal text-sm leading-relaxed mb-6">
+          We use methylcobalamin — the active, co-enzyme form — rather than cyanocobalamin (the synthetic cheaper form). Methylcobalamin is directly usable by the body without further conversion and has better retention in tissue.
+        </p>
+
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-semibold text-charcoal">Research Evidence Level</span>
+            <span class="text-xs text-rose-gold font-semibold">Established (EU Health Claims)</span>
+          </div>
+          <div class="evidence-bar"><div class="evidence-fill" data-width="95%"></div></div>
+        </div>
+
+        <!-- EU claim badge -->
+        <div class="inline-flex items-center gap-2 bg-navy/5 border border-navy/20 rounded-xl px-4 py-2 mb-5">
+          <svg class="w-4 h-4 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span class="text-xs font-semibold text-navy">Authorised EU health claims (EFSA)</span>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Nervous system function</p>
+              <p class="text-xs text-muted leading-relaxed">EFSA-authorised claim: Vitamin B12 contributes to normal functioning of the nervous system.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Energy metabolism</p>
+              <p class="text-xs text-muted leading-relaxed">EFSA-authorised claim: B12 contributes to normal energy-yielding metabolism — converting macronutrients to usable cellular energy.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Reduction of tiredness and fatigue</p>
+              <p class="text-xs text-muted leading-relaxed">EFSA-authorised claim: B12 contributes to the reduction of tiredness and fatigue. Particularly relevant for vegetarians and vegans who are at higher risk of deficiency.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-blush/40 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-widest text-muted mb-4">Why B12 Matters More Than You Think</p>
+        <div class="space-y-4">
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Deficiency is surprisingly common</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Studies suggest 6–20% of adults in developed countries have sub-optimal B12 levels. Vegans, vegetarians, and people over 50 are at highest risk due to dietary restriction or reduced absorption with age.</p>
+          </div>
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Cognitive symptoms of low B12</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Memory problems, difficulty concentrating, persistent mental fatigue, and mood instability are all documented early symptoms of sub-clinical B12 deficiency — even before anaemia appears.</p>
+          </div>
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Buccal absorption advantage for B12</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">B12 absorption via oral tissue bypasses the need for intrinsic factor (produced in the stomach) — making buccal delivery particularly effective for those with digestive absorption issues.</p>
+          </div>
+        </div>
+        <div class="mt-6 bg-cream rounded-xl p-4">
+          <p class="text-xs font-semibold text-navy mb-1">Methylcobalamin vs Cyanocobalamin</p>
+          <p class="text-xs text-muted leading-relaxed">Cyanocobalamin must be converted to methylcobalamin in the body before use. Methylcobalamin is the active form — ready to use immediately. Higher tissue retention. Zero conversion overhead. This is what we use.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ MINT ═══════════════════ -->
+  <section id="mint" class="ing-section py-20 px-6 bg-cream reveal">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-xl bg-navy flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          </div>
+          <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest">Ingredient 05</p>
+        </div>
+        <h2 class="font-serif text-3xl text-navy mb-1">Mint Extract</h2>
+        <p class="text-muted text-sm mb-5">Peppermint (Mentha × piperita) · Standardised menthol content</p>
+
+        <p class="text-charcoal text-sm leading-relaxed mb-4">
+          Mint is not just flavour. It performs two distinct functions inside every NeuroPouch: sensory alerting and absorption enhancement. Both are evidence-based and both matter for how quickly and effectively the other ingredients work.
+        </p>
+        <p class="text-charcoal text-sm leading-relaxed mb-6">
+          Menthol — the active compound in peppermint — activates TRPM8 receptors in the oral mucosa, triggering a cooling and refreshing sensation that acts as a mild alerting stimulus. Separately, menthol has been shown to increase mucosal permeability, which can accelerate the absorption of co-administered compounds through buccal tissue.
+        </p>
+
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-semibold text-charcoal">Research Evidence Level</span>
+            <span class="text-xs text-rose-gold font-semibold">Moderate–Strong</span>
+          </div>
+          <div class="evidence-bar"><div class="evidence-fill" data-width="72%"></div></div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Permeation enhancement</p>
+              <p class="text-xs text-muted leading-relaxed">Menthol functions as a chemical permeation enhancer for buccal drug delivery — increasing mucosal permeability and improving transport of co-administered actives.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Cognitive alerting effect</p>
+              <p class="text-xs text-muted leading-relaxed">Peppermint aroma and oral exposure have been associated with increased alertness, improved memory, and reduced mental fatigue in independent studies.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="timeline-dot"></div>
+            <div>
+              <p class="text-sm font-semibold text-navy">Trigeminal activation</p>
+              <p class="text-xs text-muted leading-relaxed">The cooling sensation activates the trigeminal nerve — one of the largest cranial nerves — contributing to the immediate sense of mental clarity most users report within the first 2–3 minutes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-blush/40 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-widest text-muted mb-4">Published Research</p>
+        <div class="space-y-4">
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Peppermint aroma and cognitive performance</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Participants exposed to peppermint odour showed significantly better performance on memory, alertness, and overall cognitive quality compared to control and other odours.</p>
+            <span class="citation mt-2 inline-flex">Moss et al. 2008 · Int J Neurosci</span>
+          </div>
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Menthol as buccal permeation enhancer</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">In vitro and in vivo studies confirm menthol significantly increases buccal permeability and enhances absorption of co-administered hydrophilic compounds.</p>
+            <span class="citation mt-2 inline-flex">Ganem-Quintanar et al. 1997 · Biopharm Drug Dispos</span>
+          </div>
+          <div class="border-l-2 border-rose-gold pl-4">
+            <p class="text-sm font-semibold text-navy leading-snug">Mental fatigue and sustained attention</p>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Peppermint associated with reduced mental fatigue, improved sustained attention performance, and decreased ratings of frustration and anxiety during long cognitive tasks.</p>
+            <span class="citation mt-2 inline-flex">Kennedy et al. 2016 · Nutrients</span>
+          </div>
+        </div>
+        <div class="mt-6 bg-navy rounded-xl p-4">
+          <p class="text-xs font-semibold text-warm-white mb-1">Mint is doing real work</p>
+          <p class="text-xs text-warm-white/70 leading-relaxed">Most oral products add mint purely for taste. In NeuroPouch, menthol serves a pharmacological function — making the other ingredients more bioavailable through the buccal route. It's chosen because it earns its place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ BUCCAL ABSORPTION ═══════════════════ -->
+  <section id="absorption" class="ing-section py-20 px-6 bg-navy reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-3">Delivery Method</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-warm-white mb-4">Why buccal absorption changes everything.</h2>
+        <p class="text-warm-white/60 text-sm max-w-2xl mx-auto leading-relaxed">Most supplements go in your mouth and then into your stomach, where they compete with food, get degraded by stomach acid, pass through the intestinal wall, and — critically — undergo first-pass metabolism in the liver before reaching your bloodstream. By then, a significant portion of the active compounds are gone.</p>
+      </div>
+
+      <!-- Comparison: oral pill vs buccal -->
+      <div class="grid md:grid-cols-2 gap-6 mb-14">
+
+        <!-- Pill pathway -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+          <p class="text-warm-white/50 text-xs font-semibold uppercase tracking-widest mb-5">Swallowed Capsule / Pill</p>
+          <div class="space-y-3">
+            <div class="flex gap-3 items-start">
+              <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-xs text-warm-white/50 font-bold mt-0.5">1</div>
+              <p class="text-warm-white/60 text-xs leading-relaxed">Swallowed → travels to stomach</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-xs text-warm-white/50 font-bold mt-0.5">2</div>
+              <p class="text-warm-white/60 text-xs leading-relaxed">Dissolved by stomach acid (partial degradation of actives)</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-xs text-warm-white/50 font-bold mt-0.5">3</div>
+              <p class="text-warm-white/60 text-xs leading-relaxed">Absorbed through intestinal wall</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-xs text-warm-white/50 font-bold mt-0.5">4</div>
+              <p class="text-warm-white/60 text-xs leading-relaxed">Portal vein → liver (first-pass metabolism — further reduction in active compound)</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-xs text-warm-white/50 font-bold mt-0.5">5</div>
+              <p class="text-warm-white/60 text-xs leading-relaxed">Systemic circulation — 45–90 min after ingestion</p>
+            </div>
+          </div>
+          <div class="mt-5 bg-white/5 rounded-xl p-3 text-center">
+            <p class="text-red-400 text-xs font-semibold">Typical onset: 45–90 minutes</p>
+          </div>
+        </div>
+
+        <!-- Buccal pathway -->
+        <div class="bg-rose-gold/10 border border-rose-gold/30 rounded-2xl p-6">
+          <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-5">NeuroPouch — Buccal Delivery</p>
+          <div class="space-y-3">
+            <div class="flex gap-3 items-start">
+              <div class="w-6 h-6 rounded-full bg-rose-gold/30 flex items-center justify-center flex-shrink-0 text-xs text-rose-gold font-bold mt-0.5">1</div>
+              <p class="text-warm-white/80 text-xs leading-relaxed">Pouch placed under upper lip</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-6 h-6 rounded-full bg-rose-gold/30 flex items-center justify-center flex-shrink-0 text-xs text-rose-gold font-bold mt-0.5">2</div>
+              <p class="text-warm-white/80 text-xs leading-relaxed">Saliva activates ingredients · Mint enhances mucosal permeability</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-6 h-6 rounded-full bg-rose-gold/30 flex items-center justify-center flex-shrink-0 text-xs text-rose-gold font-bold mt-0.5">3</div>
+              <p class="text-warm-white/80 text-xs leading-relaxed">Compounds diffuse through buccal mucosa directly into blood vessels</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-6 h-6 rounded-full bg-rose-gold/30 flex items-center justify-center flex-shrink-0 text-xs text-rose-gold font-bold mt-0.5">4</div>
+              <p class="text-warm-white/80 text-xs leading-relaxed">Enters systemic circulation — bypasses stomach acid and first-pass liver metabolism</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-6 h-6 rounded-full bg-rose-gold/30 flex items-center justify-center flex-shrink-0 text-xs text-rose-gold font-bold mt-0.5">5</div>
+              <p class="text-warm-white/80 text-xs leading-relaxed">Active compounds reach brain — more intact, more efficiently</p>
+            </div>
+          </div>
+          <div class="mt-5 bg-rose-gold/20 rounded-xl p-3 text-center">
+            <p class="text-rose-gold text-xs font-semibold">Typical onset: 10–20 minutes</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key advantages -->
+      <div class="grid sm:grid-cols-3 gap-5">
+        <div class="text-center">
+          <p class="font-serif text-3xl text-rose-gold mb-2">~3–5×</p>
+          <p class="text-warm-white/70 text-xs leading-relaxed">Faster onset compared to swallowed capsules for many compounds</p>
+        </div>
+        <div class="text-center">
+          <p class="font-serif text-3xl text-rose-gold mb-2">No liver</p>
+          <p class="text-warm-white/70 text-xs leading-relaxed">First-pass metabolism bypassed — more active compound reaches circulation intact</p>
+        </div>
+        <div class="text-center">
+          <p class="font-serif text-3xl text-rose-gold mb-2">No food</p>
+          <p class="text-warm-white/70 text-xs leading-relaxed">Absorption is not affected by whether you've eaten — consistent dosing anytime</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ DISCLAIMER + CTA ═══════════════════ -->
+  <section class="py-16 px-6 bg-cream reveal">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Disclaimer box -->
+      <div class="bg-white border border-blush/60 rounded-2xl p-6 mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-muted mb-3">Important Notice</p>
+        <p class="text-muted text-xs leading-relaxed">
+          The research cited on this page relates to the individual ingredients in NeuroPouch as studied in published, peer-reviewed scientific literature. These citations are provided for educational transparency only. NeuroPouch as a finished product has not been independently evaluated in clinical trials. The statements on this page have not been evaluated by the FDA or EFSA. NeuroPouch is a food supplement, not a medicine, and is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <h2 class="font-serif text-2xl text-navy mb-3">Ready to try the science?</h2>
+        <p class="text-muted text-sm mb-6">Join the waitlist. Be first when we launch.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="product.html" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-sm">
+            View the Product
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href="index.html#waitlist" class="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border-2 border-navy text-navy font-semibold text-sm hover:bg-navy hover:text-warm-white transition-all">
+            Join Waitlist
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div>
+        <p class="font-serif text-lg text-warm-white">NeuroPouch</p>
+        <p class="text-warm-white/40 text-xs mt-1">The Edge You Don't Have to Announce</p>
+      </div>
+      <div class="flex flex-wrap gap-5 text-xs text-warm-white/50">
+        <a href="index.html" class="hover:text-warm-white transition-colors">Home</a>
+        <a href="product.html" class="hover:text-warm-white transition-colors">Shop</a>
+        <a href="science.html" class="hover:text-warm-white transition-colors">Science</a>
+        <a href="about.html" class="hover:text-warm-white transition-colors">About</a>
+        <a href="wholesale.html" class="hover:text-warm-white transition-colors">Wholesale</a>
+        <a href="privacy-policy.html" class="hover:text-warm-white transition-colors">Privacy</a>
+        <a href="terms.html" class="hover:text-warm-white transition-colors">Terms</a>
+        <a href="contact.html" class="hover:text-warm-white transition-colors">Contact</a>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto mt-6 pt-6 border-t border-white/10">
+      <p class="text-warm-white/30 text-xs">© 2026 NeuroPouch. All rights reserved. · Food supplement. Not intended to diagnose, treat, cure or prevent any disease.</p>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Reveal sections
+    gsap.utils.toArray('.reveal').forEach(el => {
+      gsap.fromTo(el, { opacity: 0, y: 32 }, {
+        opacity: 1, y: 0, duration: 0.75, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+      });
+    });
+
+    // Animate evidence bars when they come into view
+    document.querySelectorAll('.evidence-fill').forEach(bar => {
+      const targetWidth = bar.dataset.width;
+      ScrollTrigger.create({
+        trigger: bar,
+        start: 'top 90%',
+        once: true,
+        onEnter: () => { bar.style.width = targetWidth; }
+      });
+    });
+
+    // Active pill in sticky nav based on scroll position
+    const sections = ['alpha-gpc', 'l-theanine', 'rhodiola', 'b12', 'mint', 'absorption'];
+    const pills = document.querySelectorAll('.sticky a.ing-nav-pill');
+    sections.forEach((id, i) => {
+      ScrollTrigger.create({
+        trigger: `#${id}`,
+        start: 'top center',
+        end: 'bottom center',
+        onEnter: () => { pills.forEach(p => p.classList.remove('active')); if (pills[i]) pills[i].classList.add('active'); },
+        onEnterBack: () => { pills.forEach(p => p.classList.remove('active')); if (pills[i]) pills[i].classList.add('active'); },
+      });
+    });
+
+    // Neural canvas animation
+    const canvas = document.getElementById('sci-canvas');
+    const ctx = canvas.getContext('2d');
+    let nodes = [];
+    function resizeCanvas() {
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for (let i = 0; i < 30; i++) {
+      nodes.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4 });
+    }
+    function drawCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      nodes.forEach(n => {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+      });
+      nodes.forEach((a, i) => {
+        nodes.slice(i + 1).forEach(b => {
+          const d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d < 120) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(196,149,106,${0.5 * (1 - d / 120)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        });
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(196,149,106,0.6)';
+        ctx.fill();
+      });
+      requestAnimationFrame(drawCanvas);
+    }
+    drawCanvas();
+  </script>
+</body>
+</html>

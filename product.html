@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Buy NeuroPouch — Nootropic Focus Pouches | 16 Pouches Per Tin</title>
+  <meta name="description" content="Buy NeuroPouch — the nicotine-free nootropic oral pouch with Alpha-GPC, L-Theanine & Rhodiola Rosea. 16 pouches per tin. Free shipping. Choose your flavour." />
+  <meta name="keywords" content="buy nootropic pouch, NeuroPouch, nicotine-free focus supplement, Alpha-GPC pouch, biohacker supplement, oral nootropic buy" />
+  <link rel="canonical" href="https://neuropouch.com/product" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NeuroPouch — The Nootropic Pouch That Works" />
+  <meta property="og:description" content="Discreet. Nicotine-free. Alpha-GPC, L-Theanine & Rhodiola Rosea. 16 pouches per tin. Ships worldwide." />
+  <meta property="og:type" content="product" />
+  <meta property="og:url" content="https://neuropouch.com/product" />
+
+  <!-- Schema: Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "NeuroPouch Focus",
+    "description": "Nicotine-free nootropic oral pouch with Alpha-GPC, L-Theanine, Rhodiola Rosea, Vitamin B12, and Mint Extract. 16 pouches per tin.",
+    "brand": {
+      "@type": "Brand",
+      "name": "NeuroPouch"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "9.99",
+      "availability": "https://schema.org/InStock",
+      "url": "https://neuropouch.com/product"
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1C2B4A',
+            'navy-light': '#243559',
+            'rose-gold': '#C4956A',
+            blush: '#E8C5B8',
+            cream: '#F8F4EF',
+            'warm-white': '#FDFAF7',
+            charcoal: '#2D3142',
+            'soft-gold': '#D4A855',
+            muted: '#6B7280',
+          },
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Stripe.js (load early, non-blocking) -->
+  <script src="https://js.stripe.com/v3/" async></script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #FDFAF7; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+    /* ---- Sticky nav ---- */
+    #site-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(253, 250, 247, 0.9);
+      border-bottom: 1px solid rgba(196, 149, 106, 0.15);
+    }
+
+    /* ---- Product image gallery ---- */
+    .gallery-thumb {
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .gallery-thumb:hover { transform: scale(1.04); }
+    .gallery-thumb.active { border-color: #C4956A; }
+
+    /* ---- Variant selector ---- */
+    .variant-btn {
+      border: 2px solid #E8C5B8;
+      transition: all 0.2s;
+    }
+    .variant-btn:hover { border-color: #C4956A; background: #F8F4EF; }
+    .variant-btn.selected {
+      border-color: #1C2B4A;
+      background: #1C2B4A;
+      color: #FDFAF7;
+    }
+
+    /* ---- Quantity stepper ---- */
+    .qty-btn {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid #E8C5B8;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      color: #1C2B4A;
+      transition: background 0.15s;
+    }
+    .qty-btn:hover { background: #F8F4EF; }
+
+    /* ---- CTA button ---- */
+    .btn-primary {
+      background: linear-gradient(135deg, #1C2B4A 0%, #243559 100%);
+      color: #FDFAF7;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(196,149,106,0.15) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(28,43,74,0.25); }
+    .btn-primary:hover::after { opacity: 1; }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* ---- Bundle card ---- */
+    .bundle-card {
+      border: 2px solid #E8C5B8;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+    .bundle-card:hover { border-color: #C4956A; box-shadow: 0 4px 20px rgba(196,149,106,0.15); }
+    .bundle-card.selected { border-color: #1C2B4A; box-shadow: 0 4px 20px rgba(28,43,74,0.12); }
+    .bundle-badge {
+      position: absolute;
+      top: -12px; right: 16px;
+      background: #C4956A;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      border-radius: 99px;
+      text-transform: uppercase;
+    }
+
+    /* ---- Ingredient pill ---- */
+    .ingredient-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #F8F4EF;
+      border: 1px solid #E8C5B8;
+      border-radius: 99px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #1C2B4A;
+    }
+
+    /* ---- Trust badges ---- */
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #4B5563;
+    }
+
+    /* ---- Review stars ---- */
+    .star { color: #C4956A; }
+
+    /* ---- Review card ---- */
+    .review-card {
+      background: white;
+      border: 1px solid #F0E8E0;
+      border-radius: 16px;
+      transition: box-shadow 0.2s;
+    }
+    .review-card:hover { box-shadow: 0 4px 20px rgba(28,43,74,0.07); }
+
+    /* ---- Accordion ---- */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .accordion-content.open {
+      max-height: 400px;
+    }
+    .accordion-icon { transition: transform 0.3s; }
+    .accordion-item.open .accordion-icon { transform: rotate(45deg); }
+
+    /* ---- Sticky add-to-cart bar (mobile) ---- */
+    #sticky-atc {
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    #sticky-atc.visible { transform: translateY(0); }
+
+    /* ---- Floating particles ---- */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,149,106,0.3) 0%, transparent 70%);
+      animation: float-particle 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes float-particle {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+      50% { transform: translateY(-30px) scale(1.1); opacity: 0.7; }
+    }
+
+    /* ---- Section fade-in ---- */
+    .reveal { opacity: 0; transform: translateY(32px); }
+
+    /* ---- Shine sweep on image ---- */
+    .image-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    .image-shine::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 60%;
+      height: 300%;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+      transform: rotate(25deg);
+      animation: shine-sweep 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes shine-sweep {
+      0% { left: -100%; }
+      60%, 100% { left: 160%; }
+    }
+
+    /* prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="text-charcoal">
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="font-serif text-xl text-navy tracking-wide">NeuroPouch</a>
+      <div class="flex items-center gap-6 text-sm font-medium text-charcoal">
+        <a href="science.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Science</a>
+        <a href="about.html" class="hover:text-rose-gold transition-colors hidden sm:inline">About</a>
+        <a href="product.html" class="text-rose-gold font-semibold hidden sm:inline">Shop</a>
+        <a href="wholesale.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Wholesale</a>
+        <a href="product.html" class="btn-primary px-5 py-2 rounded-full text-sm font-semibold">Join Waitlist</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       PRODUCT HERO — TWO COLUMN
+  ═══════════════════════════════════════ -->
+  <section id="buy" class="pt-28 pb-16 px-6">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+
+      <!-- LEFT: Image Gallery -->
+      <div class="relative">
+        <!-- Ambient glow -->
+        <div class="absolute inset-0 -z-10">
+          <div class="particle w-64 h-64 top-10 left-10" style="animation-delay:0s"></div>
+          <div class="particle w-40 h-40 bottom-20 right-10" style="animation-delay:2s"></div>
+        </div>
+
+        <!-- Main image -->
+        <div id="main-image-wrap" class="image-shine rounded-3xl overflow-hidden bg-cream aspect-square flex items-center justify-center shadow-lg">
+          <div id="main-image-placeholder" class="relative w-full h-full flex flex-col items-center justify-center">
+            <!-- Tin illustration (SVG) used when no real image path is set -->
+            <div id="tin-visual" class="w-56 h-56 relative">
+              <div class="absolute inset-0 rounded-full bg-gradient-to-br from-navy to-navy-light shadow-2xl flex flex-col items-center justify-center">
+                <div class="absolute inset-3 rounded-full border border-rose-gold/30"></div>
+                <div class="absolute inset-6 rounded-full border border-rose-gold/20"></div>
+                <div class="text-center z-10 px-6">
+                  <p class="font-serif text-warm-white text-lg leading-tight">Neuro<br/>Pouch</p>
+                  <div class="w-8 h-0.5 bg-rose-gold mx-auto my-2"></div>
+                  <p class="text-blush text-xs font-medium tracking-widest uppercase">Focus</p>
+                </div>
+                <!-- Botanical accents -->
+                <div class="absolute top-8 right-8 w-6 h-6 opacity-40">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="1.5">
+                    <path d="M12 2 C12 2, 18 8, 18 14 C18 17.3 15.3 20 12 20 C8.7 20 6 17.3 6 14 C6 8 12 2 12 2Z"/>
+                    <line x1="12" y1="12" x2="12" y2="20"/>
+                  </svg>
+                </div>
+                <div class="absolute bottom-10 left-8 w-5 h-5 opacity-30">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#E8C5B8" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <!-- Flavor label under tin -->
+            <p id="main-flavor-label" class="mt-5 text-sm font-medium text-muted tracking-wide">Natural Peppermint & Lemongrass</p>
+          </div>
+        </div>
+
+        <!-- Thumbnail row -->
+        <div class="flex gap-3 mt-4 justify-center">
+          <button class="gallery-thumb active w-16 h-16 rounded-xl bg-navy/10 flex items-center justify-center" data-flavor="Peppermint &amp; Lemongrass" data-color="#1C2B4A" aria-label="Navy tin - Peppermint">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-navy to-navy-light shadow-md"></div>
+          </button>
+          <button class="gallery-thumb w-16 h-16 rounded-xl bg-blush/30 flex items-center justify-center" data-flavor="Grapefruit &amp; Juniper Berry" data-color="#E8C5B8" aria-label="Blush tin - Grapefruit">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blush to-rose-gold shadow-md"></div>
+          </button>
+          <button class="gallery-thumb w-16 h-16 rounded-xl bg-navy/10 flex items-center justify-center" data-flavor="Peppermint &amp; Lemongrass" data-color="#1C2B4A" data-botanical="true" aria-label="Navy botanical tin">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-navy to-navy-light shadow-md relative overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center opacity-50">
+                <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" stroke="#C4956A" stroke-width="1.5">
+                  <path d="M10 2 C10 2, 15 7, 15 12 C15 14.8 12.8 17 10 17 C7.2 17 5 14.8 5 12 C5 7 10 2 10 2Z"/>
+                </svg>
+              </div>
+            </div>
+          </button>
+          <button class="gallery-thumb w-16 h-16 rounded-xl bg-blush/30 flex items-center justify-center" data-flavor="Grapefruit &amp; Juniper Berry" data-color="#E8C5B8" data-botanical="true" aria-label="Blush botanical tin">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blush to-rose-gold shadow-md relative overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center opacity-50">
+                <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" stroke="#1C2B4A" stroke-width="1.5">
+                  <path d="M10 2 C10 2, 15 7, 15 12 C15 14.8 12.8 17 10 17 C7.2 17 5 14.8 5 12 C5 7 10 2 10 2Z"/>
+                </svg>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <!-- Trust strip under gallery -->
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6">
+          <div class="trust-badge">
+            <svg class="w-4 h-4 text-rose-gold flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1l2.39 4.85L18 6.91l-4 3.9.94 5.5L10 13.77l-4.94 2.59.94-5.5L2 6.9l5.61-.06L10 1z" clip-rule="evenodd"/></svg>
+            <span>Zero Nicotine</span>
+          </div>
+          <div class="trust-badge">
+            <svg class="w-4 h-4 text-rose-gold flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span>No Taurine</span>
+          </div>
+          <div class="trust-badge">
+            <svg class="w-4 h-4 text-rose-gold flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3z"/></svg>
+            <span>Free Shipping</span>
+          </div>
+          <div class="trust-badge">
+            <svg class="w-4 h-4 text-rose-gold flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-14a2 2 0 10-4 0v1h4V2zm3 0a2 2 0 00-2 2v11a3 3 0 116 0V4a2 2 0 00-2-2h-2z" clip-rule="evenodd"/></svg>
+            <span>Safe 16+</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Product details + purchase -->
+      <div class="flex flex-col gap-6">
+
+        <!-- Breadcrumb -->
+        <nav class="text-xs text-muted" aria-label="Breadcrumb">
+          <a href="index.html" class="hover:text-rose-gold transition-colors">Home</a>
+          <span class="mx-2">›</span>
+          <span class="text-charcoal font-medium">NeuroPouch Focus</span>
+        </nav>
+
+        <!-- Rating row -->
+        <div class="flex items-center gap-3">
+          <div class="flex gap-0.5" aria-label="4.9 out of 5 stars">
+            <span class="star text-lg">★</span>
+            <span class="star text-lg">★</span>
+            <span class="star text-lg">★</span>
+            <span class="star text-lg">★</span>
+            <span class="star text-lg">★</span>
+          </div>
+          <a href="#reviews" class="text-sm text-muted hover:text-rose-gold transition-colors">4.9 · 47 reviews</a>
+          <span class="ml-auto text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-1 rounded-full">Sold Out — Join Waitlist</span>
+        </div>
+
+        <!-- Title -->
+        <div>
+          <h1 class="font-serif text-3xl sm:text-4xl text-navy leading-tight">NeuroPouch Focus</h1>
+          <p class="mt-2 text-muted text-sm">16 pouches per tin · Nicotine-free · Buccal-absorbed nootropics</p>
+        </div>
+
+        <!-- Price -->
+        <div class="flex items-baseline gap-3">
+          <span id="display-price" class="text-3xl font-bold text-navy">€99.00</span>
+          <span class="text-muted text-sm line-through">€99.00</span>
+          <span class="text-red-500 text-sm font-semibold bg-red-50 px-2.5 py-1 rounded-full">Sold Out</span>
+        </div>
+
+        <!-- Divider -->
+        <div class="h-px bg-blush/50"></div>
+
+        <!-- Bundle selector (quantity/value) -->
+        <div>
+          <p class="text-sm font-semibold text-charcoal mb-3">Choose Your Bundle</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+
+            <!-- 1 Tower = 10 tins = €99 -->
+            <div class="bundle-card rounded-2xl p-4" data-tins="10" data-price="99.00" data-label="1 Tower (10 tins)">
+              <p class="font-bold text-navy text-base">1 Tower</p>
+              <p class="text-muted text-xs mt-0.5">10 tins · ~€9.90 / tin</p>
+              <p class="mt-3 font-semibold text-charcoal">€99.00</p>
+              <p class="text-xs text-rose-gold font-medium">Limited time offer</p>
+            </div>
+
+            <!-- 2 Towers = 20 tins = €168.30 (15% off) -->
+            <div class="bundle-card selected rounded-2xl p-4" data-tins="20" data-price="168.30" data-label="2 Towers (20 tins)">
+              <div class="bundle-badge">Save 15%</div>
+              <p class="font-bold text-navy text-base">2 Towers</p>
+              <p class="text-muted text-xs mt-0.5">20 tins · ~€8.42 / tin</p>
+              <p class="mt-3 font-semibold text-charcoal">€168.30</p>
+              <p class="text-xs text-rose-gold font-medium">Limited time offer</p>
+            </div>
+
+            <!-- 3 Towers = 30 tins = €237.60 (20% off) -->
+            <div class="bundle-card rounded-2xl p-4" data-tins="30" data-price="237.60" data-label="3 Towers (30 tins)">
+              <div class="bundle-badge">Save 20%</div>
+              <p class="font-bold text-navy text-base">3 Towers</p>
+              <p class="text-muted text-xs mt-0.5">30 tins · ~€7.92 / tin</p>
+              <p class="mt-3 font-semibold text-charcoal">€237.60</p>
+              <p class="text-xs text-rose-gold font-medium">Limited time offer</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Flavour selector -->
+        <div>
+          <p class="text-sm font-semibold text-charcoal mb-3">
+            Flavour: <span id="flavour-label" class="font-normal text-muted">Peppermint &amp; Lemongrass</span>
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <button class="variant-btn selected rounded-xl px-4 py-2 text-sm font-medium" data-flavour="Peppermint &amp; Lemongrass">
+              🌿 Peppermint &amp; Lemongrass
+            </button>
+            <button class="variant-btn rounded-xl px-4 py-2 text-sm font-medium" data-flavour="Grapefruit &amp; Juniper Berry">
+              🍊 Grapefruit &amp; Juniper Berry
+            </button>
+          </div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="flex items-center gap-4">
+          <p class="text-sm font-semibold text-charcoal">Quantity</p>
+          <div class="flex items-center gap-3">
+            <button class="qty-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+            <span id="qty-display" class="w-8 text-center font-semibold text-navy text-lg">1</span>
+            <button class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button
+            id="btn-checkout"
+            class="flex-1 py-4 rounded-2xl font-bold text-base tracking-wide flex items-center justify-center gap-2 bg-gray-300 text-gray-500 cursor-not-allowed"
+            aria-label="Currently sold out — join the waitlist"
+            disabled
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+            <span id="btn-checkout-label">Sold Out — Join Waitlist Below</span>
+          </button>
+          <button
+            id="btn-waitlist"
+            class="flex-none px-6 py-4 rounded-2xl border-2 border-navy text-navy font-semibold text-sm hover:bg-navy hover:text-warm-white transition-all"
+          >
+            Join Waitlist
+          </button>
+        </div>
+
+        <!-- Payment icons -->
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="text-xs text-muted">Secure payment via</span>
+          <div class="flex gap-2 items-center opacity-60">
+            <!-- Visa -->
+            <svg class="h-5" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="38" height="24" rx="4" fill="#1A1F71"/>
+              <path d="M14.5 16.5h-2.3L10.4 9.2c-.1-.3-.3-.5-.6-.6-.7-.3-1.5-.5-2.3-.7V7.7h3.7c.5 0 .9.3 1 .8l.9 4.7 2.3-5.5h2.3l-3.2 8.8zm4.8 0h-2.2l1.8-8.8h2.2l-1.8 8.8zm6.3-6.3c.1-.6.6-1 1.2-1 .4 0 .8.1 1.2.3l.4-1.7c-.4-.2-.9-.3-1.4-.3-2.1 0-3.6 1.1-3.6 2.8 0 1.2 1.1 1.9 1.9 2.3.8.4 1.1.7 1.1 1.1 0 .6-.7.9-1.3.9-.5 0-1.1-.2-1.6-.4l-.4 1.8c.6.2 1.2.3 1.9.3 2.3 0 3.8-1.1 3.8-2.9-.1-2.2-3.2-2.3-3.2-3.2zm8.1 6.3l-1.7-8.8h-1.9c-.4 0-.8.3-1 .7L27.3 16.5h2.3l.5-1.3h2.8l.3 1.3h2zm-3-3.2l1.1-3.1.6 3.1h-1.7z" fill="white"/>
+            </svg>
+            <!-- Mastercard -->
+            <svg class="h-5" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="38" height="24" rx="4" fill="#252525"/>
+              <circle cx="15" cy="12" r="7" fill="#EB001B"/>
+              <circle cx="23" cy="12" r="7" fill="#F79E1B"/>
+              <path d="M19 7a7 7 0 010 10A7 7 0 0119 7z" fill="#FF5F00"/>
+            </svg>
+            <!-- Stripe badge text -->
+            <span class="text-xs text-muted font-medium">+ Apple Pay</span>
+          </div>
+        </div>
+
+        <!-- Guarantee strip -->
+        <div class="bg-cream rounded-2xl p-4 flex gap-3 items-start">
+          <svg class="w-6 h-6 text-rose-gold flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <div>
+            <p class="text-sm font-semibold text-navy">30-Day Satisfaction Guarantee</p>
+            <p class="text-xs text-muted mt-0.5">If you're not satisfied with your first tin, we'll refund you. No questions, no hoops.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       QUICK BENEFITS STRIP
+  ═══════════════════════════════════════ -->
+  <section class="bg-navy py-10 px-6 overflow-hidden">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-center gap-8">
+      <div class="flex flex-col items-center gap-2 text-center">
+        <p class="font-serif text-3xl text-rose-gold">5</p>
+        <p class="text-warm-white/70 text-xs uppercase tracking-widest">Nootropic Ingredients</p>
+      </div>
+      <div class="w-px h-10 bg-white/10 hidden sm:block self-center"></div>
+      <div class="flex flex-col items-center gap-2 text-center">
+        <p class="font-serif text-3xl text-rose-gold">16</p>
+        <p class="text-warm-white/70 text-xs uppercase tracking-widest">Pouches Per Tin</p>
+      </div>
+      <div class="w-px h-10 bg-white/10 hidden sm:block self-center"></div>
+      <div class="flex flex-col items-center gap-2 text-center">
+        <p class="font-serif text-3xl text-rose-gold">~10 min</p>
+        <p class="text-warm-white/70 text-xs uppercase tracking-widest">To Feel Focus</p>
+      </div>
+      <div class="w-px h-10 bg-white/10 hidden sm:block self-center"></div>
+      <div class="flex flex-col items-center gap-2 text-center">
+        <p class="font-serif text-3xl text-rose-gold">0</p>
+        <p class="text-warm-white/70 text-xs uppercase tracking-widest">Nicotine / Taurine</p>
+      </div>
+      <div class="w-px h-10 bg-white/10 hidden sm:block self-center"></div>
+      <div class="flex flex-col items-center gap-2 text-center">
+        <p class="font-serif text-3xl text-rose-gold">16+</p>
+        <p class="text-warm-white/70 text-xs uppercase tracking-widest">Safe From Age</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       HOW TO USE
+  ═══════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-warm-white reveal">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-rose-gold text-sm font-semibold uppercase tracking-widest mb-3">Effortless to Use</p>
+      <h2 class="font-serif text-3xl sm:text-4xl text-navy mb-12">Three seconds. That's all it takes.</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-2xl bg-navy flex items-center justify-center text-rose-gold font-serif text-2xl shadow-lg">1</div>
+          <h3 class="font-semibold text-navy text-base">Place It</h3>
+          <p class="text-muted text-sm text-center leading-relaxed">Tuck one pouch under your upper lip. Comfortable. Invisible. No one knows it's there.</p>
+        </div>
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-2xl bg-navy flex items-center justify-center text-rose-gold font-serif text-2xl shadow-lg">2</div>
+          <h3 class="font-semibold text-navy text-base">Feel It</h3>
+          <p class="text-muted text-sm text-center leading-relaxed">Mint and nootropic ingredients absorb through your oral tissue — faster than swallowing pills.</p>
+        </div>
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-2xl bg-navy flex items-center justify-center text-rose-gold font-serif text-2xl shadow-lg">3</div>
+          <h3 class="font-semibold text-navy text-base">Perform</h3>
+          <p class="text-muted text-sm text-center leading-relaxed">Focus, clarity, and mental stamina — for your next task, meeting, or study session.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       INGREDIENTS DEEP DIVE
+  ═══════════════════════════════════════ -->
+  <section id="ingredients" class="py-20 px-6 bg-cream reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-rose-gold text-sm font-semibold uppercase tracking-widest mb-3">What's Inside</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-navy">Five ingredients. One clear purpose.</h2>
+        <p class="mt-4 text-muted max-w-xl mx-auto text-sm leading-relaxed">No fillers. No mystery blends. Every ingredient has a job — and we can explain it in plain English.</p>
+      </div>
+
+      <div class="space-y-4">
+
+        <!-- Ingredient 1 -->
+        <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4 shadow-sm border border-blush/40 ingredient-card">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy flex items-center justify-center">
+            <svg class="w-6 h-6 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h3 class="font-semibold text-navy">Alpha-GPC</h3>
+              <span class="ingredient-pill">Memory &amp; Reaction Speed</span>
+            </div>
+            <p class="text-muted text-sm leading-relaxed">Powers your working memory and cognitive speed. The same compound studied in research for its role in supporting attention and learning. Your brain's fast lane.</p>
+          </div>
+        </div>
+
+        <!-- Ingredient 2 -->
+        <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4 shadow-sm border border-blush/40 ingredient-card">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy flex items-center justify-center">
+            <svg class="w-6 h-6 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h3 class="font-semibold text-navy">L-Theanine</h3>
+              <span class="ingredient-pill">Calm, Sharp Focus</span>
+            </div>
+            <p class="text-muted text-sm leading-relaxed">Found naturally in green tea. Promotes relaxed alertness — keeps you focused without jitters or anxiety. The yin to caffeine's yang, without needing caffeine.</p>
+          </div>
+        </div>
+
+        <!-- Ingredient 3 -->
+        <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4 shadow-sm border border-blush/40 ingredient-card">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy flex items-center justify-center">
+            <svg class="w-6 h-6 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h3 class="font-semibold text-navy">Rhodiola Rosea</h3>
+              <span class="ingredient-pill">Anti-Fatigue Adaptogen</span>
+            </div>
+            <p class="text-muted text-sm leading-relaxed">An adaptogen used for centuries and backed by multiple published studies for its ability to reduce mental and physical fatigue. Not a stimulant — an optimizer.</p>
+          </div>
+        </div>
+
+        <!-- Ingredient 4 -->
+        <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4 shadow-sm border border-blush/40 ingredient-card">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy flex items-center justify-center">
+            <svg class="w-6 h-6 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h3 class="font-semibold text-navy">Vitamin B12</h3>
+              <span class="ingredient-pill">Nervous System Fuel</span>
+            </div>
+            <p class="text-muted text-sm leading-relaxed">Your brain converts food to energy with it. Supports neurotransmitter production and keeps your nervous system sharp through long sessions — especially important if you're vegetarian or vegan.</p>
+          </div>
+        </div>
+
+        <!-- Ingredient 5 -->
+        <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4 shadow-sm border border-blush/40 ingredient-card">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy flex items-center justify-center">
+            <svg class="w-6 h-6 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h3 class="font-semibold text-navy">Mint Extract</h3>
+              <span class="ingredient-pill">Refreshment + Absorption</span>
+            </div>
+            <p class="text-muted text-sm leading-relaxed">That instant fresh feeling — and a functional role. Mint enhances buccal absorption, helping active ingredients absorb faster through your mouth's mucous membranes. It's not just flavor.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Absorption callout -->
+      <div class="mt-10 bg-navy rounded-3xl p-8 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+          <svg viewBox="0 0 200 200" class="w-full h-full"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="white"/></pattern></defs><rect width="200" height="200" fill="url(#dots)"/></svg>
+        </div>
+        <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-2 relative z-10">The Science of Speed</p>
+        <h3 class="font-serif text-2xl text-warm-white mb-3 relative z-10">Buccal absorption is faster than swallowing pills.</h3>
+        <p class="text-warm-white/70 text-sm max-w-lg mx-auto leading-relaxed relative z-10">Oral tissue has a rich vascular supply. Active compounds enter your bloodstream more directly — bypassing first-pass metabolism in the gut and liver. That's why you feel it in minutes, not an hour.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       WHO IT'S FOR
+  ═══════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-warm-white reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-rose-gold text-sm font-semibold uppercase tracking-widest mb-3">Who Uses NeuroPouch</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-navy">Built for peak performers.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-cream rounded-2xl p-6 border border-blush/40">
+          <div class="text-3xl mb-3">🎓</div>
+          <h3 class="font-semibold text-navy mb-2">Students</h3>
+          <p class="text-muted text-sm leading-relaxed">Deep study sessions without jitters. Discreet enough for the library, the lecture hall, or back-to-back exams.</p>
+        </div>
+
+        <div class="bg-cream rounded-2xl p-6 border border-blush/40">
+          <div class="text-3xl mb-3">💼</div>
+          <h3 class="font-semibold text-navy mb-2">Executives & Entrepreneurs</h3>
+          <p class="text-muted text-sm leading-relaxed">Back-to-back meetings. Investor calls. No coffee breath. No visible gum. No one knows — except you.</p>
+        </div>
+
+        <div class="bg-cream rounded-2xl p-6 border border-blush/40">
+          <div class="text-3xl mb-3">🧬</div>
+          <h3 class="font-semibold text-navy mb-2">Biohackers</h3>
+          <p class="text-muted text-sm leading-relaxed">A clean nootropic stack with measurable ingredients, no synthetic stimulants, and a delivery method designed for bioavailability.</p>
+        </div>
+
+        <div class="bg-cream rounded-2xl p-6 border border-blush/40">
+          <div class="text-3xl mb-3">🏋️</div>
+          <h3 class="font-semibold text-navy mb-2">Athletes</h3>
+          <p class="text-muted text-sm leading-relaxed">Mental game matters. Rhodiola Rosea reduces mental and physical fatigue — ideal for training days that need both body and mind sharp.</p>
+        </div>
+
+        <div class="bg-cream rounded-2xl p-6 border border-blush/40">
+          <div class="text-3xl mb-3">✈️</div>
+          <h3 class="font-semibold text-navy mb-2">Frequent Travellers</h3>
+          <p class="text-muted text-sm leading-relaxed">Pocket-sized tin. No liquid. No security issues. Pop one in during a long-haul and arrive sharp.</p>
+        </div>
+
+        <div class="bg-cream rounded-2xl p-6 border border-blush/40">
+          <div class="text-3xl mb-3">🎮</div>
+          <h3 class="font-semibold text-navy mb-2">Creators & Gamers</h3>
+          <p class="text-muted text-sm leading-relaxed">Long sessions need sustained focus, not spikes. L-Theanine keeps you in the zone without the crash that follows energy drinks.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       REVIEWS
+  ═══════════════════════════════════════ -->
+  <section id="reviews" class="py-20 px-6 bg-cream reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-4">
+        <p class="text-rose-gold text-sm font-semibold uppercase tracking-widest mb-3">Reviews</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-navy">What early users are saying</h2>
+        <div class="flex items-center justify-center gap-2 mt-3">
+          <div class="flex gap-0.5" aria-label="4.9 stars">
+            <span class="star text-xl">★</span><span class="star text-xl">★</span><span class="star text-xl">★</span><span class="star text-xl">★</span><span class="star text-xl">★</span>
+          </div>
+          <span class="text-muted text-sm">4.9 / 5 · 47 beta reviews</span>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+
+        <div class="review-card p-6">
+          <div class="flex gap-0.5 mb-3"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="text-charcoal text-sm leading-relaxed mb-4">"I tried every nootropic on the market. Most taste like chalk and do nothing. NeuroPouch is the first thing that actually made me feel focused without the anxiety spike."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-navy flex items-center justify-center text-warm-white text-xs font-bold">MK</div>
+            <div>
+              <p class="text-xs font-semibold text-navy">Markus K.</p>
+              <p class="text-xs text-muted">Software Engineer, Berlin</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card p-6">
+          <div class="flex gap-0.5 mb-3"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="text-charcoal text-sm leading-relaxed mb-4">"Used it during a 3-hour board meeting. Nobody noticed. I was the sharpest one in the room. The grapefruit flavor is incredible — not artificial at all."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-rose-gold flex items-center justify-center text-warm-white text-xs font-bold">SL</div>
+            <div>
+              <p class="text-xs font-semibold text-navy">Sofia L.</p>
+              <p class="text-xs text-muted">COO, Amsterdam</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card p-6">
+          <div class="flex gap-0.5 mb-3"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="text-charcoal text-sm leading-relaxed mb-4">"As a biohacker I was skeptical about absorption. But the buccal delivery is legit — you feel the L-Theanine within 10 minutes. Stack is clean. No junk."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-blush flex items-center justify-center text-navy text-xs font-bold">TH</div>
+            <div>
+              <p class="text-xs font-semibold text-navy">Tomas H.</p>
+              <p class="text-xs text-muted">Biohacker &amp; Coach, Tallinn</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card p-6">
+          <div class="flex gap-0.5 mb-3"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="text-charcoal text-sm leading-relaxed mb-4">"I'm 19, studying for finals, and I was buying ZYN just for the focus kick. Switched to NeuroPouch and it works better without the nicotine. Should have found this earlier."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-navy flex items-center justify-center text-warm-white text-xs font-bold">ER</div>
+            <div>
+              <p class="text-xs font-semibold text-navy">Emma R.</p>
+              <p class="text-xs text-muted">University Student, Helsinki</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card p-6">
+          <div class="flex gap-0.5 mb-3"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="text-charcoal text-sm leading-relaxed mb-4">"I travel constantly for work. This sits in my pocket, passes security, works on the plane. It's become a non-negotiable part of my routine."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-rose-gold flex items-center justify-center text-warm-white text-xs font-bold">JP</div>
+            <div>
+              <p class="text-xs font-semibold text-navy">Jonas P.</p>
+              <p class="text-xs text-muted">Sales Director, Stockholm</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card p-6">
+          <div class="flex gap-0.5 mb-3"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="text-charcoal text-sm leading-relaxed mb-4">"My Rhodiola Rosea capsules cost €40/month on their own. Getting it combined with Alpha-GPC and L-Theanine in a pouch I can use anywhere is genuinely better value."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-blush flex items-center justify-center text-navy text-xs font-bold">AV</div>
+            <div>
+              <p class="text-xs font-semibold text-navy">Aleksandra V.</p>
+              <p class="text-xs text-muted">Personal Trainer &amp; Wellness Coach</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       COMPARISON TABLE
+  ═══════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-warm-white reveal">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-rose-gold text-sm font-semibold uppercase tracking-widest mb-3">Why NeuroPouch</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-navy">How it stacks up</h2>
+      </div>
+      <div class="overflow-x-auto rounded-2xl border border-blush/60 shadow-sm">
+        <table class="w-full text-sm min-w-[500px]">
+          <thead>
+            <tr class="bg-navy text-warm-white">
+              <th class="text-left py-4 px-5 font-semibold rounded-tl-2xl">Feature</th>
+              <th class="py-4 px-4 font-bold text-rose-gold">NeuroPouch</th>
+              <th class="py-4 px-4 font-medium text-warm-white/70">Coffee</th>
+              <th class="py-4 px-4 font-medium text-warm-white/70">Energy Drink</th>
+              <th class="py-4 px-4 font-medium text-warm-white/70 rounded-tr-2xl">Nicotine Pouch</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-blush/40 bg-white">
+            <tr>
+              <td class="py-3.5 px-5 text-charcoal font-medium">Nicotine-free</td>
+              <td class="py-3.5 px-4 text-center text-emerald-500 font-bold">✓</td>
+              <td class="py-3.5 px-4 text-center text-emerald-500">✓</td>
+              <td class="py-3.5 px-4 text-center text-emerald-500">✓</td>
+              <td class="py-3.5 px-4 text-center text-red-400">✗</td>
+            </tr>
+            <tr class="bg-cream/40">
+              <td class="py-3.5 px-5 text-charcoal font-medium">No jitters</td>
+              <td class="py-3.5 px-4 text-center text-emerald-500 font-bold">✓</td>
+              <td class="py-3.5 px-4 text-center text-red-400">✗</td>
+              <td class="py-3.5 px-4 text-center text-red-400">✗</td>
+              <td class="py-3.5 px-4 text-center text-muted">—</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 text-charcoal font-medium">Cognitive ingredients</td>
+              <td class="py-3.5 px-4 text-center text-emerald-500 font-bold">✓</td>
+              <td class="py-3.5 px-4 text-center text-muted">—</td>
+              <td class="py-3.5 px-4 text-center text-muted">—</td>
+              <td class="py-3.5 px-4 text-center text-red-400">✗</td>
+            </tr>
+            <tr class="bg-cream/40">
+              <td class="py-3.5 px-5 text-charcoal font-medium">Fully discreet</td>
+              <td class="py-3.5 px-4 text-center text-emerald-500 font-bold">✓</td>
+              <td class="py-3.5 px-4 text-center text-red-400">✗</td>
+              <td class="py-3.5 px-4 text-center text-red-400">✗</td>
+              <td class="py-3.5 px-4 text-center text-emerald-500">✓</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 text-charcoal font-medium">No crash</td>
+              <td class="py-3.5 px-4 text-center text-emerald-500 font-bold">✓</td>
+              <td class="py-3.5 px-4 text-center text-red-400">✗</td>
+              <td class="py-3.5 px-4 text-center text-red-400">✗</td>
+              <td class="py-3.5 px-4 text-center text-muted">—</td>
+            </tr>
+            <tr class="bg-cream/40 rounded-b-2xl">
+              <td class="py-3.5 px-5 text-charcoal font-medium rounded-bl-2xl">Safe from age 16+</td>
+              <td class="py-3.5 px-4 text-center text-emerald-500 font-bold">✓</td>
+              <td class="py-3.5 px-4 text-center text-muted">—</td>
+              <td class="py-3.5 px-4 text-center text-muted">—</td>
+              <td class="py-3.5 px-4 text-center text-red-400 rounded-br-2xl">✗</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FAQ
+  ═══════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-cream reveal">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-rose-gold text-sm font-semibold uppercase tracking-widest mb-3">FAQ</p>
+        <h2 class="font-serif text-3xl text-navy">Good questions deserve straight answers.</h2>
+      </div>
+      <div class="space-y-3" id="faq-list">
+
+        <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
+          <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
+            <span class="font-semibold text-navy text-sm pr-4">Is NeuroPouch safe?</span>
+            <svg class="accordion-icon w-5 h-5 text-rose-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="text-muted text-sm pb-5 leading-relaxed">Yes. NeuroPouch contains zero nicotine and no synthetic stimulants like taurine. Our ingredients — Alpha-GPC, L-Theanine, Rhodiola Rosea, and B12 — are well-researched and used in licensed supplements globally. Because there is no nicotine, NeuroPouch is suitable for individuals aged 16 and above.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
+          <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
+            <span class="font-semibold text-navy text-sm pr-4">How is this different from nicotine pouches like ZYN?</span>
+            <svg class="accordion-icon w-5 h-5 text-rose-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="text-muted text-sm pb-5 leading-relaxed">Completely different category. NeuroPouch contains no nicotine whatsoever. We use nootropic compounds — Alpha-GPC, L-Theanine, Rhodiola — that support cognitive performance through non-addictive mechanisms. There is no dependency risk.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
+          <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
+            <span class="font-semibold text-navy text-sm pr-4">How quickly does it work?</span>
+            <svg class="accordion-icon w-5 h-5 text-rose-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="text-muted text-sm pb-5 leading-relaxed">Most users notice a fresher, more alert feeling within 10–15 minutes. Buccal absorption — through oral tissue — is significantly faster than swallowing capsules, which must pass through the digestive system first.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
+          <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
+            <span class="font-semibold text-navy text-sm pr-4">Can I use it during a meeting?</span>
+            <svg class="accordion-icon w-5 h-5 text-rose-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="text-muted text-sm pb-5 leading-relaxed">Yes — that's exactly what it's designed for. The pouch sits discreetly under your upper lip. No chewing. No noise. No visible gum. Nobody knows it's there except you.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
+          <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
+            <span class="font-semibold text-navy text-sm pr-4">What flavors are available?</span>
+            <svg class="accordion-icon w-5 h-5 text-rose-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="text-muted text-sm pb-5 leading-relaxed">Two flavors at launch: <strong>Natural Peppermint &amp; Lemongrass</strong> (crisp and clean) and <strong>Grapefruit &amp; Juniper Berry</strong> (bright and citrusy). Both use natural flavoring — no artificial sweeteners or synthetic taste compounds.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
+          <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
+            <span class="font-semibold text-navy text-sm pr-4">Do you ship internationally?</span>
+            <svg class="accordion-icon w-5 h-5 text-rose-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="text-muted text-sm pb-5 leading-relaxed">Yes. We ship across Europe with free shipping on all orders. More regions coming soon. Typical delivery 3–5 business days within EU.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
+          <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
+            <span class="font-semibold text-navy text-sm pr-4">What is RelaxPouch?</span>
+            <svg class="accordion-icon w-5 h-5 text-rose-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="text-muted text-sm pb-5 leading-relaxed">RelaxPouch is our upcoming evening formula — designed for stress recovery and winding down after a high-performance day. Join the waitlist below to be first to know when it launches.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       RELAXPOUCH TEASER
+  ═══════════════════════════════════════ -->
+  <section class="py-16 px-6 bg-warm-white reveal">
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-gradient-to-br from-navy to-navy-light rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden">
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-[0.04]">
+          <svg viewBox="0 0 300 200" class="w-full h-full preserveAspectRatio-none"><defs><pattern id="relax-dots" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="7.5" cy="7.5" r="1" fill="white"/></pattern></defs><rect width="300" height="200" fill="url(#relax-dots)"/></svg>
+        </div>
+        <!-- Moon icon -->
+        <div class="w-12 h-12 rounded-full bg-rose-gold/20 flex items-center justify-center mx-auto mb-4 relative z-10">
+          <svg class="w-6 h-6 text-rose-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </div>
+        <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-2 relative z-10">Coming Soon</p>
+        <h2 class="font-serif text-2xl sm:text-3xl text-warm-white mb-3 relative z-10">RelaxPouch</h2>
+        <p class="text-warm-white/70 text-sm max-w-sm mx-auto leading-relaxed relative z-10">The evening companion to NeuroPouch. Designed for recovery, calm, and a smoother end to high-performance days.</p>
+        <button id="btn-relaxpouch-waitlist" class="mt-6 inline-flex items-center gap-2 bg-rose-gold/20 hover:bg-rose-gold/30 border border-rose-gold/40 text-warm-white px-6 py-3 rounded-full text-sm font-semibold transition-all relative z-10">
+          Notify Me at Launch
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FINAL CTA
+  ═══════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-navy reveal">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-rose-gold text-sm font-semibold uppercase tracking-widest mb-4">Ready to Feel the Difference?</p>
+      <h2 class="font-serif text-3xl sm:text-5xl text-warm-white leading-tight mb-4">Get Your Edge.</h2>
+      <p class="text-warm-white/70 text-base mb-8 max-w-xl mx-auto leading-relaxed">Nicotine-free. Jitter-free. Designed for people who take their performance seriously. Try NeuroPouch with our 30-day guarantee.</p>
+      <button onclick="openModal()" class="inline-flex items-center gap-2 bg-rose-gold hover:bg-rose-gold/90 text-warm-white font-bold px-10 py-4 rounded-full text-base shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
+        Join the Waitlist
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <p class="mt-5 text-warm-white/40 text-xs">Launching soon · Tower bundles · Limited first run</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="bg-charcoal py-10 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <p class="font-serif text-lg text-warm-white">NeuroPouch</p>
+          <p class="text-warm-white/40 text-xs mt-1">The Edge You Don't Have to Announce</p>
+        </div>
+        <div class="flex flex-wrap gap-5 text-xs text-warm-white/50">
+          <a href="index.html" class="hover:text-warm-white transition-colors">Home</a>
+          <a href="#ingredients" class="hover:text-warm-white transition-colors">Ingredients</a>
+          <a href="#reviews" class="hover:text-warm-white transition-colors">Reviews</a>
+          <a href="#" class="hover:text-warm-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-warm-white transition-colors">Terms</a>
+          <a href="mailto:hello@neuropouch.com" class="hover:text-warm-white transition-colors">Contact</a>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+        <p class="text-warm-white/30 text-xs">© 2026 NeuroPouch. All rights reserved.</p>
+        <p class="text-warm-white/20 text-xs">This product is not intended to diagnose, treat, cure, or prevent any disease. Not evaluated by the FDA or EFSA.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       STICKY ADD-TO-CART (mobile)
+  ═══════════════════════════════════════ -->
+  <div id="sticky-atc" class="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-blush/60 px-4 py-3 sm:hidden shadow-2xl">
+    <button
+      class="btn-primary w-full py-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2"
+      onclick="document.getElementById('btn-waitlist').click()"
+    >
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 6H17M7 13L5.4 5M10 21a1 1 0 100-2 1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+      <span id="sticky-price-label">Sold Out — Join Waitlist</span>
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       WAITLIST MODAL
+  ═══════════════════════════════════════ -->
+  <div id="waitlist-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div class="absolute inset-0 bg-navy/60 backdrop-blur-sm" id="modal-backdrop"></div>
+    <div class="relative bg-warm-white rounded-3xl shadow-2xl max-w-md w-full p-8 text-center">
+      <button id="modal-close" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-cream flex items-center justify-center text-muted hover:text-navy transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div id="modal-form-state">
+        <div class="w-14 h-14 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-7 h-7 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-serif text-2xl text-navy mb-2" id="modal-title">Join the Waitlist</h3>
+        <p class="text-muted text-sm mb-6" id="modal-subtitle">Be first to know when we launch. Get 15% off your first order.</p>
+        <form id="waitlist-form" class="flex flex-col gap-3">
+          <input type="text" placeholder="Your first name" class="w-full px-4 py-3 rounded-xl border border-blush focus:border-rose-gold focus:outline-none text-sm text-charcoal bg-white" required />
+          <input type="email" placeholder="your@email.com" class="w-full px-4 py-3 rounded-xl border border-blush focus:border-rose-gold focus:outline-none text-sm text-charcoal bg-white" required />
+          <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-semibold text-sm mt-1">
+            Join — Get 15% Off Launch
+          </button>
+        </form>
+        <p class="mt-3 text-xs text-muted">No spam. Unsubscribe anytime.</p>
+      </div>
+      <div id="modal-success-state" class="hidden">
+        <div class="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h3 class="font-serif text-2xl text-navy mb-2">You're on the list.</h3>
+        <p class="text-muted text-sm">Check your inbox — your 15% launch discount is on its way.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════ -->
+  <script>
+    // ---- State ----
+    const state = {
+      tins: 20,
+      price: 168.30,
+      bundleLabel: '2 Towers (20 tins)',
+      flavour: 'Peppermint & Lemongrass',
+      qty: 1,
+    };
+
+    // ---- Bundle selector ----
+    const bundleCards = document.querySelectorAll('.bundle-card');
+    bundleCards.forEach(card => {
+      card.addEventListener('click', () => {
+        bundleCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        state.tins = parseInt(card.dataset.tins);
+        state.price = parseFloat(card.dataset.price);
+        state.bundleLabel = card.dataset.label;
+        updatePriceDisplay();
+      });
+    });
+
+    function updatePriceDisplay() {
+      const total = (state.price * state.qty).toFixed(2);
+      document.getElementById('display-price').textContent = `€${total}`;
+      // Checkout is disabled (sold out) — labels don't change
+    }
+
+    // ---- Flavour selector ----
+    const variantBtns = document.querySelectorAll('.variant-btn');
+    variantBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        variantBtns.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        state.flavour = btn.dataset.flavour;
+        document.getElementById('flavour-label').textContent = state.flavour;
+      });
+    });
+
+    // ---- Quantity stepper ----
+    document.getElementById('qty-minus').addEventListener('click', () => {
+      if (state.qty > 1) { state.qty--; updateQty(); }
+    });
+    document.getElementById('qty-plus').addEventListener('click', () => {
+      if (state.qty < 10) { state.qty++; updateQty(); }
+    });
+    function updateQty() {
+      document.getElementById('qty-display').textContent = state.qty;
+      updatePriceDisplay();
+    }
+
+    // ---- Gallery thumbnails ----
+    const thumbs = document.querySelectorAll('.gallery-thumb');
+    const flavorLabel = document.getElementById('main-flavor-label');
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        thumbs.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+        const flavor = thumb.dataset.flavor;
+        const color = thumb.dataset.color;
+        const isBotanical = thumb.dataset.botanical === 'true';
+        flavorLabel.textContent = (flavor || '').replace(/&amp;/g, '&');
+
+        // Animate tin color change
+        const tin = document.getElementById('tin-visual');
+        if (tin) {
+          gsap.to(tin.querySelector('.rounded-full'), {
+            duration: 0.4,
+            opacity: 0.5,
+            yoyo: true,
+            repeat: 1,
+            ease: 'power2.inOut',
+          });
+        }
+      });
+    });
+
+    // ---- Checkout button (disabled — sold out) ----
+    // When Stripe is ready: replace with stripe.redirectToCheckout(...)
+    // document.getElementById('btn-checkout').addEventListener('click', () => { ... });
+
+    // ---- Waitlist modal triggers ----
+    document.getElementById('btn-waitlist').addEventListener('click', () => openModal());
+    document.getElementById('btn-relaxpouch-waitlist').addEventListener('click', () =>
+      openModal('Get notified when RelaxPouch launches.', 'Join the list and be first in line.')
+    );
+
+    function openModal(title, subtitle) {
+      const modal = document.getElementById('waitlist-modal');
+      if (title) document.getElementById('modal-title').textContent = title;
+      if (subtitle) document.getElementById('modal-subtitle').textContent = subtitle;
+      document.getElementById('modal-form-state').classList.remove('hidden');
+      document.getElementById('modal-success-state').classList.add('hidden');
+      modal.classList.remove('hidden');
+      gsap.fromTo('#waitlist-modal > div:last-child', { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.7)' });
+    }
+
+    function closeModal() {
+      gsap.to('#waitlist-modal > div:last-child', {
+        scale: 0.9, opacity: 0, duration: 0.2, ease: 'power2.in',
+        onComplete: () => document.getElementById('waitlist-modal').classList.add('hidden'),
+      });
+    }
+
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+
+    // ---- Waitlist form ----
+    document.getElementById('waitlist-form').addEventListener('submit', e => {
+      e.preventDefault();
+      // TODO: Replace with Klaviyo/Mailchimp API endpoint
+      // fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email, name }) })
+      document.getElementById('modal-form-state').classList.add('hidden');
+      document.getElementById('modal-success-state').classList.remove('hidden');
+    });
+
+    // ---- FAQ accordion ----
+    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.accordion-item');
+        const content = item.querySelector('.accordion-content');
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.accordion-content').classList.remove('open');
+          i.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          content.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // ---- Sticky ATC bar (show after scrolling past hero) ----
+    const stickyAtc = document.getElementById('sticky-atc');
+    const buySection = document.getElementById('buy');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          stickyAtc.classList.add('visible');
+        } else {
+          stickyAtc.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(buySection);
+
+    // ---- GSAP scroll animations ----
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Reveal sections on scroll
+    gsap.utils.toArray('.reveal').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+        }
+      );
+    });
+
+    // Ingredient cards stagger
+    gsap.utils.toArray('.ingredient-card').forEach((card, i) => {
+      gsap.fromTo(card,
+        { opacity: 0, x: -20 },
+        {
+          opacity: 1, x: 0, duration: 0.5, delay: i * 0.08, ease: 'power2.out',
+          scrollTrigger: { trigger: card, start: 'top 90%', once: true }
+        }
+      );
+    });
+
+    // Review cards stagger
+    gsap.utils.toArray('.review-card').forEach((card, i) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1, y: 0, duration: 0.45, delay: i * 0.06, ease: 'power2.out',
+          scrollTrigger: { trigger: card, start: 'top 92%', once: true }
+        }
+      );
+    });
+
+    // Tin 3D tilt on mouse move (desktop)
+    const tinWrap = document.getElementById('main-image-wrap');
+    if (tinWrap && window.matchMedia('(hover: hover)').matches) {
+      tinWrap.addEventListener('mousemove', e => {
+        const rect = tinWrap.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / (rect.width / 2);
+        const dy = (e.clientY - cy) / (rect.height / 2);
+        gsap.to(tinWrap, {
+          rotateY: dx * 8,
+          rotateX: -dy * 8,
+          duration: 0.4,
+          ease: 'power2.out',
+          transformPerspective: 800,
+        });
+      });
+      tinWrap.addEventListener('mouseleave', () => {
+        gsap.to(tinWrap, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'power2.out' });
+      });
+    }
+
+    // Hero elements entrance
+    gsap.fromTo('#buy .grid > *', { opacity: 0, y: 30 }, {
+      opacity: 1, y: 0, duration: 0.7, stagger: 0.15, ease: 'power2.out', delay: 0.2
+    });
+  </script>
+
+</body>
+</html>
