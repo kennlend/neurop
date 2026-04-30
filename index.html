@@ -62,6 +62,7 @@
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/brevo.js"></script>
 
   <style>
     * { box-sizing: border-box; }
@@ -1129,18 +1130,29 @@
       }
     }
 
-    // ─── Form Submit ──────────────────────────────────────────────────────────
-    function handleFormSubmit(e, formId) {
+    // ─── Form Submit → Brevo Whitelist (list 7) ───────────────────────────────
+    async function handleFormSubmit(e, formId) {
       e.preventDefault();
       const form = document.getElementById(formId);
-      const email = form.querySelector('input[type="email"]').value;
+      const btn  = form.querySelector('button[type="submit"], input[type="submit"], button:not([type])') || form.querySelector('a');
+      const email = form.querySelector('input[type="email"]').value.trim();
+      if (!email) return;
 
-      // Here you'd POST to Mailchimp/Klaviyo endpoint
-      // For now: show success modal
-      console.log('Email captured:', email);
-      document.getElementById('success-modal').classList.remove('hidden');
-      document.getElementById('success-modal').classList.add('flex');
-      form.reset();
+      // Disable button while submitting
+      const originalText = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
+
+      const result = await addToBrevo({ email, listId: LIST_WHITELIST });
+
+      if (result.ok) {
+        document.getElementById('success-modal').classList.remove('hidden');
+        document.getElementById('success-modal').classList.add('flex');
+        form.reset();
+      } else {
+        alert('Something went wrong — please try again. (' + result.error + ')');
+      }
+
+      if (btn) { btn.disabled = false; btn.textContent = originalText; }
     }
 
     function closeModal() {

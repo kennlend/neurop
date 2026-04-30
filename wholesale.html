@@ -36,6 +36,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/brevo.js"></script>
 
   <style>
     * { box-sizing: border-box; }
@@ -401,16 +402,16 @@
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-semibold text-warm-white/70 mb-1.5">Business name *</label>
-            <input type="text" class="form-input" placeholder="Your business name" required />
+            <input id="ws-business" type="text" name="business" class="form-input" placeholder="Your business name" required />
           </div>
           <div>
             <label class="block text-xs font-semibold text-warm-white/70 mb-1.5">Contact name *</label>
-            <input type="text" class="form-input" placeholder="Your full name" required />
+            <input id="ws-name" type="text" name="name" class="form-input" placeholder="Your full name" required />
           </div>
         </div>
         <div>
           <label class="block text-xs font-semibold text-warm-white/70 mb-1.5">Business email *</label>
-          <input type="email" class="form-input" placeholder="you@business.com" required />
+          <input id="ws-email" type="email" name="email" class="form-input" placeholder="you@business.com" required />
         </div>
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
@@ -560,12 +561,36 @@
       });
     });
 
-    // Wholesale form
-    document.getElementById('wholesale-form').addEventListener('submit', e => {
+    // Wholesale form → Brevo Distributors (list 8)
+    document.getElementById('wholesale-form').addEventListener('submit', async e => {
       e.preventDefault();
-      // TODO: Replace with actual form submission endpoint (e.g. Formspree, Netlify Forms, or custom API)
-      document.getElementById('wholesale-form').classList.add('hidden');
-      document.getElementById('form-success').classList.remove('hidden');
+      const form = document.getElementById('wholesale-form');
+      const btn  = form.querySelector('button[type="submit"]');
+
+      const email    = document.getElementById('ws-email').value.trim();
+      const fullName = document.getElementById('ws-name').value.trim();
+      const business = document.getElementById('ws-business').value.trim();
+      const firstName = fullName.split(' ')[0] || fullName;
+      const lastName  = fullName.split(' ').slice(1).join(' ') || '';
+
+      if (!email) return;
+      if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+
+      const result = await addToBrevo({
+        email,
+        firstName,
+        lastName,
+        listId: LIST_DISTRIBUTORS,
+        attributes: { COMPANY: business, SOURCE: 'wholesale-apply' },
+      });
+
+      if (result.ok) {
+        form.classList.add('hidden');
+        document.getElementById('form-success').classList.remove('hidden');
+      } else {
+        alert('Something went wrong — please try again. (' + result.error + ')');
+        if (btn) { btn.disabled = false; btn.textContent = 'Submit Wholesale Application'; }
+      }
     });
   </script>
 </body>

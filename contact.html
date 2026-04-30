@@ -36,6 +36,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/brevo.js"></script>
 
   <style>
     * { box-sizing: border-box; }
@@ -507,22 +508,50 @@
       });
     });
 
-    // ── Form submissions ──
-    function handleSubmit(formId, successId) {
-      const form = document.getElementById(formId);
+    // ── Form submissions → Brevo ──────────────────────────────────────────────
+    async function handleSubmit(formId, successId, listId, source) {
+      const form    = document.getElementById(formId);
       const success = document.getElementById(successId);
-      form.addEventListener('submit', e => {
+      form.addEventListener('submit', async e => {
         e.preventDefault();
-        // TODO: replace with real endpoint (Formspree, Klaviyo, etc.)
-        const data = new FormData(form);
-        console.log('[NeuroPouch Contact]', formId, Object.fromEntries(data));
-        form.style.display = 'none';
-        success.classList.add('visible');
+        const btn = form.querySelector('button[type="submit"]');
+
+        // Collect fields — all forms have email; grab name if present
+        const emailEl = form.querySelector('input[type="email"]');
+        const nameEl  = form.querySelector('input[type="text"]');
+        const outletEl = form.querySelector('input[id$="-outlet"]');
+        const businessEl = form.querySelector('input[id$="-business"]');
+
+        const email     = emailEl ? emailEl.value.trim() : '';
+        const fullName  = nameEl  ? nameEl.value.trim()  : '';
+        const firstName = fullName.split(' ')[0] || fullName;
+        const lastName  = fullName.split(' ').slice(1).join(' ') || '';
+        const company   = (outletEl && outletEl.value.trim()) || (businessEl && businessEl.value.trim()) || '';
+
+        if (!email) return;
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+        const result = await addToBrevo({
+          email, firstName, lastName, listId,
+          attributes: {
+            ...(company ? { COMPANY: company } : {}),
+            SOURCE: source,
+          },
+        });
+
+        if (result.ok) {
+          form.style.display = 'none';
+          success.classList.add('visible');
+        } else {
+          alert('Something went wrong — please try again. (' + result.error + ')');
+          if (btn) { btn.disabled = false; btn.textContent = 'Send'; }
+        }
       });
     }
-    handleSubmit('form-general', 'success-general');
-    handleSubmit('form-press', 'success-press');
-    handleSubmit('form-wholesale', 'success-wholesale');
+
+    handleSubmit('form-general',   'success-general',   LIST_WHITELIST,    'contact-general');
+    handleSubmit('form-press',     'success-press',     LIST_WHITELIST,    'contact-press');
+    handleSubmit('form-wholesale', 'success-wholesale', LIST_DISTRIBUTORS, 'contact-wholesale');
 
     // ── FAQ accordion ──
     document.querySelectorAll('.faq-btn').forEach(btn => {
