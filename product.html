@@ -427,7 +427,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 
             <!-- 1 Tower = 10 tins = €99 -->
-            <div class="bundle-card rounded-2xl p-4" data-tins="10" data-price="99.00" data-label="1 Tower (10 tins)">
+            <div class="bundle-card rounded-2xl p-4" data-towers="1" data-price="99.00" data-label="1 Tower (10 tins)">
               <p class="font-bold text-navy text-base">1 Tower</p>
               <p class="text-muted text-xs mt-0.5">10 tins · ~€9.90 / tin</p>
               <p class="mt-3 font-semibold text-charcoal">€99.00</p>
@@ -435,7 +435,7 @@
             </div>
 
             <!-- 2 Towers = 20 tins = €168.30 (15% off) -->
-            <div class="bundle-card selected rounded-2xl p-4" data-tins="20" data-price="168.30" data-label="2 Towers (20 tins)">
+            <div class="bundle-card selected rounded-2xl p-4" data-towers="2" data-price="168.30" data-label="2 Towers (20 tins)">
               <div class="bundle-badge">Save 15%</div>
               <p class="font-bold text-navy text-base">2 Towers</p>
               <p class="text-muted text-xs mt-0.5">20 tins · ~€8.42 / tin</p>
@@ -444,7 +444,7 @@
             </div>
 
             <!-- 3 Towers = 30 tins = €237.60 (20% off) -->
-            <div class="bundle-card rounded-2xl p-4" data-tins="30" data-price="237.60" data-label="3 Towers (30 tins)">
+            <div class="bundle-card rounded-2xl p-4" data-towers="3" data-price="237.60" data-label="3 Towers (30 tins)">
               <div class="bundle-badge">Save 20%</div>
               <p class="font-bold text-navy text-base">3 Towers</p>
               <p class="text-muted text-xs mt-0.5">30 tins · ~€7.92 / tin</p>
@@ -473,7 +473,7 @@
 
         <!-- Quantity -->
         <div class="flex items-center gap-4">
-          <p class="text-sm font-semibold text-charcoal">Quantity</p>
+          <p class="text-sm font-semibold text-charcoal">Quantity <span class="font-normal text-muted">(towers)</span></p>
           <div class="flex items-center gap-3">
             <button class="qty-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
             <span id="qty-display" class="w-8 text-center font-semibold text-navy text-lg">1</span>
@@ -1110,7 +1110,7 @@
   <script>
     // ---- State ----
     const state = {
-      tins: 20,
+      towers: 2,
       price: 168.30,
       bundleLabel: '2 Towers (20 tins)',
       flavour: 'Peppermint & Lemongrass',
@@ -1123,7 +1123,7 @@
       card.addEventListener('click', () => {
         bundleCards.forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
-        state.tins = parseInt(card.dataset.tins);
+        state.towers = parseInt(card.dataset.towers);
         state.price = parseFloat(card.dataset.price);
         state.bundleLabel = card.dataset.label;
         updatePriceDisplay();
@@ -1134,16 +1134,23 @@
     updatePriceDisplay();
 
     function updatePriceDisplay() {
+      // Total towers = bundle size × qty stepper
+      const totalTowers = state.towers * state.qty;
       const total = (state.price * state.qty).toFixed(2);
 
-      // Map bundle size to dedicated WooCommerce product slug
-      const slugMap = {
-        10: 'energy-and-focus-vitamin-pouch-mint-10-pack',
-        20: 'energy-and-focus-vitamin-pouch-mint-20-pack',
-        30: 'energy-and-focus-vitamin-pouch-mint-30-pack',
-      };
-      const slug = slugMap[state.tins] || slugMap[10];
-      const wooUrl = `https://order.getneuropouch.com/?product=${slug}`;
+      // Routing logic:
+      // 1–3 total towers → use the matching fixed-price product
+      // 4+  total towers → use bulk (30-pack-copy) with &quantity=N
+      let wooUrl;
+      if (totalTowers === 1) {
+        wooUrl = 'https://order.getneuropouch.com/?product=energy-and-focus-vitamin-pouch-mint-10-pack';
+      } else if (totalTowers === 2) {
+        wooUrl = 'https://order.getneuropouch.com/?product=energy-and-focus-vitamin-pouch-mint-20-pack';
+      } else if (totalTowers === 3) {
+        wooUrl = 'https://order.getneuropouch.com/?product=energy-and-focus-vitamin-pouch-mint-30-pack';
+      } else {
+        wooUrl = `https://order.getneuropouch.com/?product=energy-and-focus-vitamin-pouch-mint-30-pack-copy&quantity=${totalTowers}`;
+      }
 
       // Main checkout button
       const btnCheckout = document.getElementById('btn-checkout');
@@ -1174,7 +1181,7 @@
       if (state.qty > 1) { state.qty--; updateQty(); }
     });
     document.getElementById('qty-plus').addEventListener('click', () => {
-      if (state.qty < 10) { state.qty++; updateQty(); }
+      state.qty++; updateQty();
     });
     function updateQty() {
       document.getElementById('qty-display').textContent = state.qty;
