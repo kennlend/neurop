@@ -400,7 +400,7 @@
             <span class="star text-lg">★</span>
           </div>
           <a href="#reviews" class="text-sm text-muted hover:text-rose-gold transition-colors">4.9 · 47 reviews</a>
-          <span class="ml-auto text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-1 rounded-full">Sold Out — Join Waitlist</span>
+          <span class="ml-auto text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">In Stock</span>
         </div>
 
         <!-- Title -->
@@ -413,7 +413,7 @@
         <div class="flex items-baseline gap-3">
           <span id="display-price" class="text-3xl font-bold text-navy">€99.00</span>
           <span class="text-muted text-sm line-through">€99.00</span>
-          <span class="text-red-500 text-sm font-semibold bg-red-50 px-2.5 py-1 rounded-full">Sold Out</span>
+          <span class="text-emerald-700 text-sm font-semibold bg-emerald-50 px-2.5 py-1 rounded-full">In Stock</span>
         </div>
 
         <!-- Divider -->
@@ -480,15 +480,15 @@
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-3">
-          <button
+          <a
             id="btn-checkout"
-            class="flex-1 py-4 rounded-2xl font-bold text-base tracking-wide flex items-center justify-center gap-2 bg-gray-300 text-gray-500 cursor-not-allowed"
-            aria-label="Currently sold out — join the waitlist"
-            disabled
+            href="https://order.getneuropouch.com/?add-to-cart=13&quantity=10"
+            class="btn-primary flex-1 py-4 rounded-2xl font-bold text-base tracking-wide flex items-center justify-center gap-2"
+            aria-label="Buy now"
           >
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
-            <span id="btn-checkout-label">Sold Out — Join Waitlist Below</span>
-          </button>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <span id="btn-checkout-label">Buy Now — €99.00</span>
+          </a>
           <button
             id="btn-waitlist"
             class="flex-none px-6 py-4 rounded-2xl border-2 border-navy text-navy font-semibold text-sm hover:bg-navy hover:text-warm-white transition-all"
@@ -1057,13 +1057,14 @@
        STICKY ADD-TO-CART (mobile)
   ═══════════════════════════════════════ -->
   <div id="sticky-atc" class="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-blush/60 px-4 py-3 sm:hidden shadow-2xl">
-    <button
+    <a
+      id="sticky-atc-link"
+      href="https://order.getneuropouch.com/?add-to-cart=13&quantity=10"
       class="btn-primary w-full py-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2"
-      onclick="document.getElementById('btn-waitlist').click()"
     >
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 6H17M7 13L5.4 5M10 21a1 1 0 100-2 1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
-      <span id="sticky-price-label">Sold Out — Join Waitlist</span>
-    </button>
+      <span id="sticky-price-label">Buy Now — €99.00</span>
+    </a>
   </div>
 
   <!-- ═══════════════════════════════════════
@@ -1126,10 +1127,26 @@
       });
     });
 
+    // Set correct URL on page load
+    updatePriceDisplay();
+
     function updatePriceDisplay() {
       const total = (state.price * state.qty).toFixed(2);
+      // WooCommerce product ID 13, quantity = tins × qty stepper
+      const wooQty = state.tins * state.qty;
+      const wooUrl = `https://order.getneuropouch.com/?add-to-cart=13&quantity=${wooQty}`;
+
+      // Main checkout button
+      const btnCheckout = document.getElementById('btn-checkout');
+      btnCheckout.href = wooUrl;
+      document.getElementById('btn-checkout-label').textContent = `Buy Now — €${total}`;
+
+      // Sticky mobile bar
+      document.getElementById('sticky-atc-link').href = wooUrl;
+      document.getElementById('sticky-price-label').textContent = `Buy Now — €${total}`;
+
+      // Main price display
       document.getElementById('display-price').textContent = `€${total}`;
-      // Checkout is disabled (sold out) — labels don't change
     }
 
     // ---- Flavour selector ----
@@ -1180,10 +1197,6 @@
         }
       });
     });
-
-    // ---- Checkout button (disabled — sold out) ----
-    // When Stripe is ready: replace with stripe.redirectToCheckout(...)
-    // document.getElementById('btn-checkout').addEventListener('click', () => { ... });
 
     // ---- Waitlist modal triggers ----
     document.getElementById('btn-waitlist').addEventListener('click', () => openModal());
