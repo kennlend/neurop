@@ -485,7 +485,7 @@
         <div class="flex flex-col sm:flex-row gap-3">
           <a
             id="btn-checkout"
-            href="https://order.getneuropouch.com/?add-to-cart=13&quantity=10"
+            href="https://order.getneuropouch.com/?product=energy-and-focus-vitamin-pouch-mint-20-pack"
             class="btn-primary flex-1 py-4 rounded-2xl font-bold text-base tracking-wide flex items-center justify-center gap-2"
             aria-label="Buy now"
           >
@@ -1062,7 +1062,7 @@
   <div id="sticky-atc" class="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-blush/60 px-4 py-3 sm:hidden shadow-2xl">
     <a
       id="sticky-atc-link"
-      href="https://order.getneuropouch.com/?add-to-cart=13&quantity=10"
+      href="https://order.getneuropouch.com/?product=energy-and-focus-vitamin-pouch-mint-20-pack"
       class="btn-primary w-full py-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2"
     >
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 6H17M7 13L5.4 5M10 21a1 1 0 100-2 1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
@@ -1135,9 +1135,15 @@
 
     function updatePriceDisplay() {
       const total = (state.price * state.qty).toFixed(2);
-      // WooCommerce product ID 13, quantity = tins × qty stepper
-      const wooQty = state.tins * state.qty;
-      const wooUrl = `https://order.getneuropouch.com/?add-to-cart=13&quantity=${wooQty}`;
+
+      // Map bundle size to dedicated WooCommerce product slug
+      const slugMap = {
+        10: 'energy-and-focus-vitamin-pouch-mint-10-pack',
+        20: 'energy-and-focus-vitamin-pouch-mint-20-pack',
+        30: 'energy-and-focus-vitamin-pouch-mint-30-pack',
+      };
+      const slug = slugMap[state.tins] || slugMap[10];
+      const wooUrl = `https://order.getneuropouch.com/?product=${slug}`;
 
       // Main checkout button
       const btnCheckout = document.getElementById('btn-checkout');
