@@ -336,8 +336,9 @@
           <button class="gallery-thumb active w-16 h-16 rounded-xl bg-navy/10 flex items-center justify-center" data-flavor="Peppermint &amp; Lemongrass" data-color="#1C2B4A" aria-label="Navy tin - Peppermint">
             <div class="w-10 h-10 rounded-full bg-gradient-to-br from-navy to-navy-light shadow-md"></div>
           </button>
-          <button class="gallery-thumb w-16 h-16 rounded-xl bg-blush/30 flex items-center justify-center" data-flavor="Grapefruit &amp; Juniper Berry" data-color="#E8C5B8" aria-label="Blush tin - Grapefruit">
+          <button class="gallery-thumb w-16 h-16 rounded-xl bg-blush/30 flex items-center justify-center opacity-40 cursor-not-allowed relative" disabled aria-label="Blush tin - Grapefruit (Coming Soon)">
             <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blush to-rose-gold shadow-md"></div>
+            <span class="absolute -top-1.5 -right-1.5 text-[8px] bg-navy text-warm-white px-1 py-0.5 rounded-full leading-none">Soon</span>
           </button>
           <button class="gallery-thumb w-16 h-16 rounded-xl bg-navy/10 flex items-center justify-center" data-flavor="Peppermint &amp; Lemongrass" data-color="#1C2B4A" data-botanical="true" aria-label="Navy botanical tin">
             <div class="w-10 h-10 rounded-full bg-gradient-to-br from-navy to-navy-light shadow-md relative overflow-hidden">
@@ -348,7 +349,7 @@
               </div>
             </div>
           </button>
-          <button class="gallery-thumb w-16 h-16 rounded-xl bg-blush/30 flex items-center justify-center" data-flavor="Grapefruit &amp; Juniper Berry" data-color="#E8C5B8" data-botanical="true" aria-label="Blush botanical tin">
+          <button class="gallery-thumb w-16 h-16 rounded-xl bg-blush/30 flex items-center justify-center opacity-40 cursor-not-allowed relative" disabled aria-label="Blush botanical tin (Coming Soon)">
             <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blush to-rose-gold shadow-md relative overflow-hidden">
               <div class="absolute inset-0 flex items-center justify-center opacity-50">
                 <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" stroke="#1C2B4A" stroke-width="1.5">
@@ -356,6 +357,7 @@
                 </svg>
               </div>
             </div>
+            <span class="absolute -top-1.5 -right-1.5 text-[8px] bg-navy text-warm-white px-1 py-0.5 rounded-full leading-none">Soon</span>
           </button>
         </div>
 
@@ -453,17 +455,18 @@
           </div>
         </div>
 
-        <!-- Flavour selector -->
+        <!-- Flavour -->
         <div>
           <p class="text-sm font-semibold text-charcoal mb-3">
-            Flavour: <span id="flavour-label" class="font-normal text-muted">Peppermint &amp; Lemongrass</span>
+            Flavour: <span class="font-normal text-muted">Natural Peppermint &amp; Lemongrass</span>
           </p>
           <div class="flex flex-wrap gap-2">
-            <button class="variant-btn selected rounded-xl px-4 py-2 text-sm font-medium" data-flavour="Peppermint &amp; Lemongrass">
-              🌿 Peppermint &amp; Lemongrass
+            <button class="variant-btn selected rounded-xl px-4 py-2 text-sm font-medium" disabled>
+              🌿 Natural Peppermint &amp; Lemongrass
             </button>
-            <button class="variant-btn rounded-xl px-4 py-2 text-sm font-medium" data-flavour="Grapefruit &amp; Juniper Berry">
+            <button class="variant-btn rounded-xl px-4 py-2 text-sm font-medium opacity-40 cursor-not-allowed relative" disabled title="Coming soon">
               🍊 Grapefruit &amp; Juniper Berry
+              <span class="absolute -top-2 -right-2 text-xs bg-navy text-warm-white px-1.5 py-0.5 rounded-full" style="font-size:9px;">Soon</span>
             </button>
           </div>
         </div>
@@ -770,7 +773,7 @@
 
         <div class="review-card p-6">
           <div class="flex gap-0.5 mb-3"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="text-charcoal text-sm leading-relaxed mb-4">"Used it during a 3-hour board meeting. Nobody noticed. I was the sharpest one in the room. The grapefruit flavor is incredible — not artificial at all."</p>
+          <p class="text-charcoal text-sm leading-relaxed mb-4">"Used it during a 3-hour board meeting. Nobody noticed. I was the sharpest one in the room. The mint flavor is clean and subtle — not artificial at all."</p>
           <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-full bg-rose-gold flex items-center justify-center text-warm-white text-xs font-bold">SL</div>
             <div>
@@ -958,7 +961,7 @@
             <svg class="accordion-icon w-5 h-5 text-rose-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="text-muted text-sm pb-5 leading-relaxed">Two flavors at launch: <strong>Natural Peppermint &amp; Lemongrass</strong> (crisp and clean) and <strong>Grapefruit &amp; Juniper Berry</strong> (bright and citrusy). Both use natural flavoring — no artificial sweeteners or synthetic taste compounds.</p>
+            <p class="text-muted text-sm pb-5 leading-relaxed">Currently available in <strong>Natural Peppermint &amp; Lemongrass</strong> (crisp and clean). <strong>Grapefruit &amp; Juniper Berry</strong> is coming soon. Both use natural flavoring — no artificial sweeteners or synthetic taste compounds.</p>
           </div>
         </div>
 
