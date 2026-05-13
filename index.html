@@ -6,7 +6,7 @@
 
   <!-- SEO -->
   <title>NeuroPouch — Nootropic Focus Pouches | Nicotine-Free Cognitive Enhancement</title>
-  <meta name="description" content="NeuroPouch delivers Alpha-GPC, L-Theanine & Rhodiola Rosea through fast oral absorption. Zero nicotine. Discreet. 16 pouches per tin. Join the waitlist for 15% off launch." />
+  <meta name="description" content="NeuroPouch delivers Alpha-GPC, L-Theanine, Caffeine & Rhodiola Rosea through fast buccal absorption. Zero nicotine. Discreet. 16 pouches per tin." />
   <meta name="keywords" content="nootropic pouch, nicotine-free focus supplement, cognitive enhancement, Alpha-GPC, Rhodiola Rosea, biohacker supplement, focus pouch, oral nootropic" />
   <link rel="canonical" href="https://getneuropouch.com/" />
 
@@ -65,9 +65,28 @@
   <script src="assets/brevo.js"></script>
 
   <style>
+    :root {
+      --navy: #1C2B4A;
+      --navy-light: #243559;
+      --rose-gold: #C4956A;
+      --blush: #E8C5B8;
+      --cream: #F8F4EF;
+      --warm-white: #FDFAF7;
+      --charcoal: #2D3142;
+      --muted: #6B7280;
+      --mint: #88B8A4;
+      --citrus: #D8C36A;
+      --berry: #986A8D;
+    }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: #FDFAF7; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+    body {
+      background: var(--warm-white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      letter-spacing: 0;
+    }
 
     /* Neural network canvas */
     #neural-canvas {
@@ -103,6 +122,67 @@
       animation-play-state: paused;
     }
 
+    .hero-immersive {
+      min-height: 88svh;
+      isolation: isolate;
+      background:
+        linear-gradient(90deg, rgba(253,250,247,0.98) 0%, rgba(253,250,247,0.92) 36%, rgba(253,250,247,0.54) 58%, rgba(253,250,247,0.08) 100%),
+        url("assets/images/landingpageneuropouch.png") center right / cover no-repeat;
+    }
+
+    .hero-immersive::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 30%;
+      z-index: -1;
+      background: linear-gradient(0deg, rgba(248,244,239,0.78), rgba(248,244,239,0));
+      pointer-events: none;
+    }
+
+    .hero-photo-caption {
+      background: rgba(253,250,247,0.74);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 8px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 24px 60px rgba(28,43,74,0.12);
+    }
+
+    .hero-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid rgba(28,43,74,0.1);
+      border-radius: 8px;
+      background: rgba(253,250,247,0.74);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .hero-proof-grid > div + div { border-left: 1px solid rgba(28,43,74,0.1); }
+
+    .brand-dot {
+      background: linear-gradient(135deg, var(--mint), var(--rose-gold));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45);
+    }
+
+    .signal-line {
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .signal-line::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.35rem;
+      width: 0.42rem;
+      height: 0.42rem;
+      border-radius: 999px;
+      background: var(--mint);
+    }
+
     /* Glow pulse on CTA */
     @keyframes glow-pulse {
       0%, 100% { box-shadow: 0 0 20px rgba(196,149,106,0.4), 0 4px 24px rgba(28,43,74,0.15); }
@@ -121,6 +201,7 @@
 
     /* Ingredient card hover */
     .ingredient-card {
+      border-radius: 8px !important;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: default;
     }
@@ -168,6 +249,7 @@
     .testimonial-card {
       background: linear-gradient(135deg, #fff 0%, rgba(248,244,239,0.8) 100%);
       border: 1px solid rgba(196,149,106,0.2);
+      border-radius: 8px !important;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .testimonial-card:hover {
@@ -190,6 +272,7 @@
     .stat-card {
       background: white;
       border: 1px solid rgba(196,149,106,0.2);
+      border-radius: 8px !important;
       transition: transform 0.3s ease;
     }
     .stat-card:hover { transform: translateY(-4px); }
@@ -222,6 +305,69 @@
     }
     .marquee-track { animation: marquee 25s linear infinite; }
     .marquee-track:hover { animation-play-state: paused; }
+
+    .use-case-card {
+      position: relative;
+      min-height: 260px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(28,43,74,0.1);
+      background: #fff;
+      box-shadow: 0 20px 50px rgba(28,43,74,0.08);
+    }
+
+    .use-case-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(136,184,164,0.16), rgba(196,149,106,0.08) 45%, rgba(152,106,141,0.12));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .use-case-card:hover::before { opacity: 1; }
+
+    .use-case-card > * { position: relative; }
+
+    .micro-meter {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3px;
+      height: 38px;
+      align-items: end;
+    }
+
+    .micro-meter span {
+      display: block;
+      min-height: 8px;
+      border-radius: 999px 999px 2px 2px;
+      background: linear-gradient(180deg, var(--mint), var(--navy));
+    }
+
+    @media (max-width: 768px) {
+      .hero-immersive {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(253,250,247,0.5) 0%, rgba(253,250,247,0.98) 42%, rgba(253,250,247,1) 100%),
+          url("assets/images/landingpageneuropouch.png") top center / 190% auto no-repeat;
+      }
+
+      .hero-proof-grid { grid-template-columns: 1fr; }
+      .hero-proof-grid > div + div {
+        border-left: 0;
+        border-top: 1px solid rgba(28,43,74,0.1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body class="text-charcoal">
@@ -231,7 +377,6 @@
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <a href="/" class="flex items-center gap-2" aria-label="NeuroPouch home">
         <span class="font-serif text-xl text-navy tracking-wide">NeuroPouch</span>
-        <span class="text-xs font-sans font-medium text-rose-gold uppercase tracking-widest hidden sm:block">Focus</span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-charcoal">
         <a href="#ingredients" class="hover:text-rose-gold transition-colors duration-200">Ingredients</a>
@@ -242,130 +387,60 @@
       </div>
       <div class="flex items-center gap-3">
         <a href="product.html"
-           class="text-sm font-semibold text-rose-gold hover:text-navy transition-colors duration-200 hidden sm:inline">
-          Buy Now
+           class="bg-navy text-warm-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-navy-light transition-colors duration-200">
+          Order Now
         </a>
-        <button onclick="openWaitlistModal()"
-           class="bg-navy text-warm-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-navy-light transition-colors duration-200 cursor-pointer">
-          Join Waitlist
-        </button>
       </div>
     </div>
   </nav>
 
   <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
-  <section class="relative min-h-screen flex items-center overflow-hidden bg-warm-white pt-20">
+  <section class="hero-immersive relative flex items-center overflow-hidden pt-24 pb-16 lg:pt-28">
 
     <!-- Neural network canvas background -->
     <canvas id="neural-canvas" aria-hidden="true"></canvas>
 
-    <!-- Decorative blob -->
-    <div class="absolute top-20 right-0 w-96 h-96 rounded-full opacity-20 pointer-events-none"
-         style="background: radial-gradient(circle, #C4956A 0%, transparent 70%); transform: translate(30%, -20%);"></div>
-    <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-15 pointer-events-none"
-         style="background: radial-gradient(circle, #1C2B4A 0%, transparent 70%); transform: translate(-30%, 30%);"></div>
-
-    <div class="max-w-6xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 lg:gap-6 items-center py-20 lg:py-0">
-
-      <!-- Left: Text -->
-      <div class="order-2 lg:order-1">
-        <!-- Badge -->
+    <div class="relative z-10 max-w-6xl mx-auto px-6 w-full">
+      <div class="max-w-2xl">
         <div class="fade-up inline-flex items-center gap-2 badge rounded-full px-4 py-1.5 mb-6">
-          <span class="w-1.5 h-1.5 rounded-full bg-rose-gold inline-block"></span>
-          <span class="text-xs font-semibold uppercase tracking-widest text-navy">Neurological Enhancement Pouches</span>
+          <span class="brand-dot w-2 h-2 rounded-full inline-block"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-navy">The edge you don't have to announce</span>
         </div>
 
-        <!-- Headline -->
-        <h1 class="fade-up font-serif text-5xl lg:text-6xl xl:text-7xl leading-tight text-navy mb-6">
+        <h1 class="fade-up font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.96] text-navy mb-6 max-w-2xl">
           Your Focus,<br />
           <em class="not-italic" style="color: #C4956A;">In Your Pocket.</em>
         </h1>
 
-        <!-- Subheadline -->
-        <p class="fade-up font-sans text-lg text-muted leading-relaxed mb-8 max-w-lg">
-          NeuroPouch delivers Alpha-GPC, L-Theanine & Rhodiola Rosea through fast buccal absorption.
-          No chewing. No drinking. No one knows it's there.
+        <p class="fade-up font-sans text-lg sm:text-xl text-charcoal/70 leading-relaxed mb-8 max-w-xl">
+          A discreet, nicotine-free nootropic pouch with Alpha-GPC, L-Theanine, Rhodiola Rosea, B12, and clean caffeine. No cup. No chewing. No visible routine.
         </p>
 
-        <!-- Trust pills -->
-        <div class="fade-up flex flex-wrap gap-3 mb-10">
-          <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Zero Nicotine
-          </span>
-          <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            No Taurine
-          </span>
-          <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Safe 16+
-          </span>
-          <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Discreet in Meetings
-          </span>
+        <div class="fade-up grid sm:grid-cols-2 gap-3 mb-9 max-w-xl text-sm font-semibold text-navy">
+          <div class="signal-line">Fast buccal absorption</div>
+          <div class="signal-line">Caffeine paired with L-Theanine</div>
+          <div class="signal-line">16 pouches per tin</div>
+          <div class="signal-line">Zero nicotine, zero taurine</div>
         </div>
 
-        <!-- Email form -->
         <div class="fade-up" id="waitlist">
-          <form id="hero-form" name="waitlist" data-netlify="true" class="flex flex-col sm:flex-row gap-3 max-w-md" onsubmit="handleFormSubmit(event, 'hero-form')">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              required
-              class="email-input flex-1 px-5 py-3.5 bg-white border border-gray-200 rounded-full text-sm font-medium shadow-sm transition-all duration-200"
-              aria-label="Email address"
-            />
-            <button
-              type="submit"
-              class="cta-glow bg-navy text-warm-white font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-navy-light transition-colors duration-200 whitespace-nowrap cursor-pointer"
-            >
-              Get 15% Off Launch
-            </button>
-          </form>
-          <p class="text-xs text-muted mt-3 ml-1">Join 500+ early supporters. No spam. Unsubscribe anytime.</p>
+          <a href="product.html"
+            class="cta-glow inline-block bg-navy text-warm-white font-semibold text-base px-10 py-4 rounded-full hover:bg-navy-light transition-colors duration-200">
+            Order Yours Now
+          </a>
         </div>
       </div>
 
-      <!-- Right: Product Tin -->
-      <div class="order-1 lg:order-2 flex items-center justify-center relative">
-        <!-- Decorative rings -->
-        <div class="absolute w-72 h-72 lg:w-96 lg:h-96 rounded-full border border-rose-gold/20 pointer-events-none"></div>
-        <div class="absolute w-56 h-56 lg:w-72 lg:h-72 rounded-full border border-navy/10 pointer-events-none"></div>
-
-        <!-- Product image -->
-        <div class="tin-float relative z-10" id="hero-tin">
-          <img
-            src="assets/images/tin-navy.jpg"
-            alt="NeuroPouch Focus tin — Navy with rose gold botanical design, 16 nootropic pouches"
-            class="w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 object-cover rounded-full shadow-2xl"
-            width="384" height="384"
-          />
-        </div>
-
-        <!-- Floating badges -->
-        <div class="absolute top-4 right-4 lg:right-8 bg-white rounded-2xl shadow-lg px-4 py-3 fade-up">
-          <div class="text-xs text-muted font-medium uppercase tracking-wide mb-0.5">Ingredients</div>
-          <div class="text-sm font-bold text-navy">5 Nootropics</div>
-        </div>
-        <div class="absolute bottom-8 left-4 lg:left-0 bg-white rounded-2xl shadow-lg px-4 py-3 fade-up">
-          <div class="text-xs text-muted font-medium uppercase tracking-wide mb-0.5">Per Tin</div>
-          <div class="text-sm font-bold text-navy">16 Pouches</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-indicator">
-      <span class="text-xs text-muted uppercase tracking-widest font-medium">Scroll</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </div>
   </section>
 
+  <div class="bg-cream px-6 py-4">
+    <div class="max-w-6xl mx-auto">
+  </div>
+
   <!-- ═══════════════════════════════════ MARQUEE BAR ═══════════════════════════════════ -->
   <div class="section-cream py-4 overflow-hidden border-y border-gray-100" aria-hidden="true">
-    <div class="marquee-track flex gap-12 whitespace-nowrap" style="width: max-content;">
+    <div class="marquee-track flex items-center gap-12 whitespace-nowrap" style="width: max-content;">
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Zero Nicotine</span>
       <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Alpha-GPC</span>
@@ -380,7 +455,7 @@
       <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">No Crash. No Jitter.</span>
       <span class="text-rose-gold font-bold">•</span>
-      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Safe from Age 16+</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">100mg Caffeine</span>
       <span class="text-rose-gold font-bold">•</span>
       <!-- Duplicate for seamless loop -->
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Zero Nicotine</span>
@@ -397,7 +472,7 @@
       <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">No Crash. No Jitter.</span>
       <span class="text-rose-gold font-bold">•</span>
-      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Safe from Age 16+</span>
+      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">100mg Caffeine</span>
       <span class="text-rose-gold font-bold">•</span>
     </div>
   </div>
@@ -432,14 +507,14 @@
       <div class="relative flex justify-center">
         <div class="relative">
           <img
-            src="assets/images/tin-open.jpg"
-            alt="NeuroPouch Focus — blush pink rose gold tin"
+            src="assets/images/E2B8DA33-3212-405C-B344-4DD0BD42B415.png"
+            alt="NeuroPouch tin — lifestyle"
             class="w-72 h-72 object-cover rounded-full shadow-xl fade-up"
             width="288" height="288"
           />
           <img
-            src="assets/images/tin-blush.jpg"
-            alt="NeuroPouch Focus — navy minimal tin"
+            src="assets/images/36D9ADE6-C2B5-4836-BF98-89A12AAFAC04.png"
+            alt="NeuroPouch tin — detail"
             class="absolute -bottom-8 -right-8 w-44 h-44 object-cover rounded-full shadow-lg border-4 border-warm-white fade-up"
             width="176" height="176"
           />
@@ -457,8 +532,7 @@
           No chewing. No smell. No one knows it's there.
         </p>
         <p class="fade-up text-lg text-muted leading-relaxed mb-8">
-          Inside every pouch: a precisely dosed nootropic stack that supports memory, focus,
-          and mental stamina — absorbed faster than pills through your mouth's natural membranes.
+	          Inside every pouch: a disclosed nootropic stack with clean caffeine paired with L-Theanine for smooth, jitter-free focus.
         </p>
 
         <!-- Key stats -->
@@ -489,7 +563,7 @@
           Every ingredient. A reason.
         </h2>
         <p class="fade-up text-lg text-muted max-w-xl mx-auto">
-          No fillers. No synthetic stimulants. Just a stack of studied, functional compounds that work together.
+          No fillers. No nicotine. No taurine. A focused stack of researched compounds, delivered through the mouth — not the stomach.
         </p>
       </div>
 
@@ -503,7 +577,7 @@
           <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">Memory & Speed</div>
           <h3 class="font-serif text-xl text-navy mb-3">Alpha-GPC</h3>
           <p class="text-muted text-sm leading-relaxed">
-            Powers your working memory and cognitive reaction speed. The compound your brain uses to build acetylcholine — the neurotransmitter of focus and learning.
+            Supports acetylcholine production — the neurotransmitter associated with focus and learning. One of the most studied choline sources in cognitive supplement research.
           </p>
         </div>
 
@@ -543,15 +617,15 @@
           </p>
         </div>
 
-        <!-- Mint Extract -->
+        <!-- Caffeine -->
         <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
           <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C2B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V12"/><path d="M5 3h14"/><path d="M5 8h14"/><path d="M5 13h4"/><path d="M15 13h4"/></svg>
           </div>
-          <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">Refreshment & Absorption</div>
-          <h3 class="font-serif text-xl text-navy mb-3">Mint Extract</h3>
+          <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">Clean Energy</div>
+          <h3 class="font-serif text-xl text-navy mb-3">Caffeine</h3>
           <p class="text-muted text-sm leading-relaxed">
-            Provides the immediate sensory freshness that signals your brain to wake up. Also enhances buccal absorption — helping active ingredients reach your system faster.
+            100mg per pouch. Paired with 150mg L-Theanine for smoother, jitter-free focus and a familiar energy profile without nicotine.
           </p>
         </div>
 
@@ -560,11 +634,11 @@
           <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-5">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
           </div>
-          <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">What's NOT in it</div>
-          <h3 class="font-serif text-xl text-white mb-3">Zero Nicotine. Zero Taurine.</h3>
-          <p class="text-white/60 text-sm leading-relaxed">
-            No nicotine. No taurine. No synthetic stimulants. NeuroPouch is a nootropic supplement — not a nicotine product. Safe and suitable from age 16+.
-          </p>
+	          <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-2">What's NOT in it</div>
+	          <h3 class="font-serif text-xl text-white mb-3">Zero Nicotine. Zero Taurine.</h3>
+	          <p class="text-white/60 text-sm leading-relaxed">
+	            NeuroPouch is a nootropic supplement — not a nicotine product. It contains 100mg caffeine per pouch, paired with 150mg L-Theanine for smoother, jitter-free focus.
+	          </p>
         </div>
 
       </div>
@@ -600,7 +674,7 @@
           <div class="step-number font-serif text-7xl mb-4 leading-none">03</div>
           <h3 class="font-serif text-xl text-navy mb-3">Perform</h3>
           <p class="text-muted text-sm leading-relaxed">
-            Focus, clarity, and sustained energy — for your next task, meeting, exam, or creative session. No crash. No visible gum to spit.
+            Clean focus and a calm alertness — for your next task, meeting, exam, or creative session. No crash. No visible gum to spit.
           </p>
         </div>
       </div>
@@ -611,12 +685,11 @@
       <!-- Absorption advantage callout -->
       <div class="fade-up bg-navy rounded-3xl p-8 lg:p-12 text-center">
         <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">The Science of Delivery</div>
-        <h3 class="font-serif text-3xl lg:text-4xl text-white mb-4">Faster than pills. Hands-free unlike gum.</h3>
-        <p class="text-white/70 text-base leading-relaxed max-w-xl mx-auto">
-          Buccal absorption — through the soft tissue of your mouth — bypasses digestion.
-          That means the nootropic compounds in NeuroPouch reach your bloodstream faster
-          than swallowing a capsule. And unlike gum, there's nothing to chew or discard.
-        </p>
+	        <h3 class="font-serif text-3xl lg:text-4xl text-white mb-4">Hands-free unlike gum. No capsule needed.</h3>
+	        <p class="text-white/70 text-base leading-relaxed max-w-xl mx-auto">
+	          NeuroPouch is designed for buccal absorption through the soft tissue of your mouth.
+	          Unlike gum, there's nothing to chew or discard. Unlike a drink, there is no cup to carry.
+	        </p>
       </div>
     </div>
   </section>
@@ -708,75 +781,59 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════ TESTIMONIALS ═══════════════════════════════════ -->
+  <!-- ═══════════════════════════════════ USE CASES ═══════════════════════════════════ -->
   <section class="py-24 px-6 bg-warm-white">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">Early Supporters</div>
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">Built For High-Signal Moments</div>
         <h2 class="fade-up font-serif text-4xl lg:text-5xl text-navy leading-tight">
-          What people are saying.
+          Focus support that fits the room.
         </h2>
+        <p class="fade-up text-muted text-base leading-relaxed mt-4">
+          Until verified customer reviews are collected, this section stays honest: no fake names, no invented stars, just the situations NeuroPouch is designed for.
+        </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <!-- Testimonial placeholders — replace with real ones -->
-        <div class="testimonial-card rounded-3xl p-8 fade-up">
-          <div class="flex gap-1 mb-4" aria-label="5 stars">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="use-case-card p-8 fade-up">
+          <div class="w-11 h-11 mb-8 flex items-center justify-center" style="background: rgba(136,184,164,0.18); border-radius: 8px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1C2B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/><path d="M12 18v2"/></svg>
           </div>
-          <p class="text-charcoal text-sm leading-relaxed mb-5 italic">
-            "I used it during a 3-hour investor meeting. Nobody knew. I was the sharpest person in the room."
+          <p class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-3">Back-to-back meetings</p>
+          <h3 class="font-serif text-2xl text-navy mb-4">Stay clear without making it a ritual.</h3>
+          <p class="text-muted text-sm leading-relaxed mb-8">
+            No mug refill, no gum wrapper, no visible habit. Tuck it under your lip before the call starts.
           </p>
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold text-sm">M</div>
-            <div>
-              <div class="text-sm font-semibold text-navy">Markus T.</div>
-              <div class="text-xs text-muted">Startup Founder</div>
-            </div>
+          <div class="micro-meter" aria-hidden="true">
+            <span style="height:36%"></span><span style="height:54%"></span><span style="height:46%"></span><span style="height:68%"></span><span style="height:78%"></span><span style="height:62%"></span><span style="height:88%"></span><span style="height:74%"></span><span style="height:92%"></span><span style="height:70%"></span><span style="height:58%"></span><span style="height:42%"></span>
           </div>
         </div>
 
-        <div class="testimonial-card rounded-3xl p-8 fade-up">
-          <div class="flex gap-1 mb-4" aria-label="5 stars">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="use-case-card p-8 fade-up">
+          <div class="w-11 h-11 mb-8 flex items-center justify-center" style="background: rgba(216,195,106,0.2); border-radius: 8px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1C2B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
           </div>
-          <p class="text-charcoal text-sm leading-relaxed mb-5 italic">
-            "Finally something that actually helps me study without the anxiety coffee gives me. The mint flavor is clean."
+          <p class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-3">Study blocks</p>
+          <h3 class="font-serif text-2xl text-navy mb-4">The second-cup alternative.</h3>
+          <p class="text-muted text-sm leading-relaxed mb-8">
+            Built for long reading, revision, coding, or creative work when more coffee feels like too much.
           </p>
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold text-sm">L</div>
-            <div>
-              <div class="text-sm font-semibold text-navy">Laura K.</div>
-              <div class="text-xs text-muted">Medical Student</div>
-            </div>
+          <div class="micro-meter" aria-hidden="true">
+            <span style="height:30%"></span><span style="height:40%"></span><span style="height:52%"></span><span style="height:66%"></span><span style="height:82%"></span><span style="height:76%"></span><span style="height:86%"></span><span style="height:90%"></span><span style="height:68%"></span><span style="height:56%"></span><span style="height:48%"></span><span style="height:36%"></span>
           </div>
         </div>
 
-        <div class="testimonial-card rounded-3xl p-8 fade-up">
-          <div class="flex gap-1 mb-4" aria-label="5 stars">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#C4956A" stroke="#C4956A" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="use-case-card p-8 fade-up">
+          <div class="w-11 h-11 mb-8 flex items-center justify-center" style="background: rgba(152,106,141,0.16); border-radius: 8px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1C2B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 17h4V5H2v12h3"/><path d="M22 17h-3"/><path d="M14 17h1"/><path d="M16 7h3l3 4v6"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
           </div>
-          <p class="text-charcoal text-sm leading-relaxed mb-5 italic">
-            "I track everything — HRV, sleep, cognitive scores. NeuroPouch is the most effective no-stimulant focus tool I've tested."
+          <p class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-3">Travel days</p>
+          <h3 class="font-serif text-2xl text-navy mb-4">Portable focus with no liquid involved.</h3>
+          <p class="text-muted text-sm leading-relaxed mb-8">
+            A compact tin for flights, commutes, and days where your schedule leaves no clean pause.
           </p>
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold text-sm">A</div>
-            <div>
-              <div class="text-sm font-semibold text-navy">Andrei V.</div>
-              <div class="text-xs text-muted">Biohacker & Engineer</div>
-            </div>
+          <div class="micro-meter" aria-hidden="true">
+            <span style="height:42%"></span><span style="height:50%"></span><span style="height:58%"></span><span style="height:48%"></span><span style="height:72%"></span><span style="height:84%"></span><span style="height:78%"></span><span style="height:88%"></span><span style="height:76%"></span><span style="height:60%"></span><span style="height:54%"></span><span style="height:44%"></span>
           </div>
         </div>
       </div>
@@ -806,7 +863,7 @@
           </button>
           <div class="faq-answer hidden px-6 pb-5">
             <p class="text-muted text-sm leading-relaxed">
-              Yes. NeuroPouch contains zero nicotine and no synthetic stimulants like taurine. Our ingredients — Alpha-GPC, L-Theanine, Rhodiola Rosea, and B12 — are well-researched and used in licensed supplements globally. Because there is no nicotine, NeuroPouch is suitable for individuals aged 16 and above.
+              Yes. NeuroPouch contains zero nicotine and no taurine. The ingredients — Alpha-GPC, L-Theanine, Caffeine, Rhodiola Rosea, and B12 — are used in licensed supplements and are well-documented in published research. The caffeine (100mg per pouch) is paired with L-Theanine to reduce the jittery side effects associated with caffeine alone.
             </p>
           </div>
         </div>
@@ -822,7 +879,7 @@
           </button>
           <div class="faq-answer hidden px-6 pb-5">
             <p class="text-muted text-sm leading-relaxed">
-              Completely different category. NeuroPouch contains no nicotine whatsoever. We use nootropic compounds that support cognitive performance — not addictive stimulants. The pouch format is similar, but that's where the comparison ends.
+              Completely different category. NeuroPouch contains no nicotine whatsoever. The pouch format is similar, but the contents are a nootropic stack — not an addictive substance. There is no dependency risk from the ingredients in NeuroPouch.
             </p>
           </div>
         </div>
@@ -838,7 +895,7 @@
           </button>
           <div class="faq-answer hidden px-6 pb-5">
             <p class="text-muted text-sm leading-relaxed">
-              Most users report a fresher, more alert feeling within 10–15 minutes. Buccal absorption (through oral tissue) is faster than swallowing capsules, and the mint provides immediate sensory activation.
+	              Most users report a fresher, more alert feeling within 10–15 minutes. The pouch is designed for buccal absorption through oral tissue, and the mint provides immediate sensory freshness.
             </p>
           </div>
         </div>
@@ -886,7 +943,7 @@
           </button>
           <div class="faq-answer hidden px-6 pb-5">
             <p class="text-muted text-sm leading-relaxed">
-              RelaxPouch is our upcoming evening formula — designed for recovery, calm, and wind-down. It's a separate product from NeuroPouch Focus. Join the waitlist to be the first to hear when it launches.
+              RelaxPouch is our upcoming evening formula — designed for recovery, calm, and wind-down. It's a separate product from NeuroPouch Focus. Sign up below to be the first to hear when it launches.
             </p>
           </div>
         </div>
@@ -904,7 +961,7 @@
             "name": "Is NeuroPouch safe?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. NeuroPouch contains zero nicotine and no synthetic stimulants. Our ingredients are well-researched and used in licensed supplements globally. Suitable from age 16+."
+              "text": "Yes. NeuroPouch contains zero nicotine and no taurine. Ingredients include Alpha-GPC, L-Theanine, Caffeine (100mg), Rhodiola Rosea, and B12 — all used in licensed supplements. Caffeine is paired with L-Theanine to reduce jitter."
             }
           },
           {
@@ -912,7 +969,7 @@
             "name": "How is NeuroPouch different from nicotine pouches?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "NeuroPouch contains zero nicotine. It uses nootropic compounds that support cognitive performance, not addictive stimulants."
+              "text": "NeuroPouch contains zero nicotine. The pouch format is similar to nicotine pouches, but the contents are a nootropic stack. There is no dependency risk from the ingredients in NeuroPouch."
             }
           },
           {
@@ -932,17 +989,17 @@
   <!-- ═══════════════════════════════════ FINAL CTA ═══════════════════════════════════ -->
   <section class="py-24 px-6" style="background: linear-gradient(135deg, #1C2B4A 0%, #243559 100%);">
     <div class="max-w-2xl mx-auto text-center">
-      <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">Limited Early Access</div>
+      <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">Get 10% Off Your First Order</div>
       <h2 class="fade-up font-serif text-4xl lg:text-5xl text-white leading-tight mb-6">
-        Be first.<br />
-        <em class="not-italic" style="color: #C4956A;">Get the edge.</em>
+        Try it.<br />
+        <em class="not-italic" style="color: #C4956A;">Feel the difference.</em>
       </h2>
       <p class="fade-up text-white/70 text-lg leading-relaxed mb-10">
-        Join the waitlist for 15% off your first order, early access to new flavors,
+        Sign up for 10% off your first order, early access to new flavors,
         and updates from the NeuroPouch lab.
       </p>
 
-      <form id="footer-form" name="waitlist-footer" data-netlify="true" class="fade-up flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleFormSubmit(event, 'footer-form')">
+      <form id="footer-form" name="discount-footer" data-netlify="true" class="fade-up flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleFormSubmit(event, 'footer-form')">
         <input
           type="email"
           placeholder="Enter your email"
@@ -955,7 +1012,7 @@
           class="cta-glow bg-rose-gold text-white font-semibold text-sm px-7 py-3.5 rounded-full hover:opacity-90 transition-opacity duration-200 whitespace-nowrap cursor-pointer"
           style="background-color: #C4956A;"
         >
-          Join the Waitlist
+          Get 10% Off
         </button>
       </form>
 
@@ -1029,10 +1086,10 @@
             </svg>
           </div>
 
-          <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-2">Early Access</p>
-          <h2 id="wm-title" class="font-serif text-2xl text-navy leading-tight mb-2">Get 15% off at launch.</h2>
+          <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-2">First Order Discount</p>
+          <h2 id="wm-title" class="font-serif text-2xl text-navy leading-tight mb-2">Get 10% off your first order.</h2>
           <p class="text-muted text-sm leading-relaxed mb-6">
-            Join 500+ early supporters. We'll send your discount code the moment NeuroPouch goes live — no spam, unsubscribe anytime.
+            Drop your email and we'll send your discount code straight away. No spam, unsubscribe anytime.
           </p>
 
           <!-- Perks -->
@@ -1041,19 +1098,19 @@
               <span class="w-5 h-5 rounded-full bg-blush flex items-center justify-center flex-shrink-0">
                 <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#C4956A" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg>
               </span>
-              <span class="text-xs text-charcoal">15% launch discount — yours automatically</span>
+              <span class="text-xs text-charcoal">10% off your first order — sent immediately</span>
             </div>
             <div class="flex items-center gap-3">
               <span class="w-5 h-5 rounded-full bg-blush flex items-center justify-center flex-shrink-0">
                 <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#C4956A" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg>
               </span>
-              <span class="text-xs text-charcoal">First to know when stock drops</span>
+              <span class="text-xs text-charcoal">First to know when new flavors drop</span>
             </div>
             <div class="flex items-center gap-3">
               <span class="w-5 h-5 rounded-full bg-blush flex items-center justify-center flex-shrink-0">
                 <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#C4956A" stroke-width="2" stroke-linecap="round"><polyline points="2 6 5 9 10 3"/></svg>
               </span>
-              <span class="text-xs text-charcoal">Early access before public sale</span>
+              <span class="text-xs text-charcoal">Occasional updates — never more than once a week</span>
             </div>
           </div>
 
@@ -1065,7 +1122,7 @@
               <button type="submit" id="wm-submit"
                 class="w-full py-3.5 rounded-xl text-sm font-semibold text-warm-white transition-all"
                 style="background: linear-gradient(135deg, #1C2B4A 0%, #243559 100%);">
-                Get Early Access + 15% Off
+                Get 10% Off
               </button>
             </div>
             <p id="wm-error" class="text-red-500 text-xs mt-2 hidden">Please enter a valid email address.</p>
@@ -1082,7 +1139,7 @@
           <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-2">You're in.</p>
           <h3 class="font-serif text-2xl text-navy mb-3">Welcome to the list.</h3>
           <p class="text-muted text-sm leading-relaxed mb-7">
-            Your 15% off code is reserved. We'll send it to your inbox the moment NeuroPouch launches. Keep an eye out.
+            Your 10% off code is on its way to your inbox. Check your email — it should arrive within a few minutes.
           </p>
           <button onclick="closeWaitlistModal()"
             class="w-full py-3.5 rounded-xl text-sm font-semibold text-warm-white transition-all"
@@ -1102,7 +1159,7 @@
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
       </div>
       <h3 id="modal-title" class="font-serif text-2xl text-navy mb-2">You're on the list.</h3>
-      <p class="text-muted text-sm leading-relaxed mb-6">We'll send your 15% off code when we launch. Keep an eye on your inbox.</p>
+      <p class="text-muted text-sm leading-relaxed mb-6">Your 10% off code is on its way to your inbox. Check your email — it should arrive within a few minutes.</p>
       <button onclick="closeModal()" class="bg-navy text-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-navy-light transition-colors cursor-pointer w-full">
         Got it
       </button>
