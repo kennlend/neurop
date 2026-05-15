@@ -4,11 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Contact NeuroPouch — Get in Touch</title>
-  <meta name="description" content="Questions about your order, press enquiries, or wholesale partnership? Reach the NeuroPouch team directly." />
+  <title>Contact NeuroPouch — Support, Press & Partnerships</title>
+  <meta name="description" content="Questions about your order, press enquiries, or wholesale partnership? Reach the NeuroPouch team directly. Fast replies, EU-based support." />
+  <meta name="keywords" content="NeuroPouch contact, NeuroPouch support, wholesale enquiry, focus pouch support EU" />
   <link rel="canonical" href="https://getneuropouch.com/contact" />
+  <link rel="alternate" hreflang="en" href="https://getneuropouch.com/contact" />
+  <link rel="alternate" hreflang="x-default" href="https://getneuropouch.com/contact" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="author" content="NeuroPouch Team" />
+  <meta name="theme-color" content="#1C2B4A" />
+  <link rel="icon" href="/assets/images/landingpageneuropouch.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/landingpageneuropouch.png" />
+
+  <meta property="og:site_name" content="NeuroPouch" />
   <meta property="og:title" content="Contact NeuroPouch" />
+  <meta property="og:description" content="Talk to the NeuroPouch team — orders, press, wholesale and partnerships." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://getneuropouch.com/contact" />
+  <meta property="og:image" content="https://getneuropouch.com/assets/images/landingpageneuropouch.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact NeuroPouch" />
+  <meta name="twitter:description" content="Reach the NeuroPouch team — support, press, wholesale." />
+  <meta name="twitter:image" content="https://getneuropouch.com/assets/images/landingpageneuropouch.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -121,8 +143,57 @@
     /* Reveal animation */
     .reveal { opacity: 0; transform: translateY(28px); }
   </style>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://getneuropouch.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://getneuropouch.com/contact" }
+    ]
+  }
+  </script>
+
+  <!-- Schema: ContactPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact NeuroPouch",
+    "url": "https://getneuropouch.com/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "@id": "https://getneuropouch.com/#organization",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "support@getneuropouch.com",
+          "availableLanguage": ["English"],
+          "areaServed": ["EU","GB"]
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "wholesale",
+          "email": "wholesale@getneuropouch.com",
+          "availableLanguage": ["English"]
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "press",
+          "email": "press@getneuropouch.com",
+          "availableLanguage": ["English"]
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-navy focus:text-cream focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
 
   <!-- ═══════════════ NAVIGATION ═══════════════ -->
   <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
@@ -145,6 +216,8 @@
       </div>
     </div>
   </nav>
+
+  <main id="main">
 
   <!-- ═══════════════ HERO ═══════════════ -->
   <section class="pt-32 pb-16 px-6 text-center">
@@ -459,6 +532,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer class="bg-charcoal py-10 px-6">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
@@ -467,14 +542,19 @@
         <p class="text-warm-white/40 text-xs mt-1">The Edge You Don't Have to Announce</p>
       </div>
       <div class="flex flex-wrap gap-5 text-xs text-warm-white/50">
-        <a href="index.html" class="hover:text-warm-white transition-colors">Home</a>
-        <a href="product.html" class="hover:text-warm-white transition-colors">Shop</a>
-        <a href="science.html" class="hover:text-warm-white transition-colors">Science</a>
-        <a href="about.html" class="hover:text-warm-white transition-colors">About</a>
-        <a href="wholesale.html" class="hover:text-warm-white transition-colors">Wholesale</a>
-        <a href="privacy-policy.html" class="hover:text-warm-white transition-colors">Privacy</a>
-        <a href="terms.html" class="hover:text-warm-white transition-colors">Terms</a>
-        <a href="contact.html" class="text-warm-white transition-colors">Contact</a>
+        <a href="/" class="hover:text-warm-white transition-colors">Home</a>
+        <a href="/product" class="hover:text-warm-white transition-colors">Shop</a>
+        <a href="/science" class="hover:text-warm-white transition-colors">Science</a>
+        <a href="/learn/" class="hover:text-warm-white transition-colors">Learn</a>
+        <a href="/about" class="hover:text-warm-white transition-colors">About</a>
+        <a href="/wholesale" class="hover:text-warm-white transition-colors">Wholesale</a>
+        <a href="/editorial-policy" class="hover:text-warm-white transition-colors">Editorial</a>
+        <a href="/quality" class="hover:text-warm-white transition-colors">Quality</a>
+        <a href="/sourcing" class="hover:text-warm-white transition-colors">Sourcing</a>
+        <a href="/press" class="hover:text-warm-white transition-colors">Press</a>
+        <a href="/privacy-policy" class="hover:text-warm-white transition-colors">Privacy</a>
+        <a href="/terms" class="hover:text-warm-white transition-colors">Terms</a>
+        <a href="/contact" class="hover:text-warm-white transition-colors">Contact</a>
       </div>
     </div>
     <div class="max-w-6xl mx-auto mt-6 pt-6 border-t border-white/10">

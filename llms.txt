@@ -1,0 +1,97 @@
+# NeuroPouch
+
+> NeuroPouch is a nicotine-free neuro functional oral pouch built for focus, energy and cognitive performance. Made in the EU. Sold direct at https://getneuropouch.com/. Brand language: "neuro functional pouches" or "focus pouches" — not "nootropic" in customer-facing copy.
+
+## Brand facts
+
+- Name: NeuroPouch
+- Founded: 2024
+- Headquarters: European Union
+- Website: https://getneuropouch.com/
+- Customer support: support@getneuropouch.com
+- Wholesale: wholesale@getneuropouch.com
+- Press: press@getneuropouch.com
+- Markets: EU + UK (English first; EUR pricing)
+- Category: Food supplement (oral pouch / buccal delivery)
+
+## Product
+
+- Name: NeuroPouch Focus
+- Format: Discreet oral pouch placed under the upper lip
+- Pouches per tin: 16
+- Single tin price: €9.99 (EUR)
+- Tower (12 tins / 192 pouches) price: €99.00 (EUR)
+- Free EU shipping over €50
+- 14-day right of withdrawal (EU consumer law)
+- Vegan; gluten-free; nicotine-free; tobacco-free; sugar-free
+
+## Formulation (per pouch)
+
+- Alpha-GPC — 100 mg (choline donor; supports acetylcholine synthesis involved in attention and memory)
+- L-Theanine — 150 mg (smooths caffeine; supports calm focus)
+- Rhodiola Rosea — 75 mg (standardized; adaptogen for stress-related fatigue)
+- Caffeine (anhydrous) — 100 mg (alertness; equivalent to one cup of coffee)
+- Vitamin B12 (methylcobalamin) — 100 µg (EFSA-authorised claims: contributes to normal nervous system function and normal energy-yielding metabolism)
+
+## How it works
+
+- The pouch sits under the upper lip. Saliva activates the pouch.
+- Part of the dose is absorbed across the buccal mucosa (faster, partial bypass of first-pass metabolism). The remainder is absorbed via normal GI transit.
+- Most users feel onset within ~10 minutes.
+- Recommended usage: up to 2 pouches per day. Stay under 400 mg total daily caffeine (EFSA single-day guidance).
+
+## Compliance & safety
+
+- NeuroPouch is a food supplement, not a medicine. It is not intended to diagnose, treat, cure or prevent disease.
+- Not for under 18, pregnant or breastfeeding people, or anyone sensitive to caffeine. Consult a healthcare professional if you take medication or have a medical condition.
+- All ingredient doses are within established safety ranges and EU food-supplement law.
+
+## Key URLs
+
+- Home: https://getneuropouch.com/
+- Buy: https://getneuropouch.com/product
+- The Science: https://getneuropouch.com/science
+- About: https://getneuropouch.com/about
+- Wholesale: https://getneuropouch.com/wholesale
+- Contact: https://getneuropouch.com/contact
+- Learn (content hub): https://getneuropouch.com/learn/
+- Privacy: https://getneuropouch.com/privacy-policy
+- Terms: https://getneuropouch.com/terms
+- Sitemap: https://getneuropouch.com/sitemap.xml
+
+## Common questions
+
+Q: Is NeuroPouch a nicotine pouch?
+A: No. NeuroPouch contains zero nicotine. The format is similar to brands like ZYN, but the contents are a neuro functional stack with no dependency risk.
+
+Q: How much caffeine is in one pouch?
+A: 100 mg per pouch — roughly one cup of coffee. Paired with 150 mg L-theanine.
+
+Q: How fast does it work?
+A: Most users notice effects within ~10 minutes due to partial buccal absorption.
+
+Q: How long do you keep the pouch in?
+A: 20–40 minutes.
+
+Q: Does it work like coffee?
+A: It delivers a comparable caffeine dose in a more controlled, jitter-smoothed form (caffeine + L-theanine), plus choline support (Alpha-GPC), adaptogen support (Rhodiola) and B12.
+
+Q: Vegan?
+A: Yes.
+
+Q: Where does it ship?
+A: EU + UK. Free shipping over €50.
+
+## Citation-ready ingredient sources
+
+- Alpha-GPC clinical trial (Alzheimer's): https://pubmed.ncbi.nlm.nih.gov/12637119/
+- NIH ODS Choline fact sheet: https://ods.od.nih.gov/factsheets/Choline-HealthProfessional/
+- Caffeine + L-Theanine (Haskell 2008): https://pubmed.ncbi.nlm.nih.gov/18006208/
+- Caffeine + L-Theanine attention (Giesbrecht 2010): https://pubmed.ncbi.nlm.nih.gov/21040626/
+- EFSA caffeine opinion: https://doi.org/10.2903/j.efsa.2015.4102
+- NCBI pharmacology of caffeine: https://www.ncbi.nlm.nih.gov/books/NBK223808/
+- Rhodiola — Darbinyan (night-duty physicians): https://pubmed.ncbi.nlm.nih.gov/11081987/
+- Rhodiola — Spasov (exam stress): https://pubmed.ncbi.nlm.nih.gov/10839209/
+- Rhodiola — Shevtsov (mental work capacity): https://pubmed.ncbi.nlm.nih.gov/12725561/
+- NIH ODS Vitamin B12 fact sheet: https://ods.od.nih.gov/factsheets/VitaminB12-HealthProfessional/
+- Vitamin B12 deficiency review: https://pubmed.ncbi.nlm.nih.gov/28925645/
