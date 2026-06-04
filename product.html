@@ -162,6 +162,48 @@
       border-bottom: 1px solid rgba(196, 149, 106, 0.15);
     }
 
+    @media (max-width: 639px) {
+      #site-nav {
+        background: #1C2B4A;
+        border-bottom-color: rgba(253, 250, 247, 0.14);
+      }
+
+      .product-nav-inner {
+        position: relative;
+        min-height: 44px;
+      }
+
+      .product-nav-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .product-mobile-menu-button {
+        border-color: rgba(253, 250, 247, 0.28) !important;
+        color: #FDFAF7 !important;
+      }
+
+      .product-mobile-menu-button:hover {
+        background: rgba(253, 250, 247, 0.1) !important;
+      }
+
+      .product-mobile-buy {
+        background: #FDFAF7 !important;
+        color: #1C2B4A !important;
+      }
+
+      .product-mobile-menu-panel {
+        background: #1C2B4A !important;
+        border-color: rgba(253, 250, 247, 0.16) !important;
+      }
+
+      .product-mobile-menu-panel a {
+        color: #FDFAF7 !important;
+        border-color: rgba(253, 250, 247, 0.14) !important;
+      }
+    }
+
     /* ---- Product image gallery ---- */
     .gallery-thumb {
       cursor: pointer;
@@ -398,29 +440,29 @@
        NAVIGATION
   ═══════════════════════════════════════ -->
   <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <a href="index.html"><img src="assets/images/neurpouch logo wide.png" alt="NeuroPouch" class="h-7 sm:h-8 w-auto" /></a>
+    <div class="product-nav-inner max-w-6xl mx-auto flex items-center justify-between">
+      <button
+        id="product-mobile-menu-toggle"
+        class="product-mobile-menu-button sm:hidden w-10 h-10 rounded-full border border-blush/70 text-navy flex items-center justify-center hover:bg-cream transition-colors"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="product-mobile-menu"
+        aria-expanded="false"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+      <a href="index.html" class="product-nav-logo"><img src="assets/images/neurpouch logo wide.png" alt="NeuroPouch" class="h-7 sm:h-8 w-auto" /></a>
       <div class="flex items-center gap-6 text-sm font-medium text-charcoal">
         <a href="science.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Science</a>
         <a href="about.html" class="hover:text-rose-gold transition-colors hidden sm:inline">About</a>
         <a href="product.html" class="text-rose-gold font-semibold hidden sm:inline">Shop</a>
         <a href="wholesale.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Wholesale</a>
-        <button
-          id="product-mobile-menu-toggle"
-          class="sm:hidden w-10 h-10 rounded-full border border-blush/70 text-navy flex items-center justify-center hover:bg-cream transition-colors"
-          type="button"
-          aria-label="Open navigation menu"
-          aria-controls="product-mobile-menu"
-          aria-expanded="false"
-        >
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-            <path d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-        </button>
-        <a href="product.html" class="btn-primary px-4 sm:px-5 py-2 rounded-full text-sm font-semibold">Buy Now</a>
+        <a href="product.html" class="product-mobile-buy btn-primary px-4 sm:px-5 py-2 rounded-full text-sm font-semibold">Buy Now</a>
       </div>
     </div>
-    <div id="product-mobile-menu" class="hidden sm:hidden max-w-6xl mx-auto mt-4 rounded-2xl border border-blush/60 bg-warm-white/95 shadow-xl overflow-hidden">
+    <div id="product-mobile-menu" class="product-mobile-menu-panel hidden sm:hidden max-w-6xl mx-auto mt-4 rounded-2xl border border-blush/60 bg-warm-white/95 shadow-xl overflow-hidden">
       <a href="index.html" class="block px-5 py-3 text-sm font-semibold text-navy border-b border-blush/30">Home</a>
       <a href="science.html" class="block px-5 py-3 text-sm font-semibold text-navy border-b border-blush/30">Science</a>
       <a href="about.html" class="block px-5 py-3 text-sm font-semibold text-navy border-b border-blush/30">About</a>
