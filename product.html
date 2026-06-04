@@ -399,14 +399,32 @@
   ═══════════════════════════════════════ -->
   <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <a href="index.html"><img src="assets/images/neurpouch logo wide.png" alt="NeuroPouch" class="h-8 w-auto" /></a>
+      <a href="index.html"><img src="assets/images/neurpouch logo wide.png" alt="NeuroPouch" class="h-7 sm:h-8 w-auto" /></a>
       <div class="flex items-center gap-6 text-sm font-medium text-charcoal">
         <a href="science.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Science</a>
         <a href="about.html" class="hover:text-rose-gold transition-colors hidden sm:inline">About</a>
         <a href="product.html" class="text-rose-gold font-semibold hidden sm:inline">Shop</a>
         <a href="wholesale.html" class="hover:text-rose-gold transition-colors hidden sm:inline">Wholesale</a>
-        <a href="product.html" class="btn-primary px-5 py-2 rounded-full text-sm font-semibold">Buy Now</a>
+        <button
+          id="product-mobile-menu-toggle"
+          class="sm:hidden w-10 h-10 rounded-full border border-blush/70 text-navy flex items-center justify-center hover:bg-cream transition-colors"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-controls="product-mobile-menu"
+          aria-expanded="false"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+        <a href="product.html" class="btn-primary px-4 sm:px-5 py-2 rounded-full text-sm font-semibold">Buy Now</a>
       </div>
+    </div>
+    <div id="product-mobile-menu" class="hidden sm:hidden max-w-6xl mx-auto mt-4 rounded-2xl border border-blush/60 bg-warm-white/95 shadow-xl overflow-hidden">
+      <a href="index.html" class="block px-5 py-3 text-sm font-semibold text-navy border-b border-blush/30">Home</a>
+      <a href="science.html" class="block px-5 py-3 text-sm font-semibold text-navy border-b border-blush/30">Science</a>
+      <a href="about.html" class="block px-5 py-3 text-sm font-semibold text-navy border-b border-blush/30">About</a>
+      <a href="wholesale.html" class="block px-5 py-3 text-sm font-semibold text-navy">Wholesale</a>
     </div>
   </nav>
 
@@ -439,12 +457,6 @@
         <div class="flex gap-3 mt-4 justify-center">
           <button class="gallery-thumb active w-16 h-16 rounded-xl bg-navy/10 overflow-hidden" data-flavor="Natural Peppermint &amp; Lemongrass" data-image="assets/images/neuropouch front new.png" aria-label="NeuroPouch front">
             <img src="assets/images/neuropouch front new.png" alt="" class="w-full h-full object-cover" width="64" height="64" loading="lazy" decoding="async" />
-          </button>
-          <button class="gallery-thumb w-16 h-16 rounded-xl bg-navy/10 overflow-hidden" data-flavor="Natural Peppermint &amp; Lemongrass" data-image="assets/images/7433e010-846c-4929-b186-b2b87e5439c6_1777409545257-rv13d6.png" aria-label="NeuroPouch view 2">
-            <img src="assets/images/7433e010-846c-4929-b186-b2b87e5439c6_1777409545257-rv13d6.png" alt="" class="w-full h-full object-cover" width="64" height="64" loading="lazy" decoding="async" />
-          </button>
-          <button class="gallery-thumb w-16 h-16 rounded-xl bg-navy/10 overflow-hidden" data-flavor="Natural Peppermint &amp; Lemongrass" data-image="assets/images/7433e010-846c-4929-b186-b2b87e5439c6_1777409548768-g3st5.png" aria-label="NeuroPouch view 3">
-            <img src="assets/images/7433e010-846c-4929-b186-b2b87e5439c6_1777409548768-g3st5.png" alt="" class="w-full h-full object-cover" width="64" height="64" loading="lazy" decoding="async" />
           </button>
           <button class="gallery-thumb w-16 h-16 rounded-xl bg-navy/10 overflow-hidden" data-flavor="Natural Peppermint &amp; Lemongrass" data-image="assets/images/20C28A8B-2AE3-41B7-B6EE-1BCD77731AC2.png" aria-label="NeuroPouch view 4">
             <img src="assets/images/20C28A8B-2AE3-41B7-B6EE-1BCD77731AC2.png" alt="" class="w-full h-full object-cover" width="64" height="64" loading="lazy" decoding="async" />
@@ -1396,19 +1408,50 @@
       });
     });
 
-    // ---- Sticky ATC bar (show after scrolling past hero) ----
+    // ---- Sticky ATC bar (show whenever the main checkout CTA is offscreen) ----
     const stickyAtc = document.getElementById('sticky-atc');
-    const buySection = document.getElementById('buy');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-          stickyAtc.classList.add('visible');
-        } else {
-          stickyAtc.classList.remove('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    observer.observe(buySection);
+    const mainCheckout = document.getElementById('btn-checkout');
+    let mainCheckoutVisible = false;
+
+    function updateStickyAtcVisibility() {
+      const isMobile = window.matchMedia('(max-width: 639px)').matches;
+      const hasStartedShopping = window.scrollY > 180;
+      stickyAtc.classList.toggle('visible', isMobile && hasStartedShopping && !mainCheckoutVisible);
+    }
+
+    const checkoutObserver = new IntersectionObserver(entries => {
+      mainCheckoutVisible = entries.some(entry => entry.isIntersecting);
+      updateStickyAtcVisibility();
+    }, { threshold: 0.35 });
+
+    checkoutObserver.observe(mainCheckout);
+    window.addEventListener('scroll', updateStickyAtcVisibility, { passive: true });
+    window.addEventListener('resize', updateStickyAtcVisibility);
+    updateStickyAtcVisibility();
+
+    // ---- Mobile navigation ----
+    const productMobileMenuToggle = document.getElementById('product-mobile-menu-toggle');
+    const productMobileMenu = document.getElementById('product-mobile-menu');
+
+    function closeProductMobileMenu() {
+      if (!productMobileMenu || !productMobileMenuToggle) return;
+      productMobileMenu.classList.add('hidden');
+      productMobileMenuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    productMobileMenuToggle?.addEventListener('click', () => {
+      const willOpen = productMobileMenu.classList.contains('hidden');
+      productMobileMenu.classList.toggle('hidden');
+      productMobileMenuToggle.setAttribute('aria-expanded', String(willOpen));
+    });
+
+    productMobileMenu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeProductMobileMenu);
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeProductMobileMenu();
+    });
 
     // ---- GSAP scroll animations ----
     gsap.registerPlugin(ScrollTrigger);

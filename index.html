@@ -409,10 +409,14 @@
 
     @media (max-width: 768px) {
       .hero-immersive {
-        min-height: auto;
+        min-height: 94svh;
         background:
-          linear-gradient(180deg, rgba(253,250,247,0.5) 0%, rgba(253,250,247,0.98) 42%, rgba(253,250,247,1) 100%),
-          url("assets/images/landingpageneuropouch.png") top center / 190% auto no-repeat;
+          linear-gradient(180deg, rgba(253,250,247,0.28) 0%, rgba(253,250,247,0.78) 36%, rgba(253,250,247,0.98) 66%, rgba(253,250,247,1) 100%),
+          url("assets/images/landingpageneuropouch.png") top 4.5rem center / 178% auto no-repeat;
+      }
+
+      .hero-copy {
+        padding-top: 4.75rem;
       }
 
       .hero-proof-grid { grid-template-columns: 1fr; }
@@ -441,7 +445,7 @@
   <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-6 py-4">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <a href="/" class="flex items-center gap-2" aria-label="NeuroPouch home">
-        <img src="assets/images/neurpouch logo wide.png" alt="NeuroPouch" class="h-8 w-auto" />
+        <img src="assets/images/neurpouch logo wide.png" alt="NeuroPouch" class="h-7 sm:h-8 w-auto" />
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-charcoal">
         <a href="#ingredients" class="hover:text-rose-gold transition-colors duration-200">Ingredients</a>
@@ -451,11 +455,30 @@
         <a href="wholesale.html" class="hover:text-rose-gold transition-colors duration-200">Wholesale</a>
       </div>
       <div class="flex items-center gap-3">
+        <button
+          id="mobile-menu-toggle"
+          class="md:hidden w-11 h-11 rounded-full border border-blush/70 text-navy flex items-center justify-center hover:bg-cream transition-colors"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
         <a href="product.html"
-           class="bg-navy text-warm-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-navy-light transition-colors duration-200">
+           class="bg-navy text-warm-white text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full hover:bg-navy-light transition-colors duration-200">
           Order Now
         </a>
       </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden max-w-6xl mx-auto mt-4 rounded-2xl border border-blush/60 bg-warm-white/95 shadow-xl overflow-hidden">
+      <a href="#ingredients" class="block px-5 py-3 text-sm font-semibold text-navy border-b border-blush/30">Ingredients</a>
+      <a href="#how-it-works" class="block px-5 py-3 text-sm font-semibold text-navy border-b border-blush/30">How It Works</a>
+      <a href="science.html" class="block px-5 py-3 text-sm font-semibold text-navy border-b border-blush/30">Science</a>
+      <a href="about.html" class="block px-5 py-3 text-sm font-semibold text-navy border-b border-blush/30">About</a>
+      <a href="wholesale.html" class="block px-5 py-3 text-sm font-semibold text-navy">Wholesale</a>
     </div>
   </nav>
 
@@ -467,7 +490,7 @@
     <!-- Neural network canvas background -->
     <canvas id="neural-canvas" aria-hidden="true"></canvas>
 
-    <div class="relative z-10 max-w-6xl mx-auto px-6 w-full">
+    <div class="hero-copy relative z-10 max-w-6xl mx-auto px-6 w-full">
       <div class="max-w-2xl">
         <div class="fade-up inline-flex items-center gap-2 badge rounded-full px-4 py-1.5 mb-6">
           <span class="brand-dot w-2 h-2 rounded-full inline-block"></span>
@@ -1599,9 +1622,30 @@
      // ESC key closes waitlist modal
      document.addEventListener('keydown', function(e) {
        if (e.key === 'Escape') {
+         closeMobileMenu();
          if (!document.getElementById('waitlist-modal').classList.contains('hidden')) closeWaitlistModal();
          else closeModal();
        }
+     });
+
+     // ─── Mobile Navigation ───────────────────────────────────────────────────
+     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+     const mobileMenu = document.getElementById('mobile-menu');
+
+     function closeMobileMenu() {
+       if (!mobileMenu || !mobileMenuToggle) return;
+       mobileMenu.classList.add('hidden');
+       mobileMenuToggle.setAttribute('aria-expanded', 'false');
+     }
+
+     mobileMenuToggle?.addEventListener('click', () => {
+       const willOpen = mobileMenu.classList.contains('hidden');
+       mobileMenu.classList.toggle('hidden');
+       mobileMenuToggle.setAttribute('aria-expanded', String(willOpen));
+     });
+
+     mobileMenu?.querySelectorAll('a').forEach(link => {
+       link.addEventListener('click', closeMobileMenu);
      });
 
      // ─── Smooth anchor scroll ─────────────────────────────────────────────────
