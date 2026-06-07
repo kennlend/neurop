@@ -8,9 +8,16 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-PH2N6VKS');</script>
   <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK4T95QPB0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XK4T95QPB0');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <!-- SEO -->
   <title>NeuroPouch — Neuro Functional Focus Pouches | Nicotine-Free</title>
   <meta name="description" content="Neuro functional pouches with Alpha-GPC, L-Theanine, clean caffeine, Rhodiola Rosea and B12. Fast buccal absorption. Zero nicotine. 16 pouches per tin. Ships across the EU." />
@@ -24,7 +31,6 @@
   <meta name="theme-color" content="#1C2B4A" />
   <link rel="icon" href="/assets/images/Neuropouch.png" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/images/Neuropouch.png" />
-
   <!-- Open Graph -->
   <meta property="og:site_name" content="NeuroPouch" />
   <meta property="og:title" content="NeuroPouch — Focus In Your Pocket. No Nicotine. No Jitters." />
@@ -35,13 +41,11 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
-
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="NeuroPouch — Focus In Your Pocket. No Nicotine." />
   <meta name="twitter:description" content="Neuro functional pouches with Alpha-GPC, L-Theanine, clean caffeine and Rhodiola Rosea. 16 pouches per tin." />
   <meta name="twitter:image" content="https://getneuropouch.com/assets/images/Neuropouch.png" />
-
   <!-- Schema: Organization -->
   <script type="application/ld+json">
   {
@@ -49,7 +53,8 @@
     "@type": "Organization",
     "@id": "https://getneuropouch.com/#organization",
     "name": "NeuroPouch",
-    "alternateName": "NeuroPouch Focus Pouches",
+    "legalName": "Neuropouch LLC",
+    "alternateName": "Neuropouch - Energy & Focus",
     "url": "https://getneuropouch.com/",
     "logo": {
       "@type": "ImageObject",
@@ -82,7 +87,6 @@
     ]
   }
   </script>
-
   <!-- Schema: WebSite + SearchAction -->
   <script type="application/ld+json">
   {
@@ -96,12 +100,10 @@
     "inLanguage": "en"
   }
   </script>
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -127,12 +129,10 @@
       }
     }
   </script>
-
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="assets/brevo.js"></script>
-
   <style>
     :root {
       --navy: #1C2B4A;
@@ -147,7 +147,6 @@
       --citrus: #D8C36A;
       --berry: #986A8D;
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -156,7 +155,6 @@
       overflow-x: hidden;
       letter-spacing: 0;
     }
-
     /* Neural network canvas */
     #neural-canvas {
       position: absolute;
@@ -165,7 +163,6 @@
       pointer-events: none;
       opacity: 0.25;
     }
-
     /* Floating tin animation */
     @keyframes float {
       0%, 100% { transform: translateY(0px) rotateY(0deg); }
@@ -173,12 +170,10 @@
       50% { transform: translateY(-6px) rotateY(0deg); }
       75% { transform: translateY(-14px) rotateY(-8deg); }
     }
-
     @keyframes float-slow {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-20px) rotate(3deg); }
     }
-
     .tin-float {
       animation: float 7s ease-in-out infinite;
       transform-style: preserve-3d;
@@ -190,7 +185,6 @@
       filter: drop-shadow(0 40px 80px rgba(196,149,106,0.35));
       animation-play-state: paused;
     }
-
     .hero-immersive {
       min-height: 88svh;
       isolation: isolate;
@@ -198,7 +192,6 @@
         linear-gradient(90deg, rgba(253,250,247,0.98) 0%, rgba(253,250,247,0.92) 36%, rgba(253,250,247,0.54) 58%, rgba(253,250,247,0.08) 100%),
         url("assets/images/landingpageneuropouch.png") center right / cover no-repeat;
     }
-
     .hero-immersive::after {
       content: "";
       position: absolute;
@@ -208,7 +201,6 @@
       background: linear-gradient(0deg, rgba(248,244,239,0.78), rgba(248,244,239,0));
       pointer-events: none;
     }
-
     .hero-photo-caption {
       background: rgba(253,250,247,0.74);
       border: 1px solid rgba(255,255,255,0.72);
@@ -217,7 +209,6 @@
       -webkit-backdrop-filter: blur(16px);
       box-shadow: 0 24px 60px rgba(28,43,74,0.12);
     }
-
     .hero-proof-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -228,19 +219,15 @@
       -webkit-backdrop-filter: blur(18px);
       overflow: hidden;
     }
-
     .hero-proof-grid > div + div { border-left: 1px solid rgba(28,43,74,0.1); }
-
     .brand-dot {
       background: linear-gradient(135deg, var(--mint), var(--rose-gold));
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45);
     }
-
     .signal-line {
       position: relative;
       padding-left: 1rem;
     }
-
     .signal-line::before {
       content: "";
       position: absolute;
@@ -251,23 +238,19 @@
       border-radius: 999px;
       background: var(--mint);
     }
-
     /* Glow pulse on CTA */
     @keyframes glow-pulse {
       0%, 100% { box-shadow: 0 0 20px rgba(196,149,106,0.4), 0 4px 24px rgba(28,43,74,0.15); }
       50% { box-shadow: 0 0 35px rgba(196,149,106,0.7), 0 8px 32px rgba(28,43,74,0.2); }
     }
-
     .cta-glow {
       animation: glow-pulse 2.5s ease-in-out infinite;
     }
-
     /* Fade-up animation base */
     .fade-up {
       opacity: 0;
       transform: translateY(32px);
     }
-
     /* Ingredient card hover */
     .ingredient-card {
       border-radius: 8px !important;
@@ -278,7 +261,6 @@
       transform: translateY(-6px);
       box-shadow: 0 20px 40px rgba(28,43,74,0.12);
     }
-
     /* Step number glow */
     .step-number {
       background: linear-gradient(135deg, #1C2B4A, #C4956A);
@@ -286,7 +268,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     /* Nav glass effect */
     .nav-glass {
       background: rgba(253, 250, 247, 0.85);
@@ -294,26 +275,22 @@
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(196,149,106,0.15);
     }
-
     /* Divider gradient */
     .divider {
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(196,149,106,0.4), transparent);
     }
-
     /* Badge pill */
     .badge {
       background: linear-gradient(135deg, rgba(28,43,74,0.08), rgba(196,149,106,0.1));
       border: 1px solid rgba(196,149,106,0.3);
     }
-
     /* Scroll indicator */
     @keyframes scroll-bounce {
       0%, 100% { transform: translateY(0); opacity: 1; }
       50% { transform: translateY(6px); opacity: 0.4; }
     }
     .scroll-indicator { animation: scroll-bounce 1.8s ease-in-out infinite; }
-
     /* Testimonial card */
     .testimonial-card {
       background: white;
@@ -326,18 +303,15 @@
       transform: translateY(-4px);
       box-shadow: 0 16px 40px rgba(28,43,74,0.10);
     }
-
     /* Input focus */
     .email-input:focus {
       outline: none;
       border-color: #C4956A;
       box-shadow: 0 0 0 3px rgba(196,149,106,0.15);
     }
-
     /* Section background variants */
     .section-cream { background: #F8F4EF; }
     .section-navy { background: #1C2B4A; }
-
     /* Stat counter */
     .stat-card {
       background: white;
@@ -346,17 +320,14 @@
       transition: transform 0.3s ease;
     }
     .stat-card:hover { transform: translateY(-4px); }
-
     /* Neural node dots */
     @keyframes pulse-dot {
       0%, 100% { opacity: 0.5; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.3); }
     }
-
     /* Comparison table */
     .check-yes { color: #C4956A; }
     .check-no { color: #D1D5DB; }
-
     /* Product variant selector */
     .flavor-btn {
       border: 2px solid rgba(196,149,106,0.3);
@@ -367,7 +338,6 @@
       border-color: #C4956A;
       background: rgba(196,149,106,0.08);
     }
-
     /* Marquee */
     @keyframes marquee {
       0% { transform: translateX(0); }
@@ -375,7 +345,6 @@
     }
     .marquee-track { animation: marquee 25s linear infinite; }
     .marquee-track:hover { animation-play-state: paused; }
-
     .use-case-card {
       position: relative;
       min-height: 260px;
@@ -385,7 +354,6 @@
       background: #fff;
       box-shadow: 0 20px 50px rgba(28,43,74,0.08);
     }
-
     .use-case-card::before {
       content: "";
       position: absolute;
@@ -394,11 +362,8 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-
     .use-case-card:hover::before { opacity: 1; }
-
     .use-case-card > * { position: relative; }
-
     .micro-meter {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -406,14 +371,12 @@
       height: 38px;
       align-items: end;
     }
-
     .micro-meter span {
       display: block;
       min-height: 8px;
       border-radius: 999px 999px 2px 2px;
       background: linear-gradient(180deg, var(--mint), var(--navy));
     }
-
     @media (max-width: 768px) {
       .hero-immersive {
         min-height: 94svh;
@@ -421,18 +384,15 @@
           linear-gradient(180deg, rgba(253,250,247,0.28) 0%, rgba(253,250,247,0.78) 36%, rgba(253,250,247,0.98) 66%, rgba(253,250,247,1) 100%),
           url("assets/images/landingpageneuropouch.png") top 4.5rem center / 178% auto no-repeat;
       }
-
       .hero-copy {
         padding-top: 4.75rem;
       }
-
       .hero-proof-grid { grid-template-columns: 1fr; }
       .hero-proof-grid > div + div {
         border-left: 0;
         border-top: 1px solid rgba(28,43,74,0.1);
       }
     }
-
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after {
@@ -449,9 +409,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PH2N6VKS"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-navy focus:text-cream focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
-
   <!-- ═══════════════════════════════════ NAVIGATION ═══════════════════════════════════ -->
   <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-6 py-4">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
@@ -492,38 +450,30 @@
       <a href="wholesale.html" class="block px-5 py-3 text-sm font-semibold text-navy">Wholesale</a>
     </div>
   </nav>
-
   <main id="main">
-
   <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
   <section class="hero-immersive relative flex items-center overflow-hidden pt-24 pb-16 lg:pt-28">
-
     <!-- Neural network canvas background -->
     <canvas id="neural-canvas" aria-hidden="true"></canvas>
-
     <div class="hero-copy relative z-10 max-w-6xl mx-auto px-6 w-full">
       <div class="max-w-2xl">
         <div class="fade-up inline-flex items-center gap-2 badge rounded-full px-4 py-1.5 mb-6">
           <span class="brand-dot w-2 h-2 rounded-full inline-block"></span>
           <span class="text-xs font-semibold uppercase tracking-widest text-navy">The edge you don't have to announce</span>
         </div>
-
         <h1 class="fade-up font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.96] text-navy mb-6 max-w-2xl">
           Your Focus,<br />
           <em class="not-italic" style="color: #C4956A;">In Your Pocket.</em>
         </h1>
-
         <p class="fade-up font-sans text-lg sm:text-xl text-charcoal/70 leading-relaxed mb-8 max-w-xl">
           A discreet, nicotine-free neuro functional pouch with Alpha-GPC, L-Theanine, Rhodiola Rosea, B12, and clean caffeine. No cup. No chewing. No visible routine.
         </p>
-
         <div class="fade-up grid sm:grid-cols-2 gap-3 mb-9 max-w-xl text-sm font-semibold text-navy">
           <div class="signal-line">Fast buccal absorption</div>
           <div class="signal-line">Caffeine paired with L-Theanine</div>
           <div class="signal-line">16 pouches per tin</div>
           <div class="signal-line">Zero nicotine, zero taurine</div>
         </div>
-
         <div class="fade-up" id="waitlist">
           <a href="product.html"
             class="cta-glow inline-block bg-navy text-warm-white font-semibold text-base px-10 py-4 rounded-full hover:bg-navy-light transition-colors duration-200">
@@ -531,14 +481,11 @@
           </a>
         </div>
       </div>
-
     </div>
   </section>
-
   <div class="bg-cream px-6 py-4">
     <div class="max-w-6xl mx-auto">
   </div>
-
   <!-- ═══════════════════════════════════ MARQUEE BAR ═══════════════════════════════════ -->
   <div class="section-cream py-4 overflow-hidden border-y border-gray-100" aria-hidden="true">
     <div class="marquee-track flex items-center gap-12 whitespace-nowrap" style="width: max-content;">
@@ -577,7 +524,6 @@
       <span class="text-rose-gold font-bold">•</span>
     </div>
   </div>
-
   <!-- ═══════════════════════════════════ PROBLEM SECTION ═══════════════════════════════════ -->
   <section class="py-24 px-6 bg-warm-white mx-4 rounded-[9px] overflow-hidden">
     <div class="max-w-3xl mx-auto text-center">
@@ -597,13 +543,10 @@
       </p>
     </div>
   </section>
-
   <div class="divider mx-6 lg:mx-24"></div>
-
   <!-- ═══════════════════════════════════ SOLUTION ═══════════════════════════════════ -->
   <section class="py-24 px-6 bg-warm-white mx-4 rounded-[9px] overflow-hidden">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-
       <!-- Images stack -->
       <div class="relative flex justify-center">
         <div class="relative">
@@ -623,7 +566,6 @@
           />
         </div>
       </div>
-
       <!-- Text -->
       <div>
         <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">The Solution</div>
@@ -637,7 +579,6 @@
         <p class="fade-up text-lg text-muted leading-relaxed mb-8">
 	          Inside every pouch: a disclosed neuro functional stack with clean caffeine paired with L-Theanine for smooth, jitter-free focus.
         </p>
-
         <!-- Key stats -->
         <div class="fade-up grid grid-cols-3 gap-4">
           <div class="stat-card rounded-2xl p-4 text-center shadow-sm">
@@ -656,10 +597,8 @@
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════ INGREDIENTS ═══════════════════════════════════ -->
   <section id="ingredients" class="py-24 px-6 relative overflow-hidden" style="background: #F8F4EF;">
-
     <!-- Background image with rounded corners and gradient overlay -->
     <div class="absolute inset-0 z-0 mx-4 my-4" style="
       background-image: url('assets/images/9989B9FD-1901-4159-ACF1-B921ADE53EA5.png');
@@ -670,7 +609,6 @@
       overflow: hidden;
     "></div>
     <div class="absolute inset-0 z-0 mx-4 my-4" style="background: linear-gradient(135deg, rgba(28,43,74,0.82) 0%, rgba(28,43,74,0.68) 50%, rgba(36,53,89,0.78) 100%); border-radius: 9px;"></div>
-
     <div class="relative z-10 max-w-6xl mx-auto">
       <div class="text-center mb-16">
         <div class="fade-up text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">What's Inside</div>
@@ -681,9 +619,7 @@
           No fillers. No nicotine. No taurine. A focused stack of researched compounds, delivered through the mouth — not the stomach.
         </p>
       </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
         <!-- Alpha-GPC -->
         <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
           <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
@@ -695,7 +631,6 @@
             Supports acetylcholine production — the neurotransmitter associated with focus and learning. One of the most studied choline sources in cognitive supplement research.
           </p>
         </div>
-
         <!-- L-Theanine -->
         <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
           <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
@@ -707,7 +642,6 @@
             The amino acid found in green tea. Produces a state of alert relaxation — sharp and focused, without the jitter. Works synergistically with your entire stack.
           </p>
         </div>
-
         <!-- Rhodiola Rosea -->
         <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
           <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
@@ -719,7 +653,6 @@
             A well-researched adaptogen used for centuries. Multiple clinical studies support its role in reducing mental and physical fatigue — especially under stress.
           </p>
         </div>
-
         <!-- Vitamin B12 -->
         <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
           <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
@@ -731,7 +664,6 @@
             Vital for converting food into usable brain energy. Supports neurotransmitter production and helps your nervous system stay sharp during long sessions.
           </p>
         </div>
-
         <!-- Caffeine -->
         <div class="ingredient-card bg-white rounded-3xl p-8 shadow-sm fade-up">
           <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
@@ -743,7 +675,6 @@
             100mg per pouch. Paired with 150mg L-Theanine for smoother, jitter-free focus and a familiar energy profile without nicotine.
           </p>
         </div>
-
         <!-- No-nicotine card -->
         <div class="ingredient-card rounded-3xl p-8 fade-up" style="background: linear-gradient(135deg, #1C2B4A, #243559);">
           <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-5">
@@ -755,11 +686,9 @@
             NeuroPouch is a neuro functional supplement — not a nicotine product. It contains 100mg caffeine per pouch, paired with 150mg L-Theanine for smoother, jitter-free focus.
           </p>
         </div>
-
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════ HOW IT WORKS ═══════════════════════════════════ -->
   <section id="how-it-works" class="py-24 px-6 bg-warm-white mx-4 rounded-[9px] overflow-hidden">
     <div class="max-w-4xl mx-auto">
@@ -769,7 +698,6 @@
           How NeuroPouch works.
         </h2>
       </div>
-
       <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
         <div class="text-center fade-up">
           <div class="step-number font-serif text-7xl mb-4 leading-none">01</div>
@@ -793,10 +721,8 @@
           </p>
         </div>
       </div>
-
       <!-- Divider -->
       <div class="divider my-16"></div>
-
       <!-- Absorption advantage callout -->
       <div class="fade-up bg-navy rounded-3xl p-8 lg:p-12 text-center">
         <div class="text-xs font-semibold uppercase tracking-widest text-rose-gold mb-4">The Science of Delivery</div>
@@ -811,7 +737,6 @@
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════ COMPARISON ═══════════════════════════════════ -->
   <section class="py-24 px-6 section-cream mx-4 rounded-[9px] overflow-hidden">
     <div class="max-w-3xl mx-auto">
@@ -821,7 +746,6 @@
           The better choice.
         </h2>
       </div>
-
       <div class="fade-up bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-100">
         <table class="w-full text-sm" role="table">
           <thead>
@@ -898,7 +822,6 @@
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════ TESTIMONIALS ═══════════════════════════════════ -->
   <section class="py-24 px-6 bg-warm-white mx-4 rounded-[9px] overflow-hidden">
     <div class="max-w-6xl mx-auto">
@@ -908,9 +831,7 @@
           What people actually say.
         </h2>
       </div>
-
       <div class="grid md:grid-cols-3 gap-6">
-
         <div class="testimonial-card p-8 fade-up flex flex-col justify-between gap-6">
           <div>
             <div class="text-3xl font-serif text-rose-gold leading-none mb-4">"</div>
@@ -926,7 +847,6 @@
             </div>
           </div>
         </div>
-
         <div class="testimonial-card p-8 fade-up flex flex-col justify-between gap-6">
           <div>
             <div class="text-3xl font-serif text-rose-gold leading-none mb-4">"</div>
@@ -942,7 +862,6 @@
             </div>
           </div>
         </div>
-
         <div class="testimonial-card p-8 fade-up flex flex-col justify-between gap-6">
           <div>
             <div class="text-3xl font-serif text-rose-gold leading-none mb-4">"</div>
@@ -958,13 +877,11 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════ FAQ ═══════════════════════════════════ -->
   <section id="faq" class="py-24 px-6 section-cream mx-4 rounded-[9px] overflow-hidden">
     <div class="max-w-2xl mx-auto">
@@ -974,9 +891,7 @@
           Honest answers.
         </h2>
       </div>
-
       <div class="space-y-4" id="faq-list">
-
         <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
           <button
             class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
@@ -992,7 +907,6 @@
             </p>
           </div>
         </div>
-
         <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
           <button
             class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
@@ -1008,7 +922,6 @@
             </p>
           </div>
         </div>
-
         <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
           <button
             class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
@@ -1024,7 +937,6 @@
             </p>
           </div>
         </div>
-
         <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
           <button
             class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
@@ -1040,7 +952,6 @@
             </p>
           </div>
         </div>
-
         <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
           <button
             class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
@@ -1056,7 +967,6 @@
             </p>
           </div>
         </div>
-
         <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
           <button
             class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
@@ -1072,7 +982,6 @@
             </p>
           </div>
         </div>
-
         <div class="fade-up faq-item bg-white rounded-2xl overflow-hidden border border-gray-100">
           <button
             class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
@@ -1088,9 +997,7 @@
             </p>
           </div>
         </div>
-
       </div>
-
       <!-- Schema: FAQ -->
       <script type="application/ld+json">
       {
@@ -1222,7 +1129,6 @@
       </script>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════ FINAL CTA ═══════════════════════════════════ -->
   <section class="py-24 px-6" style="background: linear-gradient(135deg, #1C2B4A 0%, #243559 100%);">
     <div class="max-w-2xl mx-auto text-center">
@@ -1235,7 +1141,6 @@
         Sign up for 10% off your first order, early access to new flavors,
         and updates from the NeuroPouch lab.
       </p>
-
       <form id="footer-form" name="discount-footer" data-netlify="true" class="fade-up flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleFormSubmit(event, 'footer-form')">
         <input
           type="email"
@@ -1252,9 +1157,7 @@
           Get 10% Off
         </button>
       </form>
-
       <p class="fade-up text-white/40 text-xs mt-4">No spam. Unsubscribe anytime. Your data stays private.</p>
-
       <!-- Product images row -->
       <div class="fade-up flex justify-center gap-6 mt-14">
         <img src="assets/images/neuropouch package new.png"
@@ -1270,13 +1173,10 @@
              class="w-20 h-20 object-cover rounded-full border-2 border-white/20 hover:border-rose-gold/60 transition-all duration-300 hover:scale-110"
              width="80" height="80" loading="lazy" decoding="async" />
       </div>
-
       <p class="fade-up text-white/30 text-xs mt-8">EST. 2024 · Premium Energy · 16 Pouches Per Tin</p>
     </div>
   </section>
-
   </main>
-
   <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
   <footer class="bg-navy py-8 px-6">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
@@ -1300,27 +1200,20 @@
       </div>
     </div>
   </footer>
-
   <!-- ═══════════════════════════════════ SUCCESS MODAL ═══════════════════════════════════ -->
   <!-- ═══════════════════════════════════ WAITLIST MODAL ═══════════════════════════════════ -->
   <div id="waitlist-modal" class="fixed inset-0 z-[100] hidden items-center justify-center px-5" aria-modal="true" role="dialog" aria-labelledby="wm-title">
-
     <!-- Backdrop -->
     <div id="wm-backdrop" class="absolute inset-0" style="background: rgba(28,43,74,0.72); backdrop-filter: blur(6px);" onclick="closeWaitlistModal()"></div>
-
     <!-- Card -->
     <div id="wm-card" class="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl" style="opacity:0; transform: translateY(24px) scale(0.97);">
-
       <!-- Top decorative band -->
       <div class="h-1.5 w-full" style="background: linear-gradient(90deg, #1C2B4A, #C4956A, #E8C5B8);"></div>
-
       <div class="bg-warm-white px-8 pt-8 pb-10">
-
         <!-- Close button -->
         <button onclick="closeWaitlistModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-cream flex items-center justify-center hover:bg-blush transition-colors" aria-label="Close">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#2D3142" stroke-width="2" stroke-linecap="round"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
         </button>
-
         <!-- ── INPUT STATE ── -->
         <div id="wm-input-state">
           <!-- Icon -->
@@ -1329,13 +1222,11 @@
               <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
             </svg>
           </div>
-
           <p class="text-rose-gold text-xs font-semibold uppercase tracking-widest mb-2">First Order Discount</p>
           <h2 id="wm-title" class="font-serif text-2xl text-navy leading-tight mb-2">Get 10% off your first order.</h2>
           <p class="text-muted text-sm leading-relaxed mb-6">
             Drop your email and we'll send your discount code straight away. No spam, unsubscribe anytime.
           </p>
-
           <!-- Perks -->
           <div class="flex flex-col gap-2 mb-7">
             <div class="flex items-center gap-3">
@@ -1357,7 +1248,6 @@
               <span class="text-xs text-charcoal">Occasional updates — never more than once a week</span>
             </div>
           </div>
-
           <!-- Form -->
           <form id="wm-form" novalidate>
             <div class="flex flex-col gap-3">
@@ -1371,10 +1261,8 @@
             </div>
             <p id="wm-error" class="text-red-500 text-xs mt-2 hidden">Please enter a valid email address.</p>
           </form>
-
           <p class="text-muted/50 text-xs text-center mt-4">No card required. Unsubscribe at any time.</p>
         </div>
-
         <!-- ── SUCCESS STATE ── -->
         <div id="wm-success-state" class="hidden text-center py-4">
           <div class="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center" style="background: linear-gradient(135deg, #C4956A, #E8C5B8);">
@@ -1391,11 +1279,9 @@
             Done
           </button>
         </div>
-
       </div>
     </div>
   </div>
-
   <!-- Legacy success modal (kept for inline form fallback) -->
   <div id="success-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center px-6" style="background: rgba(28,43,74,0.7); backdrop-filter: blur(4px);">
     <div class="bg-warm-white rounded-3xl p-10 max-w-sm w-full text-center shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -1409,7 +1295,6 @@
       </button>
     </div>
   </div>
-
   <!-- ═══════════════════════════════════ SCRIPTS ═══════════════════════════════════ -->
   <script>
     // ─── Neural Network Canvas ───────────────────────────────────────────────────
@@ -1418,13 +1303,11 @@
       const ctx = canvas.getContext('2d');
       let nodes = [];
       let animationId;
-
       function resize() {
         canvas.width = canvas.parentElement.offsetWidth;
         canvas.height = canvas.parentElement.offsetHeight;
         initNodes();
       }
-
       function initNodes() {
         nodes = [];
         const count = Math.floor((canvas.width * canvas.height) / 18000);
@@ -1438,10 +1321,8 @@
           });
         }
       }
-
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         // Move nodes
         nodes.forEach(n => {
           n.x += n.vx;
@@ -1449,7 +1330,6 @@
           if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
           if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
         });
-
         // Draw connections
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
@@ -1466,7 +1346,6 @@
             }
           }
         }
-
         // Draw nodes
         nodes.forEach(n => {
           ctx.beginPath();
@@ -1474,10 +1353,8 @@
           ctx.fillStyle = 'rgba(28,43,74,0.6)';
           ctx.fill();
         });
-
         animationId = requestAnimationFrame(draw);
       }
-
       // Respect reduced motion preference
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         window.addEventListener('resize', resize);
@@ -1485,10 +1362,8 @@
         draw();
       }
     })();
-
     // ─── GSAP Scroll Animations ───────────────────────────────────────────────
     gsap.registerPlugin(ScrollTrigger);
-
     // Staggered fade-up for all .fade-up elements
     gsap.utils.toArray('.fade-up').forEach((el, i) => {
       gsap.fromTo(el,
@@ -1507,25 +1382,21 @@
         }
       );
     });
-
     // ─── FAQ Accordion ────────────────────────────────────────────────────────
     function toggleFaq(btn) {
       const answer = btn.nextElementSibling;
       const icon = btn.querySelector('.faq-icon');
       const isOpen = !answer.classList.contains('hidden');
-
       // Close all
       document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
       document.querySelectorAll('.faq-icon').forEach(ic => ic.style.transform = 'rotate(0deg)');
       document.querySelectorAll('.faq-item button').forEach(b => b.setAttribute('aria-expanded', 'false'));
-
       if (!isOpen) {
         answer.classList.remove('hidden');
         icon.style.transform = 'rotate(180deg)';
         btn.setAttribute('aria-expanded', 'true');
       }
     }
-
     // ─── Form Submit → Brevo Whitelist (list 7) ───────────────────────────────
     async function handleFormSubmit(e, formId) {
       e.preventDefault();
@@ -1533,13 +1404,10 @@
       const btn  = form.querySelector('button[type="submit"], input[type="submit"], button:not([type])') || form.querySelector('a');
       const email = form.querySelector('input[type="email"]').value.trim();
       if (!email) return;
-
       // Disable button while submitting
       const originalText = btn ? btn.textContent : '';
       if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
-
       const result = await addToBrevo({ email, listId: LIST_WHITELIST });
-
       if (result.ok) {
         document.getElementById('success-modal').classList.remove('hidden');
         document.getElementById('success-modal').classList.add('flex');
@@ -1547,20 +1415,16 @@
       } else {
         alert('Something went wrong — please try again. (' + result.error + ')');
       }
-
       if (btn) { btn.disabled = false; btn.textContent = originalText; }
     }
-
      function closeModal() {
        document.getElementById('success-modal').classList.add('hidden');
        document.getElementById('success-modal').classList.remove('flex');
      }
-
      // Close modal on backdrop click
      document.getElementById('success-modal').addEventListener('click', function(e) {
        if (e.target === this) closeModal();
      });
-
      // ─── Waitlist Modal ───────────────────────────────────────────────────────
      function openWaitlistModal() {
        const modal = document.getElementById('waitlist-modal');
@@ -1573,18 +1437,15 @@
        const btn = document.getElementById('wm-submit');
        btn.disabled = false;
        btn.textContent = 'Get Early Access + 15% Off';
-
        modal.classList.remove('hidden');
        modal.classList.add('flex');
        document.body.style.overflow = 'hidden';
-
        gsap.fromTo(card,
          { opacity: 0, y: 28, scale: 0.96 },
          { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: 'power3.out' }
        );
        setTimeout(() => document.getElementById('wm-email').focus(), 420);
      }
-
      function closeWaitlistModal() {
        const modal = document.getElementById('waitlist-modal');
        const card  = document.getElementById('wm-card');
@@ -1597,14 +1458,12 @@
          }
        });
      }
-
      // Waitlist modal form submit
      document.getElementById('wm-form').addEventListener('submit', async function(e) {
        e.preventDefault();
        const email = document.getElementById('wm-email').value.trim();
        const errEl = document.getElementById('wm-error');
        const btn   = document.getElementById('wm-submit');
-
        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
          errEl.classList.remove('hidden');
          document.getElementById('wm-email').focus();
@@ -1613,9 +1472,7 @@
        errEl.classList.add('hidden');
        btn.disabled = true;
        btn.textContent = 'Joining…';
-
        const result = await addToBrevo({ email, listId: LIST_WHITELIST, attributes: { SOURCE: 'nav-modal' } });
-
        if (result.ok) {
          const card = document.getElementById('wm-card');
          gsap.to(card, { scale: 0.98, duration: 0.1, yoyo: true, repeat: 1 });
@@ -1629,7 +1486,6 @@
          errEl.classList.remove('hidden');
        }
      });
-
      // ESC key closes waitlist modal
      document.addEventListener('keydown', function(e) {
        if (e.key === 'Escape') {
@@ -1638,27 +1494,22 @@
          else closeModal();
        }
      });
-
      // ─── Mobile Navigation ───────────────────────────────────────────────────
      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
      const mobileMenu = document.getElementById('mobile-menu');
-
      function closeMobileMenu() {
        if (!mobileMenu || !mobileMenuToggle) return;
        mobileMenu.classList.add('hidden');
        mobileMenuToggle.setAttribute('aria-expanded', 'false');
      }
-
      mobileMenuToggle?.addEventListener('click', () => {
        const willOpen = mobileMenu.classList.contains('hidden');
        mobileMenu.classList.toggle('hidden');
        mobileMenuToggle.setAttribute('aria-expanded', String(willOpen));
      });
-
      mobileMenu?.querySelectorAll('a').forEach(link => {
        link.addEventListener('click', closeMobileMenu);
      });
-
      // ─── Smooth anchor scroll ─────────────────────────────────────────────────
      document.querySelectorAll('a[href^="#"]').forEach(a => {
        a.addEventListener('click', function(e) {
@@ -1670,6 +1521,5 @@
        });
      });
    </script>
-
 </body>
 </html>

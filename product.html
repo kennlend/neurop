@@ -8,9 +8,16 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-PH2N6VKS');</script>
   <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK4T95QPB0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XK4T95QPB0');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <!-- SEO -->
   <title>Buy NeuroPouch — Neuro Functional Focus Pouches | 16 Per Tin</title>
   <meta name="description" content="Buy NeuroPouch — the nicotine-free neuro functional pouch with Alpha-GPC, L-Theanine, clean caffeine, Rhodiola Rosea and B12. 16 pouches per tin. Free EU shipping." />
@@ -24,7 +31,6 @@
   <meta name="theme-color" content="#1C2B4A" />
   <link rel="icon" href="/assets/images/Neuropouch.png" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/images/Neuropouch.png" />
-
   <!-- Open Graph -->
   <meta property="og:site_name" content="NeuroPouch" />
   <meta property="og:title" content="NeuroPouch — The Neuro Functional Pouch That Works" />
@@ -35,20 +41,18 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
-
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="NeuroPouch — Neuro Functional Focus Pouch" />
   <meta name="twitter:description" content="Nicotine-free. Alpha-GPC, L-Theanine, clean caffeine, Rhodiola Rosea. 16 per tin." />
   <meta name="twitter:image" content="https://getneuropouch.com/assets/images/Neuropouch.png" />
-
   <!-- Schema: Product -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": "https://getneuropouch.com/product#product",
-    "name": "NeuroPouch Focus",
+    "name": "Neuropouch - Energy & Focus",
     "description": "Nicotine-free neuro functional oral pouch with Alpha-GPC 100mg, L-Theanine 150mg, Rhodiola Rosea 75mg, clean caffeine 100mg, and Vitamin B12 100mcg. 16 pouches per tin.",
     "image": [
       "https://getneuropouch.com/assets/images/Neuropouch.png",
@@ -117,12 +121,10 @@
     ]
   }
   </script>
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -148,19 +150,15 @@
       }
     }
   </script>
-
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
   <!-- Stripe.js (load early, non-blocking) -->
   <script src="https://js.stripe.com/v3/" async></script>
-
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { background: #FDFAF7; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
-
     /* ---- Sticky nav ---- */
     #site-nav {
       backdrop-filter: blur(12px);
@@ -168,49 +166,40 @@
       background: rgba(253, 250, 247, 0.9);
       border-bottom: 1px solid rgba(196, 149, 106, 0.15);
     }
-
     @media (max-width: 639px) {
       #site-nav {
         background: #1C2B4A;
         border-bottom-color: rgba(253, 250, 247, 0.14);
       }
-
       .product-nav-inner {
         position: relative;
         min-height: 44px;
       }
-
       .product-nav-logo {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
       }
-
       .product-mobile-menu-button {
         border-color: rgba(253, 250, 247, 0.28) !important;
         color: #FDFAF7 !important;
       }
-
       .product-mobile-menu-button:hover {
         background: rgba(253, 250, 247, 0.1) !important;
       }
-
       .product-mobile-buy {
         background: #FDFAF7 !important;
         color: #1C2B4A !important;
       }
-
       .product-mobile-menu-panel {
         background: #1C2B4A !important;
         border-color: rgba(253, 250, 247, 0.16) !important;
       }
-
       .product-mobile-menu-panel a {
         color: #FDFAF7 !important;
         border-color: rgba(253, 250, 247, 0.14) !important;
       }
     }
-
     /* ---- Product image gallery ---- */
     .gallery-thumb {
       cursor: pointer;
@@ -220,7 +209,6 @@
     }
     .gallery-thumb:hover { transform: scale(1.04); }
     .gallery-thumb.active { border-color: #C4956A; }
-
     /* ---- Variant selector ---- */
     .variant-btn {
       border: 2px solid #E8C5B8;
@@ -232,7 +220,6 @@
       background: #1C2B4A;
       color: #FDFAF7;
     }
-
     /* ---- Quantity stepper ---- */
     .qty-btn {
       width: 36px; height: 36px;
@@ -245,7 +232,6 @@
       transition: background 0.15s;
     }
     .qty-btn:hover { background: #F8F4EF; }
-
     /* ---- CTA button ---- */
     .btn-primary {
       background: linear-gradient(135deg, #1C2B4A 0%, #243559 100%);
@@ -265,7 +251,6 @@
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(28,43,74,0.25); }
     .btn-primary:hover::after { opacity: 1; }
     .btn-primary:active { transform: translateY(0); }
-
     /* ---- Bundle card ---- */
     .bundle-card {
       border: 2px solid #E8C5B8;
@@ -288,7 +273,6 @@
       border-radius: 99px;
       text-transform: uppercase;
     }
-
     /* ---- Ingredient pill ---- */
     .ingredient-pill {
       display: inline-flex;
@@ -302,7 +286,6 @@
       font-weight: 500;
       color: #1C2B4A;
     }
-
     /* ---- Trust badges ---- */
     .trust-badge {
       display: flex;
@@ -311,10 +294,8 @@
       font-size: 13px;
       color: #4B5563;
     }
-
     /* ---- Review stars ---- */
     .star { color: #C4956A; }
-
     /* ---- Review card ---- */
     .review-card {
       background: white;
@@ -323,7 +304,6 @@
       transition: box-shadow 0.2s;
     }
     .review-card:hover { box-shadow: 0 4px 20px rgba(28,43,74,0.07); }
-
     /* ---- Accordion ---- */
     .accordion-content {
       max-height: 0;
@@ -335,14 +315,12 @@
     }
     .accordion-icon { transition: transform 0.3s; }
     .accordion-item.open .accordion-icon { transform: rotate(45deg); }
-
     /* ---- Sticky add-to-cart bar (mobile) ---- */
     #sticky-atc {
       transform: translateY(100%);
       transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
     }
     #sticky-atc.visible { transform: translateY(0); }
-
     /* ---- Floating particles ---- */
     .particle {
       position: absolute;
@@ -355,10 +333,8 @@
       0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
       50% { transform: translateY(-30px) scale(1.1); opacity: 0.7; }
     }
-
     /* ---- Section fade-in ---- */
     .reveal { opacity: 0; transform: translateY(32px); }
-
     /* ---- Shine sweep on image ---- */
     .image-shine {
       position: relative;
@@ -381,7 +357,6 @@
       0% { left: -100%; }
       60%, 100% { left: 160%; }
     }
-
     /* prefers-reduced-motion */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -390,7 +365,6 @@
       }
     }
   </style>
-
   <!-- Schema: BreadcrumbList -->
   <script type="application/ld+json">
   {
@@ -402,7 +376,6 @@
     ]
   }
   </script>
-
   <!-- Schema: Product FAQ -->
   <script type="application/ld+json">
   {
@@ -438,15 +411,12 @@
   }
   </script>
 </head>
-
 <body class="text-charcoal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PH2N6VKS"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-navy focus:text-cream focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
-
   <!-- ═══════════════════════════════════════
        NAVIGATION
   ═══════════════════════════════════════ -->
@@ -480,15 +450,12 @@
       <a href="wholesale.html" class="block px-5 py-3 text-sm font-semibold text-navy">Wholesale</a>
     </div>
   </nav>
-
   <main id="main">
-
   <!-- ═══════════════════════════════════════
        PRODUCT HERO — TWO COLUMN
   ═══════════════════════════════════════ -->
   <section id="buy" class="pt-28 pb-16 px-6">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
-
       <!-- LEFT: Image Gallery -->
       <div class="relative">
         <!-- Main image -->
@@ -496,7 +463,7 @@
           <img
             id="main-product-image"
             src="assets/images/neuropouch front new.png"
-            alt="NeuroPouch Focus tin"
+            alt="Neuropouch Energy & Focus tin"
             class="w-full h-full object-cover"
             width="704"
             height="704"
@@ -505,7 +472,6 @@
             Natural Peppermint &amp; Lemongrass
           </p>
         </div>
-
         <!-- Thumbnail row -->
         <div class="flex gap-3 mt-4 justify-center">
           <button class="gallery-thumb active w-16 h-16 rounded-xl bg-navy/10 overflow-hidden" data-flavor="Natural Peppermint &amp; Lemongrass" data-image="assets/images/neuropouch front new.png" aria-label="NeuroPouch front">
@@ -515,7 +481,6 @@
             <img src="assets/images/20C28A8B-2AE3-41B7-B6EE-1BCD77731AC2.png" alt="" class="w-full h-full object-cover" width="64" height="64" loading="lazy" decoding="async" />
           </button>
         </div>
-
         <!-- Trust strip under gallery -->
         <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6">
           <div class="trust-badge">
@@ -536,37 +501,30 @@
           </div>
         </div>
       </div>
-
       <!-- RIGHT: Product details + purchase -->
       <div class="flex flex-col gap-6">
-
         <!-- Breadcrumb -->
         <nav class="text-xs text-muted" aria-label="Breadcrumb">
           <a href="index.html" class="hover:text-rose-gold transition-colors">Home</a>
           <span class="mx-2">›</span>
-          <span class="text-charcoal font-medium">NeuroPouch Focus</span>
+          <span class="text-charcoal font-medium">Neuropouch - Energy &amp; Focus</span>
         </nav>
-
         <!-- Launch status row -->
         <div class="flex flex-wrap items-center gap-3">
           <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">In Stock</span>
-	          <span class="text-xs font-semibold text-navy bg-cream border border-blush/60 px-2.5 py-1 rounded-full">Live launch batch</span>
           <a href="#use-cases" class="text-sm text-muted hover:text-rose-gold transition-colors">See designed use cases</a>
         </div>
-
         <!-- Title -->
         <div>
-          <h1 class="font-serif text-3xl sm:text-4xl text-navy leading-tight">NeuroPouch Focus</h1>
+          <h1 class="font-serif text-3xl sm:text-4xl text-navy leading-tight">Neuropouch - Energy &amp; Focus</h1>
           <p class="mt-2 text-muted text-sm">16 pouches per tin · Nicotine-free · Buccal-absorbed neuro functional pouch</p>
         </div>
-
         <!-- Price -->
 	        <div class="flex items-baseline gap-3">
 	          <span id="display-price" class="text-3xl font-bold text-navy">€99.00</span>
 	          <span id="compare-price" class="text-muted text-sm line-through hidden"></span>
 	          <span class="text-emerald-700 text-sm font-semibold bg-emerald-50 px-2.5 py-1 rounded-full">In Stock</span>
 	        </div>
-
 	        <!-- Dosage table -->
 	        <div class="bg-white border border-blush/60 rounded-2xl overflow-hidden shadow-sm">
 	          <div class="px-5 py-4 border-b border-blush/50">
@@ -581,14 +539,11 @@
 	          </div>
 	          <p class="px-5 py-3 bg-cream/60 text-xs text-muted leading-relaxed">Contains caffeine. Not intended for children, pregnant or nursing people, or anyone sensitive to caffeine. Check with a healthcare professional if you take medication or have a medical condition.</p>
 	        </div>
-
         <!-- Divider -->
         <div class="h-px bg-blush/50"></div>
-
         <!-- Bundle selector (quantity/value) -->
         <div>
           <p class="text-sm font-semibold text-charcoal mb-3">Choose Your Bundle</p>
-
           <!-- 5 Pack = 5 tins = €49.90 -->
           <div class="bundle-card rounded-2xl p-4 sm:p-5 mb-3" data-kind="pack" data-packs="1" data-price="49.90" data-compare="49.95" data-product-id="51" data-label="5 Pack (5 tins)">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -602,7 +557,6 @@
               </div>
             </div>
           </div>
-
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <!-- 1 Tower = 10 tins = €99 -->
             <div class="bundle-card selected rounded-2xl p-4" data-kind="tower" data-towers="1" data-price="99.00" data-label="1 Tower (10 tins)">
@@ -611,7 +565,6 @@
               <p class="mt-3 font-semibold text-charcoal">€99.00</p>
               <p class="text-xs text-rose-gold font-medium">Limited time offer</p>
             </div>
-
             <!-- 2 Towers = 20 tins = €168.30 (15% off) -->
             <div class="bundle-card rounded-2xl p-4" data-kind="tower" data-towers="2" data-price="168.30" data-label="2 Towers (20 tins)">
               <div class="bundle-badge">Save 15%</div>
@@ -620,7 +573,6 @@
               <p class="mt-3 font-semibold text-charcoal">€168.30</p>
               <p class="text-xs text-rose-gold font-medium">Limited time offer</p>
             </div>
-
             <!-- 3 Towers = 30 tins = €237.60 (20% off) -->
             <div class="bundle-card rounded-2xl p-4" data-kind="tower" data-towers="3" data-price="237.60" data-label="3 Towers (30 tins)">
               <div class="bundle-badge">Save 20%</div>
@@ -629,10 +581,8 @@
               <p class="mt-3 font-semibold text-charcoal">€237.60</p>
               <p class="text-xs text-rose-gold font-medium">Limited time offer</p>
             </div>
-
           </div>
         </div>
-
         <!-- Flavour -->
         <div>
           <p class="text-sm font-semibold text-charcoal mb-3">
@@ -648,7 +598,6 @@
             </button>
           </div>
         </div>
-
         <!-- Quantity -->
         <div class="flex items-center gap-4">
           <p class="text-sm font-semibold text-charcoal">Quantity <span id="qty-unit" class="font-normal text-muted">(towers)</span></p>
@@ -658,7 +607,6 @@
             <button class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
           </div>
         </div>
-
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-3">
           <a
@@ -677,7 +625,6 @@
 	            Get 10% Off
 	          </button>
         </div>
-
         <!-- Payment icons -->
         <div class="flex items-center gap-3 flex-wrap">
           <span class="text-xs text-muted">Secure payment via</span>
@@ -698,7 +645,6 @@
             <span class="text-xs text-muted font-medium">+ Apple Pay</span>
           </div>
         </div>
-
         <!-- Guarantee strip -->
         <div class="bg-cream rounded-2xl p-4 flex gap-3 items-start">
           <svg class="w-6 h-6 text-rose-gold flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
@@ -707,11 +653,9 @@
             <p class="text-xs text-muted mt-0.5">If you're not satisfied with your first tin, we'll refund you. No questions, no hoops.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════════
        QUICK BENEFITS STRIP
   ═══════════════════════════════════════ -->
@@ -743,7 +687,6 @@
 	        </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════════
        HOW TO USE
   ═══════════════════════════════════════ -->
@@ -770,7 +713,6 @@
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════════
        INGREDIENTS DEEP DIVE
   ═══════════════════════════════════════ -->
@@ -781,9 +723,7 @@
 	        <h2 class="font-serif text-3xl sm:text-4xl text-navy">Five dosed actives. One clear purpose.</h2>
 	        <p class="mt-4 text-muted max-w-xl mx-auto text-sm leading-relaxed">No proprietary blend. Every active ingredient has a disclosed dose per pouch.</p>
       </div>
-
       <div class="space-y-4">
-
         <!-- Ingredient 1 -->
         <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4 shadow-sm border border-blush/40 ingredient-card">
           <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy flex items-center justify-center">
@@ -797,7 +737,6 @@
 	            <p class="text-muted text-sm leading-relaxed">A researched choline source included to support acetylcholine pathways involved in attention and learning.</p>
           </div>
         </div>
-
         <!-- Ingredient 2 -->
         <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4 shadow-sm border border-blush/40 ingredient-card">
           <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy flex items-center justify-center">
@@ -811,7 +750,6 @@
 	            <p class="text-muted text-sm leading-relaxed">Found naturally in green tea. Paired with caffeine to support a smoother, less jittery focus experience.</p>
           </div>
         </div>
-
         <!-- Ingredient 3 -->
         <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4 shadow-sm border border-blush/40 ingredient-card">
           <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy flex items-center justify-center">
@@ -825,7 +763,6 @@
 	            <p class="text-muted text-sm leading-relaxed">An adaptogen studied for stress-related fatigue and demanding mental work.</p>
           </div>
         </div>
-
         <!-- Ingredient 4 -->
         <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4 shadow-sm border border-blush/40 ingredient-card">
           <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy flex items-center justify-center">
@@ -839,7 +776,6 @@
 	            <p class="text-muted text-sm leading-relaxed">Vitamin B12 contributes to normal nervous system function and normal energy-yielding metabolism.</p>
           </div>
         </div>
-
 	        <!-- Ingredient 5 -->
 	        <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4 shadow-sm border border-blush/40 ingredient-card">
           <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy flex items-center justify-center">
@@ -853,14 +789,11 @@
 	            <p class="text-muted text-sm leading-relaxed">A familiar, disclosed caffeine dose paired with L-Theanine for smooth, jitter-free focus.</p>
 	          </div>
 	        </div>
-
 	        <div class="bg-white/70 rounded-2xl p-5 border border-blush/40">
 	          <p class="text-sm font-semibold text-navy mb-1">Flavor and delivery support</p>
 	          <p class="text-muted text-sm leading-relaxed">Natural peppermint and lemongrass provide the fresh sensory profile and support the pouch experience. They are not counted as dosed actives.</p>
 	        </div>
-
       </div>
-
       <!-- Absorption callout -->
       <div class="mt-10 bg-navy rounded-3xl p-8 text-center relative overflow-hidden">
         <div class="absolute inset-0 opacity-5">
@@ -872,7 +805,6 @@
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════════
        WHO IT'S FOR
   ═══════════════════════════════════════ -->
@@ -883,47 +815,39 @@
         <h2 class="font-serif text-3xl sm:text-4xl text-navy">Built for peak performers.</h2>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
         <div class="bg-cream rounded-2xl p-6 border border-blush/40">
           <div class="text-3xl mb-3">🎓</div>
           <h3 class="font-semibold text-navy mb-2">Students</h3>
           <p class="text-muted text-sm leading-relaxed">Deep study sessions without jitters. Discreet enough for the library, the lecture hall, or back-to-back exams.</p>
         </div>
-
         <div class="bg-cream rounded-2xl p-6 border border-blush/40">
           <div class="text-3xl mb-3">💼</div>
           <h3 class="font-semibold text-navy mb-2">Executives & Entrepreneurs</h3>
           <p class="text-muted text-sm leading-relaxed">Back-to-back meetings. Investor calls. No coffee breath. No visible gum. No one knows — except you.</p>
         </div>
-
         <div class="bg-cream rounded-2xl p-6 border border-blush/40">
           <div class="text-3xl mb-3">🧬</div>
           <h3 class="font-semibold text-navy mb-2">Biohackers</h3>
 	          <p class="text-muted text-sm leading-relaxed">A transparent neuro functional stack with measurable ingredients, clean caffeine, and a delivery method designed for discreet daily use.</p>
         </div>
-
         <div class="bg-cream rounded-2xl p-6 border border-blush/40">
           <div class="text-3xl mb-3">🏋️</div>
           <h3 class="font-semibold text-navy mb-2">Athletes</h3>
           <p class="text-muted text-sm leading-relaxed">Mental game matters. Rhodiola Rosea reduces mental and physical fatigue — ideal for training days that need both body and mind sharp.</p>
         </div>
-
         <div class="bg-cream rounded-2xl p-6 border border-blush/40">
           <div class="text-3xl mb-3">✈️</div>
           <h3 class="font-semibold text-navy mb-2">Frequent Travellers</h3>
           <p class="text-muted text-sm leading-relaxed">Pocket-sized tin. No liquid. No security issues. Pop one in during a long-haul and arrive sharp.</p>
         </div>
-
         <div class="bg-cream rounded-2xl p-6 border border-blush/40">
           <div class="text-3xl mb-3">🎮</div>
           <h3 class="font-semibold text-navy mb-2">Creators & Gamers</h3>
           <p class="text-muted text-sm leading-relaxed">Long sessions need sustained focus, not spikes. L-Theanine keeps you in the zone without the crash that follows energy drinks.</p>
         </div>
-
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════════
        USE CASES
   ═══════════════════════════════════════ -->
@@ -936,49 +860,40 @@
 	          Verified customer reviews will appear here as orders come in. For now, the product page stays honest and focuses on the situations the pouch was built for.
         </p>
       </div>
-
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
-
         <div class="review-card p-6">
           <p class="text-xs font-semibold text-rose-gold uppercase tracking-widest mb-3">Meeting Mode</p>
           <h3 class="font-serif text-xl text-navy mb-3">Silent, discreet, no refill trip.</h3>
           <p class="text-muted text-sm leading-relaxed">Use before a presentation, sales call, interview, or strategy session when chewing gum or carrying an energy drink feels out of place.</p>
         </div>
-
         <div class="review-card p-6">
           <p class="text-xs font-semibold text-rose-gold uppercase tracking-widest mb-3">Study Mode</p>
           <h3 class="font-serif text-xl text-navy mb-3">For deep work after the first coffee.</h3>
           <p class="text-muted text-sm leading-relaxed">A pouch format for revision, coding, writing, and late-afternoon focus without another large drink on the desk.</p>
         </div>
-
         <div class="review-card p-6">
           <p class="text-xs font-semibold text-rose-gold uppercase tracking-widest mb-3">Travel Mode</p>
           <h3 class="font-serif text-xl text-navy mb-3">Compact enough for any pocket.</h3>
           <p class="text-muted text-sm leading-relaxed">A small tin built for flights, commutes, conferences, and days when your schedule has no clean pause.</p>
         </div>
-
         <div class="review-card p-6">
           <p class="text-xs font-semibold text-rose-gold uppercase tracking-widest mb-3">Clean Swap</p>
           <h3 class="font-serif text-xl text-navy mb-3">No nicotine, no taurine.</h3>
           <p class="text-muted text-sm leading-relaxed">Positioned for people who want a discreet pouch format without crossing into nicotine products or sugary energy drinks.</p>
         </div>
-
         <div class="review-card p-6">
           <p class="text-xs font-semibold text-rose-gold uppercase tracking-widest mb-3">Buccal Delivery</p>
           <h3 class="font-serif text-xl text-navy mb-3">No capsule, no water needed.</h3>
           <p class="text-muted text-sm leading-relaxed">The pouch rests under the upper lip, where active ingredients begin absorbing through oral tissue.</p>
         </div>
-
         <div class="review-card p-6">
           <p class="text-xs font-semibold text-rose-gold uppercase tracking-widest mb-3">Stacked Formula</p>
           <h3 class="font-serif text-xl text-navy mb-3">Focus support in one tin.</h3>
           <p class="text-muted text-sm leading-relaxed">Alpha-GPC, L-Theanine, Rhodiola Rosea, B12, caffeine, and mint extract in a format designed for daily performance moments.</p>
         </div>
-
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════════
        COMPARISON TABLE
   ═══════════════════════════════════════ -->
@@ -1047,7 +962,6 @@
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════════
        FAQ
   ═══════════════════════════════════════ -->
@@ -1058,7 +972,6 @@
         <h2 class="font-serif text-3xl text-navy">Good questions deserve straight answers.</h2>
       </div>
       <div class="space-y-3" id="faq-list">
-
         <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
           <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
             <span class="font-semibold text-navy text-sm pr-4">Is NeuroPouch safe?</span>
@@ -1068,7 +981,6 @@
 	            <p class="text-muted text-sm pb-5 leading-relaxed">NeuroPouch contains zero nicotine and no taurine. It does contain 100mg caffeine per pouch, paired with 150mg L-Theanine. It is not intended for children, pregnant or nursing people, or anyone sensitive to caffeine. Check with a healthcare professional if you take medication or have a medical condition.</p>
           </div>
         </div>
-
         <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
           <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
             <span class="font-semibold text-navy text-sm pr-4">How is this different from nicotine pouches like ZYN?</span>
@@ -1078,7 +990,6 @@
 	            <p class="text-muted text-sm pb-5 leading-relaxed">Completely different category. NeuroPouch contains no nicotine whatsoever. The pouch format is similar, but the formula is built around neuro functional ingredients and clean caffeine paired with L-Theanine.</p>
           </div>
         </div>
-
         <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
           <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
             <span class="font-semibold text-navy text-sm pr-4">How quickly does it work?</span>
@@ -1088,7 +999,6 @@
 	            <p class="text-muted text-sm pb-5 leading-relaxed">Most users notice the mint freshness quickly, followed by a gradual alert feeling. The pouch is designed for buccal absorption through oral tissue rather than being swallowed like a capsule.</p>
           </div>
         </div>
-
         <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
           <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
             <span class="font-semibold text-navy text-sm pr-4">Can I use it during a meeting?</span>
@@ -1098,7 +1008,6 @@
             <p class="text-muted text-sm pb-5 leading-relaxed">Yes — that's exactly what it's designed for. The pouch sits discreetly under your upper lip. No chewing. No noise. No visible gum. Nobody knows it's there except you.</p>
           </div>
         </div>
-
         <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
           <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
             <span class="font-semibold text-navy text-sm pr-4">What flavors are available?</span>
@@ -1108,7 +1017,6 @@
             <p class="text-muted text-sm pb-5 leading-relaxed">Currently available in <strong>Natural Peppermint &amp; Lemongrass</strong> (crisp and clean). <strong>Grapefruit &amp; Juniper Berry</strong> is coming soon. Both use natural flavoring — no artificial sweeteners or synthetic taste compounds.</p>
           </div>
         </div>
-
         <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
           <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
             <span class="font-semibold text-navy text-sm pr-4">Do you ship internationally?</span>
@@ -1118,7 +1026,6 @@
             <p class="text-muted text-sm pb-5 leading-relaxed">Yes. We ship across Europe with free shipping on all orders. More regions coming soon. Typical delivery 3–5 business days within EU.</p>
           </div>
         </div>
-
         <div class="accordion-item bg-white rounded-2xl border border-blush/40 overflow-hidden">
           <button class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
             <span class="font-semibold text-navy text-sm pr-4">What is RelaxPouch?</span>
@@ -1128,11 +1035,9 @@
             <p class="text-muted text-sm pb-5 leading-relaxed">RelaxPouch is our upcoming evening formula — designed for stress recovery and winding down after a high-performance day. Sign up below to be first to know when it launches.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════════
        RELAXPOUCH TEASER
   ═══════════════════════════════════════ -->
@@ -1157,7 +1062,6 @@
       </div>
     </div>
   </section>
-
   <!-- ═══════════════════════════════════════
        FINAL CTA
   ═══════════════════════════════════════ -->
@@ -1170,12 +1074,10 @@
 	        Choose Your Bundle
 	        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
 	      </a>
-	      <p class="mt-5 text-warm-white/40 text-xs">Live launch batch · Tower bundles · Limited first run</p>
+	      <p class="mt-5 text-warm-white/40 text-xs">Tower bundles · Limited first run</p>
     </div>
   </section>
-
   </main>
-
   <!-- ═══════════════════════════════════════
        FOOTER
   ═══════════════════════════════════════ -->
@@ -1205,7 +1107,6 @@
       </div>
     </div>
   </footer>
-
   <!-- ═══════════════════════════════════════
        STICKY ADD-TO-CART (mobile)
   ═══════════════════════════════════════ -->
@@ -1219,7 +1120,6 @@
       <span id="sticky-price-label">Buy Now — €99.00</span>
     </a>
   </div>
-
   <!-- ═══════════════════════════════════════
        WAITLIST MODAL
   ═══════════════════════════════════════ -->
@@ -1253,7 +1153,6 @@
       </div>
     </div>
   </div>
-
   <!-- ═══════════════════════════════════════
        JAVASCRIPT
   ═══════════════════════════════════════ -->
@@ -1270,13 +1169,11 @@
       flavour: 'Peppermint & Lemongrass',
       qty: 1,
     };
-
     const fixedTowerPrices = {
       1: 99.00,
       2: 168.30,
       3: 237.60,
     };
-
     // ---- Bundle selector ----
     const bundleCards = document.querySelectorAll('.bundle-card');
     bundleCards.forEach(card => {
@@ -1295,10 +1192,8 @@
         updatePriceDisplay();
       });
     });
-
     // Set correct URL on page load
     updatePriceDisplay();
-
     function updatePriceDisplay() {
       const isPack = state.kind === 'pack';
       const totalTowers = state.towers * state.qty;
@@ -1307,7 +1202,6 @@
         ? fixedTowerPrices[totalTowers]
         : state.price * state.qty;
       const total = totalValue.toFixed(2);
-
       // Routing logic:
       // 5-pack → fixed product ID 51 with quantity=N
       // 1–3 total towers → fixed-price product, quantity=1
@@ -1324,16 +1218,13 @@
       } else {
         wooUrl = `https://order.getneuropouch.com/?add-to-cart=26&quantity=${totalTowers}`;
       }
-
       // Main checkout button
       const btnCheckout = document.getElementById('btn-checkout');
       btnCheckout.href = wooUrl;
       document.getElementById('btn-checkout-label').textContent = `Buy Now — €${total}`;
-
       // Sticky mobile bar
       document.getElementById('sticky-atc-link').href = wooUrl;
       document.getElementById('sticky-price-label').textContent = `Buy Now — €${total}`;
-
 	      // Main price display
 	      document.getElementById('display-price').textContent = `€${total}`;
 	      const comparePrice = document.getElementById('compare-price');
@@ -1346,13 +1237,11 @@
 	      }
 	      updateQtyDisplay(isPack ? totalPacks : totalTowers);
 	    }
-
     function updateQtyDisplay(displayQty) {
       const value = displayQty || (state.kind === 'pack' ? state.packs * state.qty : state.towers * state.qty);
       document.getElementById('qty-display').textContent = value;
       document.getElementById('qty-unit').textContent = state.kind === 'pack' ? '(5-packs)' : '(towers)';
     }
-
     // ---- Flavour selector ----
     const variantBtns = document.querySelectorAll('.variant-btn');
     variantBtns.forEach(btn => {
@@ -1363,7 +1252,6 @@
         document.getElementById('flavour-label').textContent = state.flavour;
       });
     });
-
     // ---- Quantity stepper ----
     document.getElementById('qty-minus').addEventListener('click', () => {
       if (state.qty > 1) { state.qty--; updateQty(); }
@@ -1375,7 +1263,6 @@
       updateQtyDisplay();
       updatePriceDisplay();
     }
-
     // ---- Gallery thumbnails ----
     const thumbs = document.querySelectorAll('.gallery-thumb');
     const flavorLabel = document.getElementById('main-flavor-label');
@@ -1387,7 +1274,6 @@
         const flavor = thumb.dataset.flavor;
         const image = thumb.dataset.image;
         flavorLabel.textContent = (flavor || '').replace(/&amp;/g, '&');
-
         if (image && mainProductImage) {
           gsap.to(mainProductImage, {
             duration: 0.16,
@@ -1402,13 +1288,11 @@
         }
       });
     });
-
     // ---- Waitlist modal triggers ----
     document.getElementById('btn-waitlist').addEventListener('click', () => openModal());
     document.getElementById('btn-relaxpouch-waitlist').addEventListener('click', () =>
       openModal('Get notified when RelaxPouch launches.', 'Join the list and be first in line.')
     );
-
     function openModal(title, subtitle) {
       const modal = document.getElementById('waitlist-modal');
       if (title) document.getElementById('modal-title').textContent = title;
@@ -1418,17 +1302,14 @@
       modal.classList.remove('hidden');
       gsap.fromTo('#waitlist-modal > div:last-child', { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.7)' });
     }
-
     function closeModal() {
       gsap.to('#waitlist-modal > div:last-child', {
         scale: 0.9, opacity: 0, duration: 0.2, ease: 'power2.in',
         onComplete: () => document.getElementById('waitlist-modal').classList.add('hidden'),
       });
     }
-
     document.getElementById('modal-close').addEventListener('click', closeModal);
     document.getElementById('modal-backdrop').addEventListener('click', closeModal);
-
     // ---- Waitlist form ----
     document.getElementById('waitlist-form').addEventListener('submit', e => {
       e.preventDefault();
@@ -1437,21 +1318,18 @@
       document.getElementById('modal-form-state').classList.add('hidden');
       document.getElementById('modal-success-state').classList.remove('hidden');
     });
-
     // ---- FAQ accordion ----
     document.querySelectorAll('.accordion-trigger').forEach(trigger => {
       trigger.addEventListener('click', () => {
         const item = trigger.closest('.accordion-item');
         const content = item.querySelector('.accordion-content');
         const isOpen = item.classList.contains('open');
-
         // Close all
         document.querySelectorAll('.accordion-item').forEach(i => {
           i.classList.remove('open');
           i.querySelector('.accordion-content').classList.remove('open');
           i.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
         });
-
         // Open clicked if it was closed
         if (!isOpen) {
           item.classList.add('open');
@@ -1460,55 +1338,44 @@
         }
       });
     });
-
     // ---- Sticky ATC bar (show whenever the main checkout CTA is offscreen) ----
     const stickyAtc = document.getElementById('sticky-atc');
     const mainCheckout = document.getElementById('btn-checkout');
     let mainCheckoutVisible = false;
-
     function updateStickyAtcVisibility() {
       const isMobile = window.matchMedia('(max-width: 639px)').matches;
       const hasStartedShopping = window.scrollY > 180;
       stickyAtc.classList.toggle('visible', isMobile && hasStartedShopping && !mainCheckoutVisible);
     }
-
     const checkoutObserver = new IntersectionObserver(entries => {
       mainCheckoutVisible = entries.some(entry => entry.isIntersecting);
       updateStickyAtcVisibility();
     }, { threshold: 0.35 });
-
     checkoutObserver.observe(mainCheckout);
     window.addEventListener('scroll', updateStickyAtcVisibility, { passive: true });
     window.addEventListener('resize', updateStickyAtcVisibility);
     updateStickyAtcVisibility();
-
     // ---- Mobile navigation ----
     const productMobileMenuToggle = document.getElementById('product-mobile-menu-toggle');
     const productMobileMenu = document.getElementById('product-mobile-menu');
-
     function closeProductMobileMenu() {
       if (!productMobileMenu || !productMobileMenuToggle) return;
       productMobileMenu.classList.add('hidden');
       productMobileMenuToggle.setAttribute('aria-expanded', 'false');
     }
-
     productMobileMenuToggle?.addEventListener('click', () => {
       const willOpen = productMobileMenu.classList.contains('hidden');
       productMobileMenu.classList.toggle('hidden');
       productMobileMenuToggle.setAttribute('aria-expanded', String(willOpen));
     });
-
     productMobileMenu?.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', closeProductMobileMenu);
     });
-
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape') closeProductMobileMenu();
     });
-
     // ---- GSAP scroll animations ----
     gsap.registerPlugin(ScrollTrigger);
-
     // Reveal sections on scroll
     gsap.utils.toArray('.reveal').forEach(el => {
       gsap.fromTo(el,
@@ -1519,7 +1386,6 @@
         }
       );
     });
-
     // Ingredient cards stagger
     gsap.utils.toArray('.ingredient-card').forEach((card, i) => {
       gsap.fromTo(card,
@@ -1530,7 +1396,6 @@
         }
       );
     });
-
     // Review cards stagger
     gsap.utils.toArray('.review-card').forEach((card, i) => {
       gsap.fromTo(card,
@@ -1541,7 +1406,6 @@
         }
       );
     });
-
     // Tin 3D tilt on mouse move (desktop)
     const tinWrap = document.getElementById('main-image-wrap');
     if (tinWrap && window.matchMedia('(hover: hover)').matches) {
@@ -1563,12 +1427,10 @@
         gsap.to(tinWrap, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'power2.out' });
       });
     }
-
     // Hero elements entrance
     gsap.fromTo('#buy .grid > *', { opacity: 0, y: 30 }, {
       opacity: 1, y: 0, duration: 0.7, stagger: 0.15, ease: 'power2.out', delay: 0.2
     });
   </script>
-
 </body>
 </html>
