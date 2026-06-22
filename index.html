@@ -157,14 +157,6 @@
       overflow-x: hidden;
       letter-spacing: 0;
     }
-    /* Neural network canvas */
-    #neural-canvas {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      opacity: 0.25;
-    }
     /* Floating tin animation */
     @keyframes float {
       0%, 100% { transform: translateY(0px) rotateY(0deg); }
@@ -272,10 +264,38 @@
     }
     /* Nav glass effect */
     .nav-glass {
-      background: rgba(253, 250, 247, 0.85);
+      background: rgba(28, 43, 74, 0.96);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(196,149,106,0.15);
+      border-bottom: 1px solid rgba(253,250,247,0.12);
+    }
+
+    .nav-glass a {
+      color: #FDFAF7;
+    }
+
+    .nav-glass a:hover {
+      color: #E8C5B8;
+    }
+
+    .nav-glass .bg-navy {
+      background: #FDFAF7;
+      color: #1C2B4A;
+    }
+
+    .nav-glass .bg-navy:hover {
+      background: #F8F4EF;
+      color: #1C2B4A;
+    }
+
+    #mobile-menu {
+      background: rgba(28, 43, 74, 0.98);
+      border-color: rgba(253,250,247,0.14);
+    }
+
+    #mobile-menu a {
+      color: #FDFAF7;
+      border-color: rgba(253,250,247,0.12);
     }
     /* Divider gradient */
     .divider {
@@ -314,6 +334,290 @@
     /* Section background variants */
     .section-cream { background: #F8F4EF; }
     .section-navy { background: #1C2B4A; }
+
+    /* Neurohero2 landing hero */
+    .nh-hero {
+      position: relative;
+      min-height: 92svh;
+      overflow: hidden;
+      isolation: isolate;
+      background: radial-gradient(130% 120% at 70% 18%, #faf6ef 0%, #efe7da 45%, #e4d8c6 100%);
+    }
+
+    .nh-ghost {
+      position: absolute;
+      top: calc(4rem + 5vh);
+      left: -10vw;
+      right: -28vw;
+      height: min(44vh, 27rem);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow: hidden;
+      pointer-events: none;
+      transform-origin: left top;
+      will-change: transform;
+    }
+
+    .nh-marquee-row {
+      display: flex;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .nh-track {
+      display: flex;
+      flex: none;
+      font-family: Inter, sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 6.8vw, 6.75rem);
+      line-height: 1.02;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      will-change: transform;
+    }
+
+    .nh-track span { padding-right: 0.9em; }
+    .nh-marquee-row:nth-child(1) .nh-track { animation: nh-scroll-left 45s linear infinite; }
+    .nh-marquee-row:nth-child(2) .nh-track { animation: nh-scroll-right 57s linear infinite; }
+    .nh-marquee-row:nth-child(3) .nh-track { animation: nh-scroll-left 69s linear infinite; }
+    .nh-solid { color: #C4956A; }
+    .nh-stroke {
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(22,36,63,0.18);
+    }
+
+    @keyframes nh-scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes nh-scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+    .nh-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(680px, 86vw);
+      height: min(680px, 86vw);
+      transform: translate(-50%, -52%);
+      z-index: 2;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(194,150,111,0.30), rgba(194,150,111,0) 62%);
+      filter: blur(8px);
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .nh-product-pos {
+      position: absolute;
+      top: 53%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 6;
+      perspective: 1200px;
+      pointer-events: none;
+    }
+
+    .nh-roller {
+      animation: nh-roll-in 1.8s cubic-bezier(.18,.72,.24,1) both;
+      will-change: transform;
+    }
+
+    .nh-tilt {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .nh-tilt img {
+      display: block;
+      width: min(46vw, 560px);
+      height: auto;
+      filter: drop-shadow(0 40px 60px rgba(22,36,63,0.35));
+    }
+
+    @keyframes nh-roll-in {
+      0% { transform: translateY(-135vh) rotate(-940deg); }
+      68% { transform: translateY(2.5vh) rotate(46deg); }
+      84% { transform: translateY(-1vh) rotate(-12deg); }
+      100% { transform: translateY(0) rotate(0); }
+    }
+
+    .nh-product-shadow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 5;
+      width: min(40vw, 440px);
+      height: 60px;
+      transform: translate(-50%, 330px);
+      background: radial-gradient(ellipse, rgba(22,36,63,0.34), rgba(22,36,63,0) 70%);
+      filter: blur(7px);
+      opacity: 0;
+      animation: nh-shadow-fade 0.7s ease 1.35s forwards;
+      will-change: transform, opacity;
+    }
+
+    @keyframes nh-shadow-fade { to { opacity: 1; } }
+
+    .nh-reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      animation: nh-up 0.9s cubic-bezier(.6,0,.2,1) forwards;
+    }
+
+    @keyframes nh-up { to { opacity: 1; transform: none; } }
+    .nh-d1 { animation-delay: 1.5s; }
+    .nh-d2 { animation-delay: 1.65s; }
+    .nh-d3 { animation-delay: 1.8s; }
+    .nh-d4 { animation-delay: 1.95s; }
+
+    .nh-title {
+      position: absolute;
+      left: clamp(1.5rem, 4vw, 2.875rem);
+      top: clamp(7.5rem, 15vh, 8.5rem);
+      z-index: 20;
+    }
+
+    .nh-title h1 {
+      font-family: Georgia, serif;
+      font-weight: 700;
+      color: #16243f;
+      font-size: clamp(3rem, 5.6vw, 5.25rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    .nh-flavor {
+      margin-top: 0.875rem;
+      font-size: 0.8125rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #9c6f4c;
+    }
+
+    .nh-lead {
+      position: absolute;
+      left: clamp(1.5rem, 4vw, 2.875rem);
+      bottom: clamp(2.75rem, 8vh, 4.625rem);
+      z-index: 20;
+      max-width: 19rem;
+    }
+
+    .nh-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: #9c6f4c;
+      margin-bottom: 0.875rem;
+    }
+
+    .nh-lead p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #46506a;
+      margin-bottom: 1.375rem;
+    }
+
+    .nh-shop {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      background: #16243f;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.95rem 1.9rem;
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: transform 0.25s, background 0.25s;
+      box-shadow: 0 14px 34px -12px rgba(22,36,63,0.7);
+    }
+
+    .nh-shop:hover {
+      background: #9c6f4c;
+      transform: translateY(-2px);
+    }
+
+    .nh-badge {
+      position: absolute;
+      right: clamp(1.5rem, 4vw, 2.875rem);
+      top: clamp(6.25rem, 13vh, 6.75rem);
+      z-index: 20;
+      width: 8.625rem;
+      height: 8.625rem;
+      animation: nh-spin 16s linear infinite;
+    }
+
+    @keyframes nh-spin { to { transform: rotate(360deg); } }
+    .nh-badge text {
+      font-size: 13.5px;
+      letter-spacing: 3px;
+      fill: #16243f;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-family: Arial, sans-serif;
+    }
+
+    .nh-badge-mid {
+      position: absolute;
+      right: clamp(1.5rem, 4vw, 2.875rem);
+      top: clamp(6.25rem, 13vh, 6.75rem);
+      z-index: 21;
+      width: 8.625rem;
+      height: 8.625rem;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+
+    .nh-badge-mid span {
+      font-family: Georgia, serif;
+      color: #9c6f4c;
+      font-size: 0.8125rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    @media (max-width: 820px) {
+      .nh-hero { min-height: 94svh; }
+      .nh-ghost {
+        top: 5.25rem;
+        left: -24vw;
+        right: -80vw;
+        height: 18rem;
+      }
+
+      .nh-track {
+        font-size: clamp(2.2rem, 12vw, 4.4rem);
+      }
+
+      .nh-badge,
+      .nh-badge-mid { display: none; }
+      .nh-title { top: 6.25rem; }
+      .nh-title h1 { font-size: clamp(2.8rem, 15vw, 4.2rem); }
+      .nh-flavor { max-width: 16rem; line-height: 1.5; }
+      .nh-lead { bottom: 2.125rem; max-width: 15.5rem; }
+      .nh-lead p { font-size: 0.9rem; }
+      .nh-tilt img { width: min(82vw, 24rem); }
+      .nh-product-pos { top: 51%; }
+      .nh-product-shadow {
+        width: min(70vw, 20rem);
+        transform: translate(-50%, 230px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nh-marquee-row .nh-track,
+      .nh-roller,
+      .nh-product-shadow,
+      .nh-reveal,
+      .nh-badge {
+        animation: none !important;
+      }
+
+      .nh-reveal { opacity: 1; transform: none; }
+    }
     /* Stat counter */
     .stat-card {
       background: white;
@@ -454,35 +758,41 @@
   </nav>
   <main id="main">
   <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
-  <section class="hero-immersive relative flex items-center overflow-hidden pt-24 pb-16 lg:pt-28">
-    <!-- Neural network canvas background -->
-    <canvas id="neural-canvas" aria-hidden="true"></canvas>
-    <div class="hero-copy relative z-10 max-w-6xl mx-auto px-6 w-full">
-      <div class="max-w-2xl">
-        <div class="fade-up inline-flex items-center gap-2 badge rounded-full px-4 py-1.5 mb-6">
-          <span class="brand-dot w-2 h-2 rounded-full inline-block"></span>
-          <span class="text-xs font-semibold uppercase tracking-widest text-navy">The edge you don't have to announce</span>
-        </div>
-        <h1 class="fade-up font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.96] text-navy mb-6 max-w-2xl">
-          Your Focus,<br />
-          <em class="not-italic" style="color: #C4956A;">In Your Pocket.</em>
-        </h1>
-        <p class="fade-up font-sans text-lg sm:text-xl text-charcoal/70 leading-relaxed mb-8 max-w-xl">
-          A discreet, nicotine-free neuro functional pouch with Alpha-GPC, L-Theanine, Rhodiola Rosea, B12, and clean caffeine. No cup. No chewing. No visible routine.
-        </p>
-        <div class="fade-up grid sm:grid-cols-2 gap-3 mb-9 max-w-xl text-sm font-semibold text-navy">
-          <div class="signal-line">Fast buccal absorption</div>
-          <div class="signal-line">Caffeine paired with L-Theanine</div>
-          <div class="signal-line">16 pouches per tin</div>
-          <div class="signal-line">Zero nicotine, zero taurine</div>
-        </div>
-        <div class="fade-up" id="waitlist">
-          <a href="product.html"
-            class="cta-glow inline-block bg-navy text-warm-white font-semibold text-base px-10 py-4 rounded-full hover:bg-navy-light transition-colors duration-200">
-            Order Yours Now
-          </a>
+  <section class="nh-hero" aria-labelledby="hero-title">
+    <div class="nh-ghost" id="nh-ghost" aria-hidden="true">
+      <div class="nh-marquee-row"><div class="nh-track nh-stroke"></div></div>
+      <div class="nh-marquee-row"><div class="nh-track nh-solid"></div></div>
+      <div class="nh-marquee-row"><div class="nh-track nh-stroke"></div></div>
+    </div>
+
+    <div class="nh-glow" id="nh-glow" aria-hidden="true"></div>
+    <div class="nh-product-shadow" id="nh-product-shadow" aria-hidden="true"></div>
+
+    <div class="nh-product-pos" aria-hidden="true">
+      <div class="nh-roller">
+        <div class="nh-tilt" id="nh-tilt">
+          <img src="assets/images/neurohero2-neuropouch.png" alt="" width="1254" height="1254" />
         </div>
       </div>
+    </div>
+
+    <div class="nh-title">
+      <h1 id="hero-title" class="nh-reveal nh-d1">Energy<br />&amp; Focus.</h1>
+      <div class="nh-flavor nh-reveal nh-d2">Peppermint &amp; Lemongrass</div>
+    </div>
+
+    <div class="nh-lead">
+      <div class="nh-eyebrow nh-reveal nh-d2">The edge you don't announce</div>
+      <p class="nh-reveal nh-d3">Clean caffeine paired with L-theanine, Alpha-GPC, Rhodiola &amp; B12. Smooth, jitter-free focus in a discreet nicotine-free pouch.</p>
+      <a href="product.html" class="nh-shop nh-reveal nh-d4">Shop Now →</a>
+    </div>
+
+    <svg class="nh-badge nh-reveal nh-d4" viewBox="0 0 140 140" aria-hidden="true">
+      <defs><path id="nh-circle-path" d="M70,70 m-54,0 a54,54 0 1,1 108,0 a54,54 0 1,1 -108,0" /></defs>
+      <text><textPath href="#nh-circle-path">ZERO NICOTINE · NO JITTERS · PREMIUM ENERGY · </textPath></text>
+    </svg>
+    <div class="nh-badge-mid nh-reveal nh-d4" aria-hidden="true">
+      <span>EST.<br />2024</span>
     </div>
   </section>
   <div class="bg-cream px-6 py-4">
@@ -491,8 +801,6 @@
   <!-- ═══════════════════════════════════ MARQUEE BAR ═══════════════════════════════════ -->
   <div class="section-cream py-4 overflow-hidden border-y border-gray-100" aria-hidden="true">
     <div class="marquee-track flex items-center gap-12 whitespace-nowrap" style="width: max-content;">
-      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Zero Nicotine</span>
-      <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Alpha-GPC</span>
       <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">L-Theanine</span>
@@ -500,16 +808,10 @@
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Rhodiola Rosea</span>
       <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Vitamin B12</span>
-      <span class="text-rose-gold font-bold">•</span>
-      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Discreet in Meetings</span>
-      <span class="text-rose-gold font-bold">•</span>
-      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">No Crash. No Jitter.</span>
       <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">100mg Caffeine</span>
       <span class="text-rose-gold font-bold">•</span>
       <!-- Duplicate for seamless loop -->
-      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Zero Nicotine</span>
-      <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Alpha-GPC</span>
       <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">L-Theanine</span>
@@ -517,10 +819,6 @@
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Rhodiola Rosea</span>
       <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Vitamin B12</span>
-      <span class="text-rose-gold font-bold">•</span>
-      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">Discreet in Meetings</span>
-      <span class="text-rose-gold font-bold">•</span>
-      <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">No Crash. No Jitter.</span>
       <span class="text-rose-gold font-bold">•</span>
       <span class="text-xs font-semibold uppercase tracking-widest text-navy/50">100mg Caffeine</span>
       <span class="text-rose-gold font-bold">•</span>
@@ -1299,70 +1597,83 @@
   </div>
   <!-- ═══════════════════════════════════ SCRIPTS ═══════════════════════════════════ -->
   <script>
-    // ─── Neural Network Canvas ───────────────────────────────────────────────────
+    // ─── Neurohero2 animation ─────────────────────────────────────────────────
     (function() {
-      const canvas = document.getElementById('neural-canvas');
-      const ctx = canvas.getContext('2d');
-      let nodes = [];
-      let animationId;
-      function resize() {
-        canvas.width = canvas.parentElement.offsetWidth;
-        canvas.height = canvas.parentElement.offsetHeight;
-        initNodes();
-      }
-      function initNodes() {
-        nodes = [];
-        const count = Math.floor((canvas.width * canvas.height) / 18000);
-        for (let i = 0; i < count; i++) {
-          nodes.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.4,
-            vy: (Math.random() - 0.5) * 0.4,
-            r: Math.random() * 2.5 + 1,
-          });
-        }
-      }
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // Move nodes
-        nodes.forEach(n => {
-          n.x += n.vx;
-          n.y += n.vy;
-          if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-          if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
-        });
-        // Draw connections
-        for (let i = 0; i < nodes.length; i++) {
-          for (let j = i + 1; j < nodes.length; j++) {
-            const dx = nodes[i].x - nodes[j].x;
-            const dy = nodes[i].y - nodes[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 130) {
-              ctx.beginPath();
-              ctx.moveTo(nodes[i].x, nodes[i].y);
-              ctx.lineTo(nodes[j].x, nodes[j].y);
-              ctx.strokeStyle = `rgba(196,149,106,${0.6 * (1 - dist / 130)})`;
-              ctx.lineWidth = 0.8;
-              ctx.stroke();
-            }
+      const hero = document.querySelector('.nh-hero');
+      if (!hero) return;
+
+      const heroBenefits = [
+        'Energy & Focus',
+        'Discreet',
+        'No Crash. No Jitter.',
+        'Zero Nicotine',
+        'Smooth Focus',
+        'Clean Energy',
+        'Natural Caffeine',
+        'L-Theanine'
+      ];
+
+      document.querySelectorAll('.nh-track').forEach((track, rowIndex) => {
+        const offsetBenefits = heroBenefits
+          .slice(rowIndex * 2)
+          .concat(heroBenefits.slice(0, rowIndex * 2));
+        const sequence = Array.from({ length: 3 }, () => (
+          offsetBenefits.map(item => `<span>${item}&nbsp;·&nbsp;</span>`).join('')
+        )).join('');
+        track.innerHTML = sequence + sequence;
+      });
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) return;
+
+      const tilt = document.getElementById('nh-tilt');
+      const ghost = document.getElementById('nh-ghost');
+      const glow = document.getElementById('nh-glow');
+      const productShadow = document.getElementById('nh-product-shadow');
+      let mx = 0;
+      let my = 0;
+      let cx = 0;
+      let cy = 0;
+      let intro = true;
+      const t0 = performance.now();
+
+      setTimeout(() => { intro = false; }, 1750);
+
+      hero.addEventListener('mousemove', event => {
+        const rect = hero.getBoundingClientRect();
+        mx = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+        my = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+      });
+
+      hero.addEventListener('mouseleave', () => {
+        mx = 0;
+        my = 0;
+      });
+
+      function loop(now) {
+        const t = (now - t0) / 1000;
+        cx += (mx - cx) * 0.06;
+        cy += (my - cy) * 0.06;
+        const floaty = Math.sin(t * 1.25) * 7;
+
+        if (!intro && tilt) {
+          const rotateY = cx * 16;
+          const rotateX = -cy * 12;
+          tilt.style.transform = `translateY(${floaty}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          if (productShadow) {
+            const scale = 1 - floaty * 0.006;
+            const shadowY = window.matchMedia('(max-width: 820px)').matches ? 230 : 330;
+            productShadow.style.transform = `translate(calc(-50% + ${cx * 22}px), ${shadowY}px) scale(${scale}, ${scale})`;
+            productShadow.style.opacity = String(0.55 - floaty * 0.01);
           }
         }
-        // Draw nodes
-        nodes.forEach(n => {
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(28,43,74,0.6)';
-          ctx.fill();
-        });
-        animationId = requestAnimationFrame(draw);
+
+        if (ghost) ghost.style.transform = `translate(${-cx * 20}px, ${-cy * 14}px) rotate(-8deg)`;
+        if (glow) glow.style.transform = `translate(calc(-50% + ${cx * 16}px), calc(-52% + ${cy * 12}px))`;
+        requestAnimationFrame(loop);
       }
-      // Respect reduced motion preference
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        window.addEventListener('resize', resize);
-        resize();
-        draw();
-      }
+
+      requestAnimationFrame(loop);
     })();
     // ─── GSAP Scroll Animations ───────────────────────────────────────────────
     gsap.registerPlugin(ScrollTrigger);
