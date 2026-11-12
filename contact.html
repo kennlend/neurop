@@ -160,20 +160,20 @@
         {
           "@type": "ContactPoint",
           "contactType": "customer support",
-          "email": "support@getneuropouch.com",
+          "email": "info@getneuropouch.com",
           "availableLanguage": ["English"],
           "areaServed": ["EU","GB"]
         },
         {
           "@type": "ContactPoint",
           "contactType": "wholesale",
-          "email": "wholesale@getneuropouch.com",
+          "email": "info@getneuropouch.com",
           "availableLanguage": ["English"]
         },
         {
           "@type": "ContactPoint",
           "contactType": "press",
-          "email": "press@getneuropouch.com",
+          "email": "info@getneuropouch.com",
           "availableLanguage": ["English"]
         }
       ]
@@ -232,7 +232,7 @@
         </div>
         <p class="font-semibold text-navy text-sm mb-1">Customer Support</p>
         <p class="text-muted text-xs leading-relaxed">Orders, shipping, returns.<br/>We reply within 24 hours.</p>
-        <p class="text-rose-gold text-xs font-semibold mt-3">hello@getneuropouch.com</p>
+        <a href="mailto:info@getneuropouch.com" class="text-rose-gold text-xs font-semibold mt-3 hover:underline">info@getneuropouch.com</a>
       </div>
       <div class="contact-card bg-cream p-6 rounded-2xl text-center">
         <div class="w-10 h-10 rounded-full bg-blush flex items-center justify-center mx-auto mb-3">
@@ -243,7 +243,7 @@
         </div>
         <p class="font-semibold text-navy text-sm mb-1">Press & Media</p>
         <p class="text-muted text-xs leading-relaxed">Interviews, product samples,<br/>brand assets & stories.</p>
-        <p class="text-rose-gold text-xs font-semibold mt-3">press@getneuropouch.com</p>
+        <a href="mailto:info@getneuropouch.com" class="text-rose-gold text-xs font-semibold mt-3 hover:underline">info@getneuropouch.com</a>
       </div>
       <div class="contact-card bg-cream p-6 rounded-2xl text-center">
         <div class="w-10 h-10 rounded-full bg-blush flex items-center justify-center mx-auto mb-3">
@@ -253,7 +253,7 @@
         </div>
         <p class="font-semibold text-navy text-sm mb-1">Wholesale</p>
         <p class="text-muted text-xs leading-relaxed">Retail, gyms, pharmacies.<br/>MOQ 1 tower (10 tins).</p>
-        <p class="text-rose-gold text-xs font-semibold mt-3">trade@getneuropouch.com</p>
+        <a href="mailto:info@getneuropouch.com" class="text-rose-gold text-xs font-semibold mt-3 hover:underline">info@getneuropouch.com</a>
       </div>
     </div>
   </section>
@@ -523,6 +523,7 @@
         <a href="/privacy-policy" class="hover:text-warm-white transition-colors">Privacy</a>
         <a href="/terms" class="hover:text-warm-white transition-colors">Terms</a>
         <a href="/contact" class="hover:text-warm-white transition-colors">Contact</a>
+        <a href="mailto:info@getneuropouch.com" class="hover:text-warm-white transition-colors">info@getneuropouch.com</a>
       </div>
     </div>
     <div class="max-w-6xl mx-auto mt-6 pt-6 border-t border-white/10">
@@ -551,7 +552,7 @@
         document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
       });
     });
-    // ── Form submissions → Brevo ──────────────────────────────────────────────
+    // ── Form submissions → contact inbox + Brevo ───────────────────────────────
     async function handleSubmit(formId, successId, listId, source) {
       const form    = document.getElementById(formId);
       const success = document.getElementById(successId);
@@ -563,26 +564,51 @@
         const nameEl  = form.querySelector('input[type="text"]');
         const outletEl = form.querySelector('input[id$="-outlet"]');
         const businessEl = form.querySelector('input[id$="-business"]');
+        const phoneEl = form.querySelector('input[type="tel"]');
+        const subjectEl = form.querySelector('select[id$="-subject"]');
+        const typeEl = form.querySelector('select[id$="-type"]');
+        const channelEl = form.querySelector('select[id$="-channel"]');
+        const volumeEl = form.querySelector('select[id$="-volume"]');
+        const messageEl = form.querySelector('textarea');
+        const deadlineEl = form.querySelector('input[type="date"]');
         const email     = emailEl ? emailEl.value.trim() : '';
         const fullName  = nameEl  ? nameEl.value.trim()  : '';
         const firstName = fullName.split(' ')[0] || fullName;
         const lastName  = fullName.split(' ').slice(1).join(' ') || '';
         const company   = (outletEl && outletEl.value.trim()) || (businessEl && businessEl.value.trim()) || '';
         if (!email) return;
+        const originalButtonLabel = btn ? btn.textContent : '';
         if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-        const result = await addToBrevo({
+        const [contactResult] = await Promise.all([
+          fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              form: source,
+              name: fullName,
+              email,
+              company,
+              phone: phoneEl ? phoneEl.value.trim() : '',
+              subject: (subjectEl || typeEl || channelEl)?.value || '',
+              volume: volumeEl ? volumeEl.value : '',
+              deadline: deadlineEl ? deadlineEl.value : '',
+              message: messageEl ? messageEl.value.trim() : '',
+            }),
+          }).then(async res => ({ ok: res.ok, error: (await res.json().catch(() => ({}))).error })),
+          addToBrevo({
           email, firstName, lastName, listId,
           attributes: {
             ...(company ? { COMPANY: company } : {}),
             SOURCE: source,
           },
-        });
-        if (result.ok) {
+          }),
+        ]);
+        if (contactResult.ok) {
           form.style.display = 'none';
           success.classList.add('visible');
         } else {
-          alert('Something went wrong — please try again. (' + result.error + ')');
-          if (btn) { btn.disabled = false; btn.textContent = 'Send'; }
+          alert('Something went wrong — please try again. (' + (contactResult.error || 'Unable to send message') + ')');
+          if (btn) { btn.disabled = false; btn.textContent = originalButtonLabel; }
         }
       });
     }
