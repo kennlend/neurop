@@ -1715,6 +1715,8 @@
       if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
       const result = await addToBrevo({ email, listId: LIST_WHITELIST });
       if (result.ok) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'sign_up', method: 'email', signup_source: 'footer' });
         document.getElementById('success-modal').classList.remove('hidden');
         document.getElementById('success-modal').classList.add('flex');
         form.reset();
@@ -1780,6 +1782,8 @@
        btn.textContent = 'Joining…';
        const result = await addToBrevo({ email, listId: LIST_WHITELIST, attributes: { SOURCE: 'nav-modal' } });
        if (result.ok) {
+         window.dataLayer = window.dataLayer || [];
+         window.dataLayer.push({ event: 'sign_up', method: 'email', signup_source: 'nav-modal' });
          const card = document.getElementById('wm-card');
          gsap.to(card, { scale: 0.98, duration: 0.1, yoyo: true, repeat: 1 });
          document.getElementById('wm-input-state').classList.add('hidden');

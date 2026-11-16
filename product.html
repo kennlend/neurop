@@ -1196,9 +1196,7 @@
       const totalPacks = state.packs * state.qty;
       const totalValue = isPack ? 49.90 * totalPacks : (fixedTowerPrices[totalTowers] || totalTowers * 79.20);
       const total = totalValue.toFixed(2);
-      const selectedProductId = isPack
-        ? state.productId
-        : (totalTowers === 1 ? 13 : totalTowers === 2 ? 22 : totalTowers === 3 ? 23 : 26);
+      const selectedProductId = isPack ? 'np-pack-5' : 'np-tower';
       const selectedQuantity = isPack ? state.qty : (totalTowers > 3 ? totalTowers : 1);
       const selectedLabel = isPack
         ? state.bundleLabel
@@ -1235,7 +1233,7 @@
       document.getElementById('qty-unit').textContent = state.kind === 'pack' ? '(5-packs)' : '(towers)';
     }
 
-    function trackCheckoutIntent(link) {
+    function trackCheckoutIntent(link, onComplete, eventName = 'begin_checkout') {
       window.dataLayer = window.dataLayer || [];
       const value = parseFloat(link.dataset.value || '0');
       const quantity = parseInt(link.dataset.quantity || '1', 10);
@@ -1244,7 +1242,9 @@
       const itemName = link.dataset.bundleLabel || 'NeuroPouch bundle';
       window.dataLayer.push({ ecommerce: null });
       window.dataLayer.push({
-        event: 'begin_checkout',
+        event: eventName,
+        eventCallback: onComplete,
+        eventTimeout: 1200,
         ecommerce: {
           currency: 'EUR',
           value,
@@ -1260,6 +1260,7 @@
       });
     }
 
+    trackCheckoutIntent(document.getElementById('btn-checkout'), undefined, 'view_item');
     let checkoutPending = false;
     const checkoutLinks = document.querySelectorAll('#btn-checkout, #sticky-atc-link');
     const checkoutNotice = document.createElement('p');
@@ -1282,8 +1283,14 @@
           if (!response.ok) throw new Error(result.error || 'Unable to start checkout. Please try again.');
           const destination = new URL(result.url);
           if (destination.protocol !== 'https:' || destination.hostname !== 'checkout.stripe.com') throw new Error('Unable to open secure checkout.');
-          trackCheckoutIntent(link);
-          window.location.assign(destination.href);
+          let redirected = false;
+          const redirect = () => {
+            if (redirected) return;
+            redirected = true;
+            window.location.assign(destination.href);
+          };
+          setTimeout(redirect, 1500);
+          trackCheckoutIntent(link, redirect);
         } catch (error) {
           checkoutNotice.textContent = error.message || 'Unable to start checkout. Please try again.';
           checkoutNotice.scrollIntoView({ block: 'center', behavior: 'smooth' });
@@ -1300,6 +1307,19 @@
         .then(async response => {
           if (!response.ok) throw new Error();
           const result = await response.json();
+          if (result.paid && result.ecommerce) {
+            const commerce = result.ecommerce;
+            const purchaseKey = 'np_purchase_' + commerce.transaction_id;
+            let alreadyTracked = false;
+            try { alreadyTracked = localStorage.getItem(purchaseKey) === '1'; } catch (_) {}
+            if (!alreadyTracked) {
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({ ecommerce: null });
+              window.dataLayer.push({ event: 'purchase', ecommerce: commerce, eventCallback: () => {
+                try { localStorage.setItem(purchaseKey, '1'); } catch (_) {}
+              }, eventTimeout: 2000 });
+            }
+          }
           checkoutNotice.textContent = result.paid
             ? 'Thank you. Your payment is confirmed. For order support, email info@getneuropouch.com.'
             : 'Your payment is still processing. Please check your email for confirmation before placing another order.';
@@ -1418,7 +1438,8 @@
         document.getElementById('modal-form-state').classList.add('hidden');
         document.getElementById('modal-success-state').classList.remove('hidden');
         try { localStorage.setItem('np_subscribed', '1'); } catch (err) {}
-        if (window.dataLayer) window.dataLayer.push({ event: 'np_signup', signup_source: modalMode.source });
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'sign_up', method: 'email', signup_source: modalMode.source });
       } else {
         console.error('Signup failed:', result.error);
         error.textContent = 'Something went wrong. Please try again, or email info@getneuropouch.com.';

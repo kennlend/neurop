@@ -1,58 +1,46 @@
-# NeuroPouch Tracking Setup
+# NeuroPouch Analytics
 
-## Current source of truth
+- GA4 property: neurogroup, 540427404
+- Web stream: neuropouch lander, 15013697534
+- Measurement ID: G-KFBM8WT6HR
+- GTM container: GTM-PH2N6VKS
+- Website: https://getneuropouch.com
 
-- GTM container: `GTM-PH2N6VKS`
-- GA4 measurement ID: `G-XK4T95QPB0`
-- Storefront domain: `getneuropouch.com`
-- WooCommerce order domain: `order.getneuropouch.com`
+The storefront loads GTM only. Do not add a second standalone gtag config.
 
-All site tracking should route through Google Tag Manager. The static storefront loads GTM only and pushes ecommerce events into `dataLayer`.
+## Container configuration
 
-## Required WordPress changes
+Google Analytics destination: G-KFBM8WT6HR, Initialization - All Pages.
+GA4 event tag: dynamic event name {{Event}}, ecommerce from the Data Layer.
+Custom event regex: ^(begin_checkout|purchase|sign_up|view_item)$
 
-The order domain currently loads Google Site Kit with `GT-5M3GVL6X`, not the GTM container used by the storefront. Fix this in WordPress before expecting sales to appear in the same GA4 ecommerce reports.
+## Events
 
-1. Install or enable a GTM plugin on `order.getneuropouch.com`.
-2. Add container `GTM-PH2N6VKS` to every WordPress/WooCommerce page.
-3. Disable the standalone Site Kit Google Analytics tag unless it is explicitly configured to send to the same GA4 property and does not duplicate page views.
-4. Enable WooCommerce ecommerce events for GA4:
-   - `view_item`
-   - `add_to_cart`
-   - `begin_checkout`
-   - `purchase`
-5. Confirm the purchase event includes:
-   - `transaction_id`
-   - `currency: EUR`
-   - `value`
-   - `items[].item_id`
-   - `items[].item_name`
-   - `items[].price`
-   - `items[].quantity`
+- page_view: sent by the Google Analytics destination.
+- view_item: initial product page view.
+- begin_checkout: after a Stripe session is created; waits for the tag callback
+  or a short timeout before leaving for Stripe.
+- sign_up: successful homepage/product newsletter signup only.
+- purchase: only after the return page verifies payment with Stripe.
 
-## Required GTM / GA4 settings
+Purchase totals and items come from Stripe, excluding shipping and tax from the
+revenue value. Contact, delivery and payment details are never included.
+The Stripe session ID is the transaction ID. Local storage suppresses repeat
+purchase events on reload; GA4 transaction ID deduplication is an additional
+protection.
 
-In GTM, the GA4 tag should send to `G-XK4T95QPB0`.
+## Purchase coverage
 
-Cross-domain tracking must include both domains:
+This is browser return-page tracking, not a server-to-server webhook. Customers
+who do not return from Stripe, block analytics, or complete delayed payments
+after leaving may not appear as purchases in GA4. Stripe remains the payment and
+fulfillment source of truth. Historical sales are not backfilled.
 
-- `getneuropouch.com`
-- `order.getneuropouch.com`
+## Verification
 
-In GA4 Admin, add both domains under unwanted referrals / cross-domain configuration as appropriate, so checkout does not show as a fresh referral from the order subdomain.
+Use GA4 Realtime and Tag Assistant to verify page_view, view_item and
+begin_checkout. Test purchase tracking with a real completed test-mode Stripe
+session; never fabricate production purchase events. Standard reports can take
+24-48 hours to update.
 
-## Acquisition reports
-
-Once tracking is unified, use these GA4 reports:
-
-- Reports -> Acquisition -> User acquisition
-- Reports -> Acquisition -> Traffic acquisition
-- Reports -> Business objectives -> Drive sales -> Ecommerce purchases
-- Explore -> Free form with dimensions:
-  - Session source / medium
-  - First user source / medium
-  - Campaign
-  - Landing page
-  - Hostname
-
-Use `Hostname` to confirm traffic from both domains is entering the same property.
+The old WooCommerce stream is retired and is not used for the current checkout.
