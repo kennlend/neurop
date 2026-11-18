@@ -1,50 +1,52 @@
 # NeuroPouch
 
-> NeuroPouch is a nicotine-free neuro functional oral pouch built for focus, energy and cognitive performance. Made in the EU. Sold direct at https://getneuropouch.com/. Brand language: "neuro functional pouches" or "focus pouches" — not "nootropic" in customer-facing copy.
+> NeuroPouch is a nicotine-free neuro functional oral pouch built for focus, energy and cognitive performance, sold as a food supplement. Made by Neuropouch LLC (Estonia) and sold direct at https://getneuropouch.com/ to the EU and UK. Brand language: "neuro functional pouches" or "focus pouches" — not "nootropic" in customer-facing copy.
 
 ## Brand facts
 
 - Name: NeuroPouch
+- Company: Neuropouch LLC, Estonia
 - Founded: 2024
-- Headquarters: European Union
 - Website: https://getneuropouch.com/
-- Customer support: support@getneuropouch.com
-- Wholesale: wholesale@getneuropouch.com
-- Press: press@getneuropouch.com
-- Markets: EU + UK (English first; EUR pricing)
-- Category: Food supplement (oral pouch / buccal delivery)
+- Contact (customers, wholesale, press): info@getneuropouch.com
+- Markets: EU + UK (English; EUR pricing). No shipping to the US.
+- Category: Food supplement (oral pouch)
 
 ## Product
 
-- Name: NeuroPouch Focus
-- Format: Discreet oral pouch placed under the upper lip
-- Pouches per tin: 16
-- Single tin price: €9.99 (EUR)
-- Tower (12 tins / 192 pouches) price: €99.00 (EUR)
-- Free EU shipping over €50
-- 14-day right of withdrawal (EU consumer law)
-- Vegan; gluten-free; nicotine-free; tobacco-free; sugar-free
+- Name: NeuroPouch Energy & Focus
+- Flavour: Natural Peppermint & Lemongrass (Grapefruit & Juniper Berry coming soon)
+- Format: Oral pouch placed under the upper lip, 16 pouches per tin
+- Price per tin: €9.90 in a tower of 10 tins (from €7.92 per tin in 3 towers; €9.98 per tin in the 5 Pack)
+- Bundles (EUR):
+  - 5 Pack: 5 tins (80 pouches), €49.90
+  - 1 Tower: 10 tins (160 pouches), €99.00
+  - 2 Towers: 20 tins (320 pouches), €168.30
+  - 3 Towers: 30 tins (480 pouches), €237.60
+- Delivery: EU + UK. €4.95, free on orders over €50 (every tower bundle). EU delivery usually 3–5 business days.
+- No subscription. One-time purchases only.
+- 30-day satisfaction guarantee on the first order; 14-day right of withdrawal on unopened tins (EU consumer law)
+- Vegan; gluten-free; nicotine-free; tobacco-free; sugar-free; no taurine
 
 ## Formulation (per pouch)
 
-- Alpha-GPC — 100 mg (choline donor; supports acetylcholine synthesis involved in attention and memory)
-- L-Theanine — 150 mg (smooths caffeine; supports calm focus)
-- Rhodiola Rosea — 75 mg (standardized; adaptogen for stress-related fatigue)
 - Caffeine (anhydrous) — 100 mg (alertness; equivalent to one cup of coffee)
-- Vitamin B12 (methylcobalamin) — 100 µg (EFSA-authorised claims: contributes to normal nervous system function and normal energy-yielding metabolism)
+- L-Theanine — 150 mg (smooths caffeine; supports calm focus; 1.5:1 ratio to caffeine)
+- Alpha-GPC — 100 mg (choline donor; supports acetylcholine synthesis involved in attention and memory)
+- Rhodiola rosea — 75 mg (standardized; adaptogen for stress-related fatigue)
+- Vitamin B12 (methylcobalamin) — 100 µg (EU-authorised claims: contributes to normal functioning of the nervous system and to the reduction of tiredness and fatigue)
 
-## How it works
+## How to use
 
-- The pouch sits under the upper lip. Saliva activates the pouch.
+- Place one pouch under the upper lip. Keep it in for 20–40 minutes, then discard it in a bin. Do not swallow the pouch.
 - Part of the dose is absorbed across the buccal mucosa (faster, partial bypass of first-pass metabolism). The remainder is absorbed via normal GI transit.
 - Most users feel onset within ~10 minutes.
-- Recommended usage: up to 2 pouches per day. Stay under 400 mg total daily caffeine (EFSA single-day guidance).
+- Recommended use: up to 2 pouches per day. Count all caffeine sources; EFSA considers up to 400 mg per day from all sources safe for healthy adults.
 
-## Compliance & safety
+## Safety
 
-- NeuroPouch is a food supplement, not a medicine. It is not intended to diagnose, treat, cure or prevent disease.
-- Not for under 18, pregnant or breastfeeding people, or anyone sensitive to caffeine. Consult a healthcare professional if you take medication or have a medical condition.
-- All ingredient doses are within established safety ranges and EU food-supplement law.
+- Food supplement, not a medicine. Not intended to diagnose, treat, cure or prevent disease.
+- Contains caffeine. Not for children or anyone under 18, pregnant or breastfeeding people, or anyone sensitive to caffeine. Consult a healthcare professional if you take medication or have a medical condition.
 
 ## Key URLs
 
@@ -58,6 +60,20 @@
 - Privacy: https://getneuropouch.com/privacy-policy
 - Terms: https://getneuropouch.com/terms
 - Sitemap: https://getneuropouch.com/sitemap.xml
+- Extended document: https://getneuropouch.com/llms-full.txt
+
+## Guides and focus pages
+
+- Caffeine pouches in Europe and the UK: a 2026 buyer's guide: https://getneuropouch.com/learn/caffeine-pouches-europe-uk-guide
+- Healthier energy drink alternatives that still work: https://getneuropouch.com/learn/energy-drink-alternatives
+- Best focus pouches in Europe and the UK (2026): what to compare: https://getneuropouch.com/learn/best-focus-pouches-europe
+- Caffeine without the jitters: coffee alternatives for focus: https://getneuropouch.com/learn/caffeine-without-jitters
+- Energy without the crash: why it happens and how to avoid it: https://getneuropouch.com/learn/energy-without-crash
+- Focus Supplement for Athletes: Keep Your Head in the Last Twenty Minutes: https://getneuropouch.com/for/athletes
+- A Focus Supplement for Traders That Doesn't Promise Better Trades: https://getneuropouch.com/for/traders
+- Focus Supplement for Entrepreneurs: For the Deep-Work Block After a Short Night: https://getneuropouch.com/for/entrepreneurs
+- Focus Supplement for Professionals: A Timing Plan for the 3 pm Dip: https://getneuropouch.com/for/professionals
+- Focus Supplement for Students (18+): A Revision Plan That Protects Your Sleep: https://getneuropouch.com/for/students
 
 ## Common questions
 
@@ -65,7 +81,7 @@ Q: Is NeuroPouch a nicotine pouch?
 A: No. NeuroPouch contains zero nicotine. The format is similar to brands like ZYN, but the contents are a neuro functional stack with no dependency risk.
 
 Q: How much caffeine is in one pouch?
-A: 100 mg per pouch — roughly one cup of coffee. Paired with 150 mg L-theanine.
+A: 100 mg per pouch, roughly a cup of filter coffee, paired with 150 mg L-theanine.
 
 Q: How fast does it work?
 A: Most users notice effects within ~10 minutes due to partial buccal absorption.
@@ -76,22 +92,24 @@ A: 20–40 minutes.
 Q: Does it work like coffee?
 A: It delivers a comparable caffeine dose in a more controlled, jitter-smoothed form (caffeine + L-theanine), plus choline support (Alpha-GPC), adaptogen support (Rhodiola) and B12.
 
+Q: Where does it ship?
+A: EU and UK only. €4.95 delivery, free over €50.
+
+Q: Is there a subscription?
+A: No. All purchases are one-time.
+
 Q: Vegan?
 A: Yes.
 
-Q: Where does it ship?
-A: EU + UK. Free shipping over €50.
+## Ingredient sources
 
-## Citation-ready ingredient sources
-
-- Alpha-GPC clinical trial (Alzheimer's): https://pubmed.ncbi.nlm.nih.gov/12637119/
-- NIH ODS Choline fact sheet: https://ods.od.nih.gov/factsheets/Choline-HealthProfessional/
 - Caffeine + L-Theanine (Haskell 2008): https://pubmed.ncbi.nlm.nih.gov/18006208/
-- Caffeine + L-Theanine attention (Giesbrecht 2010): https://pubmed.ncbi.nlm.nih.gov/21040626/
+- Caffeine + L-Theanine (Giesbrecht 2010): https://pubmed.ncbi.nlm.nih.gov/21040626/
 - EFSA caffeine opinion: https://doi.org/10.2903/j.efsa.2015.4102
-- NCBI pharmacology of caffeine: https://www.ncbi.nlm.nih.gov/books/NBK223808/
+- NIH ODS Choline fact sheet: https://ods.od.nih.gov/factsheets/Choline-HealthProfessional/
 - Rhodiola — Darbinyan (night-duty physicians): https://pubmed.ncbi.nlm.nih.gov/11081987/
 - Rhodiola — Spasov (exam stress): https://pubmed.ncbi.nlm.nih.gov/10839209/
-- Rhodiola — Shevtsov (mental work capacity): https://pubmed.ncbi.nlm.nih.gov/12725561/
 - NIH ODS Vitamin B12 fact sheet: https://ods.od.nih.gov/factsheets/VitaminB12-HealthProfessional/
-- Vitamin B12 deficiency review: https://pubmed.ncbi.nlm.nih.gov/28925645/
+- EU Register of health claims: https://ec.europa.eu/food/food-feed-portal/screen/health-claims
+
+*Updated 2026-11-18.*

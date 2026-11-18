@@ -60,6 +60,12 @@ a:hover { color: var(--navy); }
   font-weight: 600 !important; text-decoration: none !important;
 }
 .nav-cta:hover { background: var(--navy-light); }
+/* Phones: the full link row is wider than the screen. Keep brand + Shop only. */
+@media (max-width: 640px) {
+  .nav-inner { padding: .85rem 1rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+}
 
 /* Breadcrumbs */
 .breadcrumbs {
@@ -153,6 +159,11 @@ a:hover { color: var(--navy); }
 .article th {
   background: var(--cream); color: var(--navy);
   font-weight: 600;
+}
+/* Phones: wide comparison tables scroll inside their own box instead of widening the page. */
+@media (max-width: 640px) {
+  .article table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: .85rem; }
+  .article th, .article td { padding: .6rem .75rem; min-width: 8rem; }
 }
 .article blockquote {
   border-left: 3px solid var(--rose-gold);
@@ -256,4 +267,54 @@ a:hover { color: var(--navy); }
 .hub-section h2 {
   font-family: 'DM Serif Display', serif; font-size: 1.6rem;
   color: var(--navy); margin: 2rem 0 1rem;
+}
+
+/* ---- Articles + sales pages (Nov 2026) ---- */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; }
+.table-wrap table { margin: 0; }
+.article blockquote p { margin: 0; }
+.np-cta {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 1.5rem;
+  background: var(--navy); color: var(--warm-white);
+  border-radius: 1rem; padding: 1.4rem 1.6rem; margin: 2.5rem 0;
+}
+.np-cta-text { flex: 1 1 320px; }
+.article .np-cta p { margin: 0; color: var(--warm-white); }
+.np-cta-eyebrow { font-size: .7rem !important; letter-spacing: .15em; text-transform: uppercase; color: var(--rose-gold) !important; font-weight: 700; margin-bottom: .35rem !important; }
+.np-cta-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; line-height: 1.3; }
+.np-cta-sub { font-size: .8rem; opacity: .75; margin-top: .4rem !important; }
+.np-cta-btn, .np-offer-btn {
+  display: inline-block; background: var(--rose-gold); color: var(--warm-white) !important;
+  padding: .85rem 1.6rem; border-radius: 999px; font-weight: 700; text-decoration: none !important;
+  white-space: nowrap; font-size: .95rem;
+}
+.np-cta-btn:hover, .np-offer-btn:hover { background: #b88758; }
+.np-offer {
+  background: linear-gradient(135deg, var(--cream), var(--warm-white));
+  border: 1px solid rgba(196,149,106,.35); border-radius: 1.25rem;
+  padding: 1.75rem 1.5rem; margin: 3rem 0; text-align: center;
+}
+.np-offer-eyebrow { font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; color: var(--rose-gold) !important; font-weight: 700; }
+.article .np-offer-table { margin: 1rem 0 1.25rem; font-size: .9rem; }
+.np-offer-table td span { display: inline-block; margin-left: .4rem; font-size: .65rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; background: var(--rose-gold); color: #fff; padding: .15rem .5rem; border-radius: 999px; }
+.np-offer-pick td { background: rgba(196,149,106,.08); font-weight: 600; }
+.article .np-offer-guarantee { font-size: .9rem; max-width: 34rem; margin: 0 auto 1.25rem; }
+.article .np-offer-small { font-size: .78rem; color: var(--muted); margin: .9rem 0 0; }
+.faq { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(196,149,106,.25); }
+.faq h3 { font-size: 1.05rem; margin: 1.5rem 0 .4rem; color: var(--navy); }
+.np-sticky { display: none; }
+@media (max-width: 640px) {
+  .np-offer { padding: 1.4rem 1rem; }
+  .np-offer-table th:nth-child(2), .np-offer-table td:nth-child(2),
+  .np-offer-table th:nth-child(5), .np-offer-table td:nth-child(5) { display: none; }
+  .np-offer-table th, .np-offer-table td { min-width: 0 !important; padding: .55rem .45rem; font-size: .82rem; }
+  .np-offer .np-offer-table { display: table; width: 100%; }
+  .np-offer-btn, .np-cta-btn { white-space: normal; text-align: center; max-width: 100%; }
+  .np-sales .np-sticky {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    background: #fff; border-top: 1px solid rgba(196,149,106,.35); padding: .7rem 1rem;
+    box-shadow: 0 -8px 24px rgba(28,43,74,.08);
+  }
+  .np-sticky a { display: block; text-align: center; background: var(--navy); color: #fff; padding: .85rem; border-radius: 1rem; font-weight: 700; text-decoration: none; }
+  .np-sales .site-footer { padding-bottom: 6rem; }
 }

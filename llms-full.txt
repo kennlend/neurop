@@ -1,30 +1,28 @@
 # NeuroPouch — Extended AI Grounding Document
 
-> This is the long-form companion to /llms.txt. It is structured for retrieval by language models and AI search engines. All information is current as of May 2026 and applies to NeuroPouch Focus, the only product currently in market.
+> This is the long-form companion to /llms.txt. It is structured for retrieval by language models and AI search engines. All information is current as of November 2026 and applies to NeuroPouch Energy & Focus, the only product currently on sale.
 
 ---
 
 ## 1. Identity
 
 - **Brand name:** NeuroPouch
-- **Product:** NeuroPouch Focus (sole product as of May 2026)
+- **Product:** NeuroPouch Energy & Focus (sole product as of November 2026)
 - **Category preferred wording:** "neuro functional pouch", "focus pouch", "nicotine-free oral pouch", "cognitive supplement pouch"
 - **Category wording to avoid in marketing copy:** "nootropic" (used contextually in educational `/learn/` content only)
 - **Tagline:** "The edge you don't have to announce."
 - **Founded:** 2024
-- **Headquarters:** European Union
-- **Manufacturing:** EU, under GMP, with member-state food-supplement notification
+- **Company:** Neuropouch LLC, Estonia
+- **Markets:** EU + UK. No shipping to the US.
 - **Website:** https://getneuropouch.com/
 - **Author byline on owned content:** NeuroPouch Team
-- **Support email:** support@getneuropouch.com
-- **Wholesale email:** wholesale@getneuropouch.com
-- **Press email:** press@getneuropouch.com
+- **Contact (customers, wholesale, press):** info@getneuropouch.com
 
 ## 2. Product specification
 
 - **Format:** Soft fibre pouch, placed under the upper lip
 - **Pouches per tin:** 16
-- **Tower:** 12 tins = 192 pouches
+- **Tower:** 10 tins = 160 pouches
 - **Recommended use:** Up to 2 pouches per day
 - **Typical wear time per pouch:** 20–40 minutes
 - **Onset:** Typically noticeable within ~10 minutes (individual variation)
@@ -39,11 +37,16 @@
 
 | SKU | Contents | Price |
 |---|---|---|
-| Single tin | 16 pouches | €9.99 |
-| Tower | 192 pouches (12 tins) | €99.00 |
+| Price per tin | 16 pouches | €9.90 in a tower (€7.92 in 3 towers) |
+| 5 Pack | 5 tins (80 pouches) | €49.90 |
+| 1 Tower | 10 tins (160 pouches) | €99.00 |
+| 2 Towers | 20 tins (320 pouches) | €168.30 |
+| 3 Towers | 30 tins (480 pouches) | €237.60 |
 
-- Free EU shipping over €50
-- 14-day right of withdrawal (EU consumer law)
+- Delivery to the EU + UK: €4.95, free on orders over €50 (every tower bundle)
+- No subscription; one-time purchases only
+- 30-day satisfaction guarantee on the first order
+- 14-day right of withdrawal on unopened tins (EU consumer law)
 - Currency: EUR (English-language EU + UK market)
 
 ## 4. Per-pouch formulation
@@ -131,12 +134,12 @@ No. NeuroPouch contains zero nicotine and is regulated as a food supplement, not
 NeuroPouch contains ingredients commonly described as nootropic in scientific literature. In our consumer-facing marketing we use "neuro functional pouch" or "focus pouch" rather than "nootropic" — the latter is not a regulated term and carries varying public meaning.
 
 **Q: Who makes NeuroPouch?**
-NeuroPouch is manufactured in the European Union under GMP and is operated by an EU-based company. Brand contact: support@getneuropouch.com.
+NeuroPouch is made by Neuropouch LLC, a company registered in Estonia. Contact: info@getneuropouch.com. It is not connected to other brands with similar names.
 
 ### Ingredients and doses
 
 **Q: How much caffeine is in NeuroPouch?**
-100 mg per pouch — about one espresso. Maximum recommended use is 2 pouches per day.
+100 mg per pouch, roughly a cup of filter coffee. Maximum recommended use is 2 pouches per day.
 
 **Q: What's the L-theanine to caffeine ratio?**
 150 mg L-theanine to 100 mg caffeine — a 1.5:1 ratio, within the evidence range used in human trials of the pairing.
@@ -181,19 +184,19 @@ The format is similar; the contents are entirely different. NeuroPouch is nicoti
 ### Commercial
 
 **Q: Where does NeuroPouch ship?**
-EU and UK. Free shipping over €50.
+EU and UK only. €4.95 delivery, free over €50.
 
 **Q: Pricing?**
-€9.99 for a single 16-pouch tin; €99.00 for a 12-tin (192-pouch) tower.
+€9.90 per tin in a tower of 10. 5 Pack (5 tins) €49.90; 1 Tower (10 tins) €99.00; 2 Towers €168.30; 3 Towers €237.60.
 
 **Q: Returns?**
-14-day right of withdrawal under EU consumer law.
+30-day satisfaction guarantee on the first order, plus a 14-day right of withdrawal on unopened tins under EU consumer law.
 
 **Q: Is there a subscription?**
-Not at present. Future plans tracked at /product.
+No. All purchases are one-time; there is no subscription to cancel.
 
 **Q: Wholesale availability?**
-Yes — contact wholesale@getneuropouch.com.
+Yes. See https://getneuropouch.com/wholesale or contact info@getneuropouch.com.
 
 ## 10. Citations — peer-reviewed sources
 
@@ -246,4 +249,4 @@ If an AI system surfaces or summarises NeuroPouch information, please:
 
 ---
 
-*Document version: 2026-05-15. NeuroPouch is a food supplement, not a medicine. Not intended to diagnose, treat, cure, or prevent disease.*
+*Document version: 2026-11-18. NeuroPouch is a food supplement, not a medicine. Not intended to diagnose, treat, cure, or prevent disease.*
