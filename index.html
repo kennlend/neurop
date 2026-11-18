@@ -1713,7 +1713,7 @@
       // Disable button while submitting
       const originalText = btn ? btn.textContent : '';
       if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
-      const result = await addToBrevo({ email, listId: LIST_WHITELIST });
+      const result = await addToBrevo({ email, listId: LIST_WHITELIST, attributes: { SOURCE: 'homepage-footer' } });
       if (result.ok) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'sign_up', method: 'email', signup_source: 'footer' });

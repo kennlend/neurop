@@ -595,13 +595,13 @@
               message: messageEl ? messageEl.value.trim() : '',
             }),
           }).then(async res => ({ ok: res.ok, error: (await res.json().catch(() => ({}))).error })),
-          addToBrevo({
+          listId ? addToBrevo({
           email, firstName, lastName, listId,
           attributes: {
             ...(company ? { COMPANY: company } : {}),
             SOURCE: source,
           },
-          }),
+          }) : Promise.resolve({ ok: true }),
         ]);
         if (contactResult.ok) {
           form.style.display = 'none';
@@ -612,8 +612,8 @@
         }
       });
     }
-    handleSubmit('form-general',   'success-general',   LIST_WHITELIST,    'contact-general');
-    handleSubmit('form-press',     'success-press',     LIST_WHITELIST,    'contact-press');
+    handleSubmit('form-general',   'success-general',   null,             'contact-general');
+    handleSubmit('form-press',     'success-press',     null,             'contact-press');
     handleSubmit('form-wholesale', 'success-wholesale', LIST_DISTRIBUTORS, 'contact-wholesale');
     // ── FAQ accordion ──
     document.querySelectorAll('.faq-btn').forEach(btn => {
